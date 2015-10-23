@@ -1,11 +1,11 @@
 /**
  * 
  */
-package com.ranga.dao.impl;
+package com.server.dao.impl;
 
-import com.ranga.dao.EmployeeDAO;
-import com.ranga.entity.Employee;
-import com.ranga.util.HibernateUtil;
+import com.server.dao.EmployeeDAO;
+import com.server.entity.Employee;
+import com.server.util.HibernateUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -64,10 +64,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		List<Employee> employees = new ArrayList<Employee>();
 		for(Object[] employeeObject: employeeObjects) {
 			Employee employee = new Employee();
-			long id = ((BigInteger) employeeObject[0]).longValue();			
-			int age = (int) employeeObject[1];
+			//long id = ((BigInteger) employeeObject[0]).longValue();
+			int id  = (int) employeeObject[0];
+            int age = (int) employeeObject[1];
 			String name = (String) employeeObject[2];
-			float salary = (float) employeeObject[3];
+			double salary = (double) employeeObject[3];
 			employee.setId(id);
 			employee.setName(name);
 			employee.setAge(age);

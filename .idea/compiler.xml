@@ -26,6 +26,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="EmployeeDB" target="1.8" />
       <module name="Spring4Hiberante4Integration" target="1.8" />
     </bytecodeTargetLevel>
   </component>

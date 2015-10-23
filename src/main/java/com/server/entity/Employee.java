@@ -1,4 +1,4 @@
-package com.ranga.entity;
+package com.server.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,11 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import java.io.Serializable;
-/**
- * @author Ranga Reddy
- * @version 1.0
- * 
- */
+
 @Entity
 @Table(name = "Employees")
 public class Employee implements Serializable {
@@ -30,7 +26,7 @@ public class Employee implements Serializable {
     private int age;
     
     @Column
-    private float salary;
+    private double salary;
 
     public Employee() {
     }
@@ -52,10 +48,10 @@ public class Employee implements Serializable {
     public void setAge(int age) {
         this.age = age;
     }
-    public float getSalary() {
+    public double getSalary() {
         return salary;
     }
-    public void setSalary(float salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
     

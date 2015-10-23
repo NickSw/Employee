@@ -1,17 +1,10 @@
-/**
- * 
- */
-package com.ranga.dao;
+
+package com.server.service;
+import com.server.entity.Employee;
 
 import java.util.List;
 
-import com.ranga.entity.Employee;
-
-/**
- * @author Ranga Reddy
- * @version 1.0
- */
-public interface EmployeeDAO {
+public interface EmployeeService {
 	public long createEmployee(Employee employee);
     public Employee updateEmployee(Employee employee);
     public void deleteEmployee(long id);
