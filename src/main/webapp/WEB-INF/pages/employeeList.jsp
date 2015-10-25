@@ -44,6 +44,7 @@
                         <th>Name</th>
                         <th>Age</th>
                         <th>Salary</th>
+                        <th>Phone</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -54,7 +55,8 @@
                         	<th><c:out value="${emp.id}"/></th>
                         	<th><c:out value="${emp.name}"/></th>
                         	<th><c:out value="${emp.age}"/></th>
-                        	<th><c:out value="${emp.salary}"/></th> 
+                        	<th><c:out value="${emp.salary}"/></th>
+                            <th><c:out value="${emp.phone}"/></th>
                         	<th><a href="editEmployee?id=<c:out value='${emp.id}'/>">Edit</a></th>
                         	<th><a href="deleteEmployee?id=<c:out value='${emp.id}'/>">Delete</a></th>                         	
                         </tr>

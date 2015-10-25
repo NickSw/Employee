@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="Ranga Reddy">
+<meta name="author" content="Nick Lebedev">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Employee Information</title>
@@ -52,6 +52,13 @@
                             <form:input cssClass="form-control" path="salary" value="${employeeObject.salary}"/>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="phone" >Phone</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="phone" value="${employeeObject.phone}"/>
+                        </div>
+                    </div>
     
                     <div class="form-group">
                         <div class="row">
@@ -80,6 +87,7 @@
 		    var name = $('#name').val().trim();
 		    var age = $('#age').val();
 		    var salary = $('#salary').val();
+            var phone = $('#phone').val;
 		    if(name.length ==0) {
 		        alert('Please enter name');
 		        $('#name').focus();
@@ -98,6 +106,12 @@
 		        return false;
 		    }
 		    return true;
+
+            if(phone.length ==0) {
+                alert('Please enter phone');
+                $('#phone').focus();
+                return false;
+            }
 		};	
 	</script>
 

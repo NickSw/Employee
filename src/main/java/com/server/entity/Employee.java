@@ -28,8 +28,21 @@ public class Employee implements Serializable {
     @Column
     private double salary;
 
+    @Column
+    private String phone;
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public Employee() {
     }
+
     public long getId() {
         return id;
     }

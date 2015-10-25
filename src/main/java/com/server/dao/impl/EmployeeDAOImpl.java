@@ -10,14 +10,8 @@ import com.server.util.HibernateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * @author Ranga Reddy
- * @version 1.0
- */
 
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
@@ -64,15 +58,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		List<Employee> employees = new ArrayList<Employee>();
 		for(Object[] employeeObject: employeeObjects) {
 			Employee employee = new Employee();
-			//long id = ((BigInteger) employeeObject[0]).longValue();
 			int id  = (int) employeeObject[0];
             int age = (int) employeeObject[1];
 			String name = (String) employeeObject[2];
 			double salary = (double) employeeObject[3];
-			employee.setId(id);
+			String phone = (String) employeeObject[4];
+            employee.setId(id);
 			employee.setName(name);
 			employee.setAge(age);
 			employee.setSalary(salary);
+            employee.setPhone(phone);
 			employees.add(employee);
 		}
 		System.out.println(employees);
