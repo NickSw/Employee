@@ -38,20 +38,6 @@
                             <form:input cssClass="form-control" path="name" value="${employeeObject.name}"/>
                         </div>
                     </div>
-    
-                    <div class="form-group">
-                        <form:label path="age" cssClass="control-label col-xs-3">Age</form:label>
-                        <div class="col-xs-6">
-                            <form:input cssClass="form-control" path="age" value="${employeeObject.age}"/>
-                        </div>
-                    </div>
-    
-                    <div class="form-group">
-                        <div class="control-label col-xs-3"><form:label path="salary">Salary</form:label></div>
-                        <div class="col-xs-6">
-                            <form:input cssClass="form-control" path="salary" value="${employeeObject.salary}"/>
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <div class="control-label col-xs-3"> <form:label path="phone" >Phone</form:label> </div>
@@ -59,7 +45,35 @@
                             <form:input cssClass="form-control" path="phone" value="${employeeObject.phone}"/>
                         </div>
                     </div>
-    
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="address" >Address</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="address" value="${employeeObject.address}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="study" >Study</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="study" value="${employeeObject.study}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="birthday" >Birthday</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="birthday" value="${employeeObject.birthday}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="code" >Identif.Code</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="code" value="${employeeObject.code}"/>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-4">
@@ -85,33 +99,48 @@
 			
 		    // getting the employee form values
 		    var name = $('#name').val().trim();
-		    var age = $('#age').val();
-		    var salary = $('#salary').val();
             var phone = $('#phone').val;
+            var address  = $('#address').val();
+            var study = $('#study').val();
+            var birthday = $('#birthday').val();
+            var code = $('#code').val();
+
 		    if(name.length ==0) {
 		        alert('Please enter name');
 		        $('#name').focus();
 		        return false;
 		    }
-	
-		    if(age <= 0) {
-		        alert('Please enter proper age');
-		        $('#age').focus();
-		        return false;
-		    }
-	
-		    if(salary <= 0) {
-		        alert('Please enter proper salary');
-		        $('#salary').focus();
-		        return false;
-		    }
-		    return true;
 
             if(phone.length ==0) {
                 alert('Please enter phone');
                 $('#phone').focus();
                 return false;
             }
+
+            if(address.length ==0) {
+                alert('Please enter address');
+                $('#address').focus();
+                return false;
+            }
+
+            if(study.length ==0) {
+                alert('Please enter study');
+                $('#study').focus();
+                return false;
+            }
+
+            if(birthday.length ==0) {
+                alert('Please enter birthday');
+                $('#birthday').focus();
+                return false;
+            }
+
+            if(code.length ==0) {
+                alert('Please enter Id code');
+                $('#code').focus();
+                return false;
+            }
+
 		};	
 	</script>
 

@@ -32,7 +32,7 @@ public class EmployeeController {
     }
     
     @RequestMapping("editEmployee")
-    public ModelAndView editEmployee(@RequestParam long id, @ModelAttribute Employee employee) {
+    public ModelAndView editEmployee(@RequestParam int id, @ModelAttribute Employee employee) {
     	logger.info("Updating the Employee for the Id "+id);
         employee = employeeService.getEmployee(id);
         return new ModelAndView("employeeForm", "employeeObject", employee);
@@ -50,7 +50,7 @@ public class EmployeeController {
     }
     
     @RequestMapping("deleteEmployee")
-    public ModelAndView deleteEmployee(@RequestParam long id) {
+    public ModelAndView deleteEmployee(@RequestParam int id) {
     	logger.info("Deleting the Employee. Id : "+id);
         employeeService.deleteEmployee(id);
         return new ModelAndView("redirect:getAllEmployees");

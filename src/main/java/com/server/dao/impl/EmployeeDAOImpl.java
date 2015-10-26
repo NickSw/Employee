@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.server.dao.impl;
 
 import com.server.dao.EmployeeDAO;
@@ -59,15 +56,21 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		for(Object[] employeeObject: employeeObjects) {
 			Employee employee = new Employee();
 			int id  = (int) employeeObject[0];
-            int age = (int) employeeObject[1];
-			String name = (String) employeeObject[2];
-			double salary = (double) employeeObject[3];
-			String phone = (String) employeeObject[4];
+			String name = (String) employeeObject[1];
+			String phone = (String) employeeObject[2];
+            String address = (String) employeeObject[3];
+            String study = (String) employeeObject[4];
+            java.sql.Date birthday = (java.sql.Date) employeeObject[5];
+            int code = (int) employeeObject[6];
+
             employee.setId(id);
 			employee.setName(name);
-			employee.setAge(age);
-			employee.setSalary(salary);
             employee.setPhone(phone);
+            employee.setAddress(address);
+            employee.setStudy(study);
+            employee.setBirthday(birthday);
+            employee.setCode(code);
+
 			employees.add(employee);
 		}
 		System.out.println(employees);

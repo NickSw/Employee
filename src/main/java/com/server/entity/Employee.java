@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "Employees")
@@ -21,24 +22,21 @@ public class Employee implements Serializable {
 	
     @Column
     private String name;
-    
-    @Column
-    private int age;
-    
-    @Column
-    private double salary;
 
     @Column
     private String phone;
 
+    @Column
+    private String address;
 
-    public String getPhone() {
-        return phone;
-    }
+    @Column
+    private String study;
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    @Column
+    private int code;
+
+    @Column
+    private java.sql.Date birthday;
 
     public Employee() {
     }
@@ -55,26 +53,52 @@ public class Employee implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public int getAge() {
-        return age;
+
+    public String getPhone() {
+        return phone;
     }
-    public void setAge(int age) {
-        this.age = age;
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
-    public double getSalary() {
-        return salary;
+
+    public String getStudy() {
+        return study;
     }
-    public void setSalary(double salary) {
-        this.salary = salary;
+
+    public void setStudy(String study) {
+        this.study = study;
     }
-    
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public java.sql.Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(java.sql.Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", age=" + age +
-                ", salary=" + salary +
                 '}';
     }
 }

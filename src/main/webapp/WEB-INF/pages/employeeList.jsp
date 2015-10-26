@@ -42,9 +42,11 @@
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Age</th>
-                        <th>Salary</th>
                         <th>Phone</th>
+                        <th>Address</th>
+                        <th>Study</th>
+                        <th>Birthday</th>
+                        <th>Identif. Code</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -54,9 +56,11 @@
                         <tr>
                         	<th><c:out value="${emp.id}"/></th>
                         	<th><c:out value="${emp.name}"/></th>
-                        	<th><c:out value="${emp.age}"/></th>
-                        	<th><c:out value="${emp.salary}"/></th>
                             <th><c:out value="${emp.phone}"/></th>
+                            <th><c:out value="${emp.address}"/></th>
+                            <th><c:out value="${emp.study}"/></th>
+                            <th><c:out value="${emp.birthday}"/></th>
+                            <th><c:out value="${emp.code}"/></th>
                         	<th><a href="editEmployee?id=<c:out value='${emp.id}'/>">Edit</a></th>
                         	<th><a href="deleteEmployee?id=<c:out value='${emp.id}'/>">Delete</a></th>                         	
                         </tr>
@@ -72,6 +76,7 @@
     <%-- <script src="<c:url value="/resources/js/jquery-2.1.3.js"/>"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
      --%>
+
 
 </body>
 </html>

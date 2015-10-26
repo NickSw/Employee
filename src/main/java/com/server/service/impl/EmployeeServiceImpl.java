@@ -29,7 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeDAO.updateEmployee(employee);
     }
     @Override
-    public void deleteEmployee(long id) {
+    public void deleteEmployee(int id) {
         employeeDAO.deleteEmployee(id);
     }
     @Override
@@ -37,7 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeDAO.getAllEmployees();
     }
     @Override
-    public Employee getEmployee(long id) {
+    public Employee getEmployee(int id) {
         return employeeDAO.getEmployee(id);
     }    
     @Override
