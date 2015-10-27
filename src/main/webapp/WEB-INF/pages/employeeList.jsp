@@ -12,6 +12,10 @@
     <style type="text/css">
         .myrow-container {
             margin: 20px;
+            position: relative;
+        }
+        .panel-body{
+            position: absolute;
         }
     </style>
 </head>
@@ -41,12 +45,26 @@
                     <thead style="background-color: #bce8f1;">
                     <tr>
                         <th>Id</th>
+                        <th>General Info</th>
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Study</th>
+                        <th>Speciality</th>
                         <th>Birthday</th>
                         <th>Identif. Code</th>
+                        <th>Passport Info</th>
+                        <th>Position 1</th>
+                        <th>Position 2</th>
+                        <th>Mail</th>
+                        <th>Where workin'</th>
+                        <th>Decor Type</th>
+                        <th>Children B 16</th>
+                        <th>Enroll Date</th>
+                        <th>Enroll Order</th>
+                        <th>Enroll Order Date</th>
+                        <th>Records of Service</th>
+                        <th>Notes</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -55,12 +73,26 @@
                     <c:forEach items="${employeeList}" var="emp">
                         <tr>
                         	<th><c:out value="${emp.id}"/></th>
+                            <th><c:out value="${emp.info}"/></th>
                         	<th><c:out value="${emp.name}"/></th>
                             <th><c:out value="${emp.phone}"/></th>
                             <th><c:out value="${emp.address}"/></th>
                             <th><c:out value="${emp.study}"/></th>
+                            <th><c:out value="${emp.speciality}"/></th>
                             <th><c:out value="${emp.birthday}"/></th>
                             <th><c:out value="${emp.code}"/></th>
+                            <th><c:out value="${emp.passport}"/></th>
+                            <th><c:out value="${emp.position1}"/></th>
+                            <th><c:out value="${emp.position2}"/></th>
+                            <th><c:out value="${emp.mail}"/></th>
+                            <th><c:out value="${emp.workplace}"/></th>
+                            <th><c:out value="${emp.decortype}"/></th>
+                            <th><c:out value="${emp.children}"/></th>
+                            <th><c:out value="${emp.enrolldate}"/></th>
+                            <th><c:out value="${emp.enrollorder}"/></th>
+                            <th><c:out value="${emp.enrollorderdate}"/></th>
+                            <th><c:out value="${emp.recofservice}"/></th>
+                            <th><c:out value="${emp.notes}"/></th>
                         	<th><a href="editEmployee?id=<c:out value='${emp.id}'/>">Edit</a></th>
                         	<th><a href="deleteEmployee?id=<c:out value='${emp.id}'/>">Delete</a></th>                         	
                         </tr>

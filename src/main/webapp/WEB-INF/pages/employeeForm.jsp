@@ -30,7 +30,14 @@
             </div>
             <div class="panel-body">
                 <form:form id="employeeRegisterForm" cssClass="form-horizontal" modelAttribute="employee" method="post" action="saveEmployee">
-    
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="info" >General Info</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="info" value="${employeeObject.info}"/>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <div class="control-label col-xs-3"> <form:label path="name" >Name</form:label> </div>
                         <div class="col-xs-6">
@@ -61,6 +68,13 @@
                     </div>
 
                     <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="speciality" >Speciality</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="speciality" value="${employeeObject.speciality}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="control-label col-xs-3"> <form:label path="birthday" >Birthday</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="birthday" value="${employeeObject.birthday}"/>
@@ -71,6 +85,90 @@
                         <div class="control-label col-xs-3"> <form:label path="code" >Identif.Code</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="code" value="${employeeObject.code}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="passport" >Passport info</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="passport" value="${employeeObject.passport}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="position1" >Position 1</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="position1" value="${employeeObject.position1}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="position2" >Position 2</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="position2" value="${employeeObject.position2}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="mail" >Mail</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="mail" value="${employeeObject.mail}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="workplace" >Where workin'</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="workplace" value="${employeeObject.workplace}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="decortype" >Decor Type</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="decortype" value="${employeeObject.decortype}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="children" >Children before 16</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="children" value="${employeeObject.children}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="enrolldate" >Enrollment Date</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="enrolldate" value="${employeeObject.enrolldate}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="enrollorder" >Enrollment Order</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="enrollorder" value="${employeeObject.enrollorder}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="enrollorderdate" >Enrollment Order Date</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="enrollorderdate" value="${employeeObject.enrollorderdate}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="recofservice" >Records of Service</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="recofservice" value="${employeeObject.recofservice}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-xs-3"> <form:label path="notes" >Notes</form:label> </div>
+                        <div class="col-xs-6">
+                            <form:input cssClass="form-control" path="notes" value="${employeeObject.notes}"/>
                         </div>
                     </div>
 
@@ -98,12 +196,32 @@
 		function submitEmployeeForm() {				
 			
 		    // getting the employee form values
+            var info = $('#info').val();
 		    var name = $('#name').val().trim();
             var phone = $('#phone').val;
             var address  = $('#address').val();
             var study = $('#study').val();
+            var speciality = $('#speciality');
             var birthday = $('#birthday').val();
             var code = $('#code').val();
+            var passport = $('#passport').val();
+            var position1 = $('#position1').val();
+            var position2 = $('#position2').val();
+            var mail = $('#mail').val();
+            var workplace = $('#workplace').val();
+            var decortype = $('#decortype').val();
+            var children = $('#children').val();
+            var enrolldate = $('#enrolldate').val();
+            var enrollorder = $('#enrollorder').val();
+            var enrollorderdate = $('#enrollorderdate').val();
+            var recofservice = $('#recofservice').val();
+            var notes = $('#notes').val();
+
+            if(info.length ==0) {
+                alert('Please enter general info');
+                $('#info').focus();
+                return false;
+            }
 
 		    if(name.length ==0) {
 		        alert('Please enter name');
@@ -129,6 +247,12 @@
                 return false;
             }
 
+            if(study.length ==0) {
+                alert('Please enter speciality');
+                $('#speciality').focus();
+                return false;
+            }
+
             if(birthday.length ==0) {
                 alert('Please enter birthday');
                 $('#birthday').focus();
@@ -141,7 +265,79 @@
                 return false;
             }
 
-		};	
+            if(passport.length ==0) {
+                alert('Please enter Passport Info');
+                $('#passport').focus();
+                return false;
+            }
+
+            if(position1.length ==0) {
+                alert('Please enter Position 1');
+                $('#position1').focus();
+                return false;
+            }
+
+            if(position2.length ==0) {
+                alert('Please enter Position 2');
+                $('#position2').focus();
+                return false;
+            }
+
+            if(mail.length ==0) {
+                alert('Please enter Mail');
+                $('#mail').focus();
+                return false;
+            }
+
+            if(workplace.length ==0) {
+                alert('Please enter workplace');
+                $('#workplace').focus();
+                return false;
+            }
+
+            if(decortype.length ==0) {
+                alert('Please enter Decor type');
+                $('#decortype').focus();
+                return false;
+            }
+
+            if(children.length ==0) {
+                alert('Please enter children');
+                $('#children').focus();
+                return false;
+            }
+
+            if(enrolldate.length ==0) {
+                alert('Please enter enrollment date');
+                $('#enrolldate').focus();
+                return false;
+            }
+
+            if(enrollorder.length ==0) {
+                alert('Please enter enrollment order');
+                $('#enrollorder').focus();
+                return false;
+            }
+
+            if(enrollorderdate.length ==0) {
+                alert('Please enter enrollment order date');
+                $('#enrollorderdate').focus();
+                return false;
+            }
+
+            if(recofservice.length ==0) {
+                alert('Please enter Records of Service');
+                $('#recofservice').focus();
+                return false;
+            }
+
+            if(notes.length ==0) {
+                alert('Please enter notes');
+                $('#notes').focus();
+                return false;
+            }
+
+        };
 	</script>
 
 </body>

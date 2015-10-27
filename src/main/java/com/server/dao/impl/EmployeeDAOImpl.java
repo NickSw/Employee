@@ -62,14 +62,43 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             String study = (String) employeeObject[4];
             java.sql.Date birthday = (java.sql.Date) employeeObject[5];
             int code = (int) employeeObject[6];
+            String info = (String) employeeObject[7];
+            String passport = (String) employeeObject[8];
+            String position1 = (String) employeeObject[9];
+            String position2 =(String) employeeObject[10];
+            String mail = (String) employeeObject[11];
+            String workplace = (String) employeeObject[12];
+            String speciality = (String) employeeObject[13];
+            String decortype = (String) employeeObject[14];
+            String children = (String) employeeObject[15];
+            java.sql.Date enrolldate = (java.sql.Date) employeeObject[16];
+            String enrollorder = (String) employeeObject[17];
+            java.sql.Date enrollorderdate = (java.sql.Date) employeeObject[18];
+            String recofservice = (String) employeeObject[19];
+            String notes = (String) employeeObject[20];
 
             employee.setId(id);
+            employee.setInfo(info);
 			employee.setName(name);
             employee.setPhone(phone);
             employee.setAddress(address);
             employee.setStudy(study);
+            employee.setSpeciality(speciality);
             employee.setBirthday(birthday);
             employee.setCode(code);
+            employee.setPassport(passport);
+            employee.setPosition1(position1);
+            employee.setPosition2(position2);
+            employee.setMail(mail);
+            employee.setWorkplace(workplace);
+            employee.setDecortype(decortype);
+            employee.setChildren(children);
+            employee.setEnrolldate(enrolldate);
+            employee.setEnrollorder(enrollorder);
+            employee.setEnrollorderdate(enrollorderdate);
+            employee.setRecofservice(recofservice);
+            employee.setNotes(notes);
+
 
 			employees.add(employee);
 		}
