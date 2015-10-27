@@ -7,9 +7,7 @@ import java.util.List;
 
 import com.server.entity.Employee;
 
-/**
- *
- */
+
 public interface EmployeeDAO {
 	public long createEmployee(Employee employee);
     public Employee updateEmployee(Employee employee);

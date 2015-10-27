@@ -19,6 +19,7 @@
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
+	<mvc:view-controller path="/" view-name="employeeList"/>
 	<!-- View Resolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
