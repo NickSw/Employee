@@ -62,7 +62,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             String study = (String) employeeObject[4];
             java.sql.Date birthday = (java.sql.Date) employeeObject[5];
             int code = (int) employeeObject[6];
-            String info = (String) employeeObject[7];
+
             String passport = (String) employeeObject[8];
             String position1 = (String) employeeObject[9];
             String position2 =(String) employeeObject[10];
@@ -78,7 +78,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             String notes = (String) employeeObject[20];
 
             employee.setId(id);
-            employee.setInfo(info);
 			employee.setName(name);
             employee.setPhone(phone);
             employee.setAddress(address);

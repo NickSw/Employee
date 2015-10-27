@@ -21,9 +21,6 @@ public class Employee implements Serializable {
     private long id;
 
     @Column
-    private String info;
-
-    @Column
     private String name;
 
     @Column
@@ -87,21 +84,15 @@ public class Employee implements Serializable {
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
     }
 
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }

@@ -32,13 +32,6 @@
                 <form:form id="employeeRegisterForm" cssClass="form-horizontal" modelAttribute="employee" method="post" action="saveEmployee">
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="info" >General Info</form:label> </div>
-                        <div class="col-xs-6">
-                            <form:input cssClass="form-control" path="info" value="${employeeObject.info}"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <div class="control-label col-xs-3"> <form:label path="name" >Name</form:label> </div>
                         <div class="col-xs-6">
                             <form:hidden path="id" value="${employeeObject.id}"/>
@@ -196,8 +189,7 @@
 		function submitEmployeeForm() {				
 			
 		    // getting the employee form values
-            var info = $('#info').val();
-		    var name = $('#name').val().trim();
+            var name = $('#name').val().trim();
             var phone = $('#phone').val;
             var address  = $('#address').val();
             var study = $('#study').val();
@@ -216,12 +208,6 @@
             var enrollorderdate = $('#enrollorderdate').val();
             var recofservice = $('#recofservice').val();
             var notes = $('#notes').val();
-
-            if(info.length ==0) {
-                alert('Please enter general info');
-                $('#info').focus();
-                return false;
-            }
 
 		    if(name.length ==0) {
 		        alert('Please enter name');

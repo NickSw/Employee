@@ -45,7 +45,6 @@
                     <thead style="background-color: #bce8f1;">
                     <tr>
                         <th>Id</th>
-                        <th>General Info</th>
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Address</th>
@@ -73,7 +72,6 @@
                     <c:forEach items="${employeeList}" var="emp">
                         <tr>
                         	<th><c:out value="${emp.id}"/></th>
-                            <th><c:out value="${emp.info}"/></th>
                         	<th><c:out value="${emp.name}"/></th>
                             <th><c:out value="${emp.phone}"/></th>
                             <th><c:out value="${emp.address}"/></th>
