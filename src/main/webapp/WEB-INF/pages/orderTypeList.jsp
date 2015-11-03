@@ -22,19 +22,19 @@
   <div class="panel panel-success">
     <div class="panel-heading">
       <h3 class="panel-title">
-        <div align="left"><b>Движения по сотрудникам </b> <a href="/getAllEmployees"> Сотрудники</a> <a href="/getAllOrderTypes"> Типы приказов</a></div>
-        <div align="right"><a href="/createMovement">Добавить новое движение</a></div>
+        <div align="left"><b>Типы приказов </b> <a href="/getAllEmployees"> Сотрудники</a> <a href="/getAllMovements"> Движения по сотрудникам</a></div>
+        <div align="right"><a href="/createOrderType">Добавить новый тип приказа</a></div>
       </h3>
     </div>
     <div class="panel-body">
-      <c:if test="${empty movementList}">
-        There are no Movements
+      <c:if test="${empty orderTypeList}">
+        Нет типов приказов
       </c:if>
-      <c:if test="${not empty movementList}">
+      <c:if test="${not empty orderTypeList}">
 
-        <form action="/searchMovement">
+        <form action="/searchOrderType">
           <div class="row">
-            <div class="col-md-4">Поиск движений: <input type='text' name='searchName' id='searchName'/> </div>
+            <div class="col-md-4">Поиск типов приказов: <input type='text' name='searchName' id='searchName'/> </div>
             <div class="col-md-4"><input class="btn btn-success" type='submit' value='Поиск'/></div>
           </div>
         </form>
@@ -43,26 +43,20 @@
           <thead style="background-color: #bce8f1;">
           <tr>
             <th>Id</th>
-            <th>Дата приказа</th>
-            <th>Номер приказа</th>
             <th>Тип приказа</th>
-            <th>ФИО</th>
-            <th>Текст приказа</th>
+            <th>Примечание</th>
             <th>Редактировать</th>
             <th>Удалить</th>
           </tr>
           </thead>
           <tbody>
-          <c:forEach items="${movementList}" var="mov">
+          <c:forEach items="${orderTypeList}" var="ord">
             <tr>
-              <th><c:out value="${mov.id}"/></th>
-              <th><c:out value="${mov.orderdate}"/></th>
-              <th><c:out value="${mov.ordernum}"/></th>
-              <th><c:out value="${mov.ordertype}"/></th>
-              <th><c:out value="${mov.fio}"/></th>
-              <th><c:out value="${mov.ordertext}"/></th>
-              <th><a href="/editMovement?id=<c:out value='${mov.id}'/>">Редактировать</a></th>
-              <th><a href="/deleteMovement?id=<c:out value='${mov.id}'/>">Удалить</a></th>
+              <th><c:out value="${ord.id}"/></th>
+              <th><c:out value="${ord.ordertype}"/></th>
+              <th><c:out value="${ord.notes}"/></th>
+              <th><a href="/editOrderType?id=<c:out value='${ord.id}'/>">Редактировать</a></th>
+              <th><a href="/deleteOrderType?id=<c:out value='${ord.id}'/>">Удалить</a></th>
             </tr>
           </c:forEach>
           </tbody>

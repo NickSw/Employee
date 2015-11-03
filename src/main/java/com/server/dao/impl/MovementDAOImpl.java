@@ -57,10 +57,16 @@ public class MovementDAOImpl implements MovementDAO {
             int id = (int) movementObject[0];
             java.sql.Date orderdate = (java.sql.Date) movementObject[1];
             String ordernum = (String) movementObject[2];
+            String ordertype = (String) movementObject[3];
+            String fio = (String) movementObject[4];
+            String ordertext = (String) movementObject[5];
 
             movement.setId(id);
             movement.setOrderdate(orderdate);
             movement.setOrdernum(ordernum);
+            movement.setOrdertype(ordertype);
+            movement.setFio(fio);
+            movement.setOrdertext(ordertext);
 
             movements.add(movement);
         }

@@ -25,14 +25,14 @@
   <div class="panel panel-success">
     <div class="panel-heading">
       <h3 class="panel-title">
-        Movement Details
+        Информация о движении
       </h3>
     </div>
     <div class="panel-body">
       <form:form id="movementRegisterForm" cssClass="form-horizontal" modelAttribute="movement" method="post" action="saveMovement">
 
         <div class="form-group">
-          <div class="control-label col-xs-3"> <form:label path="orderdate" >Order Date</form:label> </div>
+          <div class="control-label col-xs-3"> <form:label path="orderdate" >Дата приказа</form:label> </div>
           <div class="col-xs-6">
             <form:hidden path="id" value="${movementObject.id}"/>
             <form:input cssClass="form-control" path="orderdate" value="${movementObject.orderdate}"/>
@@ -40,18 +40,39 @@
         </div>
 
         <div class="form-group">
-          <div class="control-label col-xs-3"> <form:label path="ordernum" >Order Number</form:label> </div>
+          <div class="control-label col-xs-3"> <form:label path="ordernum" >Номер приказа</form:label> </div>
           <div class="col-xs-6">
             <form:input cssClass="form-control" path="ordernum" value="${movementObject.ordernum}"/>
           </div>
         </div>
 
         <div class="form-group">
+          <div class="control-label col-xs-3"> <form:label path="ordertype" >Тип приказа</form:label> </div>
+          <div class="col-xs-6">
+            <form:input cssClass="form-control" path="ordertype" value="${movementObject.ordertype}"/>
+          </div>
+        </div>
+
+         <div class="form-group">
+             <div class="control-label col-xs-3"> <form:label path="fio" >ФИО</form:label> </div>
+             <div class="col-xs-6">
+                 <form:input cssClass="form-control" path="fio" value="${movementObject.fio}"/>
+             </div>
+         </div>
+
+          <div class="form-group">
+              <div class="control-label col-xs-3"> <form:label path="ordertext" >Тип приказа</form:label> </div>
+              <div class="col-xs-6">
+                  <form:input cssClass="form-control" path="ordertext" value="${movementObject.ordertext}"/>
+              </div>
+          </div>
+
+        <div class="form-group">
           <div class="row">
             <div class="col-xs-4">
             </div>
             <div class="col-xs-4">
-              <input type="submit" id="saveMovement" class="btn btn-primary" value="Save" onclick="return submitMovementForm();"/>
+              <input type="submit" id="saveMovement" class="btn btn-primary" value="Сохранить" onclick="return submitMovementForm();"/>
             </div>
             <div class="col-xs-4">
             </div>
@@ -71,6 +92,9 @@
 
     var orderdate = $('#orderdate').val();
     var ordernum = $('#ordernum').val();
+    var ordertype =('#ordertype').val();
+    var fio = ('#fio').val();
+    var ordertext = ('#ordertext').val();
 
     if(orderdate.length ==0) {
       alert('Please enter Order Date');
@@ -83,6 +107,25 @@
       $('#ordernum').focus();
       return false;
     }
+
+    if(ordertype.length ==0) {
+      alert('Please enter Order Type');
+      $('#ordertype').focus();
+      return false;
+    }
+
+    if(fio.length ==0) {
+      alert('Please enter fio');
+      $('#fio').focus();
+      return false;
+    }
+
+    if(ordertext.length ==0) {
+       alert('Please enter Order Text');
+          $('#ordertext').focus();
+          return false;
+      }
+
 
   };
 </script>

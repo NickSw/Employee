@@ -19,13 +19,15 @@ public class Movement implements Serializable {
 
     @Column
     private String ordernum;
-    /*
+
     @Column
     private String ordertype;
 
     @Column
     private String fio;
-    */
+
+    @Column
+    private String ordertext;
 
     public void setId(long id) {
         this.id = id;
@@ -49,6 +51,29 @@ public class Movement implements Serializable {
     public void setOrdernum(String ordernum) {
         this.ordernum = ordernum;
     }
+    public String getOrdertype() {
 
+        return ordertype;
+    }
 
+    public void setOrdertype(String ordertype) {
+        this.ordertype = ordertype;
+    }
+
+    public String getFio() {
+
+        return fio;
+    }
+
+    public void setFio(String fio) {
+        this.fio = fio;
+    }
+
+    public String getOrdertext() {
+        return ordertext;
+    }
+
+    public void setOrdertext(String ordertext) {
+        this.ordertext = ordertext;
+    }
 }

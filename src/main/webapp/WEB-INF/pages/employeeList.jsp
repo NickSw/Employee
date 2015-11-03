@@ -24,8 +24,8 @@
     <div class="panel panel-success">
         <div class="panel-heading">
             <h3 class="panel-title">
-                <div align="left"><b>Employees List </b><a href="/getAllMovements">Movements List</a> </div>
-                <div align="right"><a href="createEmployee">Add New Employee</a></div>
+                <div align="left"><b>Сотрудники </b><a href="/getAllMovements">Движения по сотрудникам </a><a href="/getAllOrderTypes"> Типы приказов</a></div>
+                <div align="right"><a href="createEmployee">Добавить нового сотрудника</a></div>
             </h3>
         </div>
         <div class="panel-body">
@@ -36,8 +36,8 @@
             
             	<form action="searchEmployee">
             		<div class="row">
-					  <div class="col-md-4">Search Employees: <input type='text' name='searchName' id='searchName'/> </div>
-					  <div class="col-md-4"><input class="btn btn-success" type='submit' value='Search'/></div>
+					  <div class="col-md-4">Поиск сотрудников: <input type='text' name='searchName' id='searchName'/> </div>
+					  <div class="col-md-4"><input class="btn btn-success" type='submit' value='Поиск'/></div>
 					</div>
             	</form>         	
             	            	
@@ -45,27 +45,27 @@
                     <thead style="background-color: #bce8f1;">
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>Study</th>
-                        <th>Speciality</th>
-                        <th>Birthday</th>
-                        <th>Identif. Code</th>
-                        <th>Passport Info</th>
-                        <th>Position 1</th>
-                        <th>Position 2</th>
-                        <th>Mail</th>
-                        <th>Where workin'</th>
-                        <th>Decor Type</th>
-                        <th>Children B 16</th>
-                        <th>Enroll Date</th>
-                        <th>Enroll Order</th>
-                        <th>Enroll Order Date</th>
-                        <th>Records of Service</th>
-                        <th>Notes</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>ФИО</th>
+                        <th>Телефон</th>
+                        <th>Адрес</th>
+                        <th>ВУЗ</th>
+                        <th>Специальность</th>
+                        <th>Дата рождения</th>
+                        <th>Идент. код</th>
+                        <th>Паспорт</th>
+                        <th>Должность 1</th>
+                        <th>Должность 2</th>
+                        <th>Почта</th>
+                        <th>Где работает</th>
+                        <th>Тип оформления</th>
+                        <th>Дети до 16 лет</th>
+                        <th>Дата зачисления</th>
+                        <th>Приказ о зачислении</th>
+                        <th>Дата приказа о зачисл.</th>
+                        <th>Трудовая книжка</th>
+                        <th>Примечания</th>
+                        <th>Редактировать</th>
+                        <th>Удалить</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -91,8 +91,8 @@
                             <th><c:out value="${emp.enrollorderdate}"/></th>
                             <th><c:out value="${emp.recofservice}"/></th>
                             <th><c:out value="${emp.notes}"/></th>
-                        	<th><a href="editEmployee?id=<c:out value='${emp.id}'/>">Edit</a></th>
-                        	<th><a href="deleteEmployee?id=<c:out value='${emp.id}'/>">Delete</a></th>                         	
+                        	<th><a href="editEmployee?id=<c:out value='${emp.id}'/>">Редактировать</a></th>
+                        	<th><a href="deleteEmployee?id=<c:out value='${emp.id}'/>">Удалить</a></th>
                         </tr>
                     </c:forEach>
                     </tbody>

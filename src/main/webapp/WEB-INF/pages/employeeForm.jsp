@@ -25,14 +25,14 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Employee Details
+                    Информация о сотруднике
                 </h3>
             </div>
             <div class="panel-body">
                 <form:form id="employeeRegisterForm" cssClass="form-horizontal" modelAttribute="employee" method="post" action="saveEmployee">
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="name" >Name</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="name" >ФИО</form:label> </div>
                         <div class="col-xs-6">
                             <form:hidden path="id" value="${employeeObject.id}"/>
                             <form:input cssClass="form-control" path="name" value="${employeeObject.name}"/>
@@ -40,126 +40,126 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="phone" >Phone</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="phone" >Телефон</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="phone" value="${employeeObject.phone}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="address" >Address</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="address" >Адрес</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="address" value="${employeeObject.address}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="study" >Study</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="study" >ВУЗ</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="study" value="${employeeObject.study}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="speciality" >Speciality</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="speciality" >Специальность</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="speciality" value="${employeeObject.speciality}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="birthday" >Birthday</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="birthday" >Дата Рождения</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="birthday" value="${employeeObject.birthday}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="code" >Identif.Code</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="code" >Идент. код</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="code" value="${employeeObject.code}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="passport" >Passport info</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="passport" >Паспорт</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="passport" value="${employeeObject.passport}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="position1" >Position 1</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="position1" >Должность 1</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="position1" value="${employeeObject.position1}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="position2" >Position 2</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="position2" >Должность 2</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="position2" value="${employeeObject.position2}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="mail" >Mail</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="mail" >Почта</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="mail" value="${employeeObject.mail}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="workplace" >Where workin'</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="workplace" >Где работает</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="workplace" value="${employeeObject.workplace}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="decortype" >Decor Type</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="decortype" >Тип оформления</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="decortype" value="${employeeObject.decortype}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="children" >Children before 16</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="children" >Дети до 16 лет</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="children" value="${employeeObject.children}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="enrolldate" >Enrollment Date</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="enrolldate" >Дата зачисления</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="enrolldate" value="${employeeObject.enrolldate}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="enrollorder" >Enrollment Order</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="enrollorder" >Приказ о зачислении</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="enrollorder" value="${employeeObject.enrollorder}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="enrollorderdate" >Enrollment Order Date</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="enrollorderdate" >Дата приказа о зачисл.</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="enrollorderdate" value="${employeeObject.enrollorderdate}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="recofservice" >Records of Service</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="recofservice" >Трудовая книжка</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="recofservice" value="${employeeObject.recofservice}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="control-label col-xs-3"> <form:label path="notes" >Notes</form:label> </div>
+                        <div class="control-label col-xs-3"> <form:label path="notes" >Примечания</form:label> </div>
                         <div class="col-xs-6">
                             <form:input cssClass="form-control" path="notes" value="${employeeObject.notes}"/>
                         </div>
@@ -170,7 +170,7 @@
                             <div class="col-xs-4">
                             </div>
                             <div class="col-xs-4">
-                                <input type="submit" id="saveEmployee" class="btn btn-primary" value="Save" onclick="return submitEmployeeForm();"/>
+                                <input type="submit" id="saveEmployee" class="btn btn-primary" value="Сохранить" onclick="return submitEmployeeForm();"/>
                             </div>
                             <div class="col-xs-4">
                             </div>
