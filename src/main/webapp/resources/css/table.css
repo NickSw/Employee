@@ -1,0 +1,71 @@
+.filterable .filters input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #333;
+}
+/*.to-scroll{
+    width: 100%;
+    overflow-y: auto;
+}*/
+th {
+    min-width: 300px;
+}
+* {
+    border-radius: 0 !important;
+}
+.panel-heading{
+    background: #388a5a !important;
+    border-color: #388a5a !important;
+}
+.panel{
+    border-color: #388a5a !important;
+    margin-bottom: 0 !important;
+}
+
+.hide-overflow {
+    overflow: hidden;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.container-fluid {
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    bottom: 0px;
+    top: 50px;
+}
+.row {
+    height: 100%;
+}
+.panel-primary {
+    height: 100%;
+}
+.panel-body {
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    bottom: 0;
+    top: 36px;
+    left: 0;
+}
+.table-name {
+    position: absolute;
+    top: 0px;
+    left: 40%;
+}
