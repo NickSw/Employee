@@ -194,8 +194,8 @@
     </div><!-- /st-content -->
 </div><!-- /st-pusher -->
 </div><!-- /st-container -->
-<script type="text/javascript" src="/resources/libs/bootstrap.js"></script>
 <script type="text/javascript" src="/resources/libs/jquery.js"></script>
+<script type="text/javascript" src="/resources/libs/bootstrap.js"></script>
 <script type="text/javascript" src="/resources/js/table.js"></script>
 <script type="text/javascript" src="/resources/libs/jquery.dataTables.js"></script>
 <script type="text/javascript" src="/resources/libs/dataTables.bootstrap.js"></script>
