@@ -13,17 +13,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Employee Information</title>
     <!-- Bootstrap CSS -->
-    <%-- <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"> --%>    
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <%-- <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"> --%>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title" id="myModalLabel">Информация о сотруднике</h4>
         </div>
         <div class="modal-body">
-            <form:form id="employeeRegisterForm" cssClass="form-horizontal" modelAttribute="employee" method="post" action="saveEmployee">
+            <form:form id="employeeRegisterForm" data-target="#editEmployee" cssClass="form-horizontal" modelAttribute="employee" method="post" action="saveEmployee">
 
                 <div class="form-group">
                     <div class="control-label col-xs-3"> <form:label path="name" >ФИО</form:label> </div>
@@ -159,18 +161,15 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" id="clearEmpForm" class="btn btn-default" data-dismiss="modal">Закрыть</button>
                     <input type="submit" id="saveEmployee" class="btn btn-primary" value="Сохранить" onclick="return submitEmployeeForm();"/>
                 </div>
             </form:form>
         </div>
 
-</div>
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	
+
 	<script type="text/javascript">
 		function submitEmployeeForm() {				
 			

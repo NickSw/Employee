@@ -14,12 +14,13 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/icons.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/table.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/nautilus-font.css" />
     <script src="/resources/js/modernizr.custom.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
@@ -31,6 +32,24 @@
         </div>
     </div>
 </div><!--Modal window edit employee-->
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Удаление сотрудника</h4>
+            </div>
+            <div class="modal-body">
+                Удалить сотрудника?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <a href="" class="btn btn-danger deleteBtn">Удалить</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal window delete confirmation-->
 <div id="st-container" class="st-container">
     <div class="st-pusher">
         <!--
@@ -69,7 +88,7 @@
                 <div class="row">
                     <div class="panel panel-primary filterable">
                         <div class="panel-heading">
-                            <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editEmployee" href="createEmployee"><span class="fa fa-user-plus"></span> Добавить сотрудника</a>
+                            <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editEmployee" href="/createEmployee"><span class="fa fa-user-plus"></span> Добавить сотрудника</a>
                             <div class="pull-right">
                                 <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span>Фильтр</button>
                             </div>
@@ -77,71 +96,71 @@
                         <div class="panel-body to-scroll" id="content">
                             <table class="table table-bordered table-hover table-striped" id="datatable">
                                 <thead>
-                                    <tr class="filters">
-                                        <th><input type="text" class="form-control" placeholder="ФИО" disabled></th>
-                                        <th>Телефон</th>
-                                        <th>Адрес</th>
-                                        <th>ВУЗ</th>
-                                        <th>Специальность</th>
-                                        <th>
-                                            <div class="row" id="datepicker">
-                                                <div class="col-sm-12">
-                                                    <select class="input form-control" id="datevalue">
-                                                        <option value="all">Все</option>
-                                                        <option value="01">Январь</option>
-                                                        <option value="02">Февраль</option>
-                                                        <option value="03">Март</option>
-                                                        <option value="04">Апрель</option>
-                                                        <option value="05">Май</option>
-                                                        <option value="06">Июнь</option>
-                                                        <option value="07">Июль</option>
-                                                        <option value="08">Август</option>
-                                                        <option value="09">Сентябрь</option>
-                                                        <option value="10">Октябрь</option>
-                                                        <option value="11">Ноябрь</option>
-                                                        <option value="12">Декабрь</option>
-                                                    </select>
-                                                </div>
+                                <tr class="filters">
+                                    <th><input type="text" class="form-control" placeholder="ФИО" disabled></th>
+                                    <th>Телефон</th>
+                                    <th>Адрес</th>
+                                    <th>ВУЗ</th>
+                                    <th>Специальность</th>
+                                    <th>
+                                        <div class="row" id="datepicker">
+                                            <div class="col-sm-12">
+                                                <select class="input form-control" id="datevalue">
+                                                    <option value="all">Все</option>
+                                                    <option value="01">Январь</option>
+                                                    <option value="02">Февраль</option>
+                                                    <option value="03">Март</option>
+                                                    <option value="04">Апрель</option>
+                                                    <option value="05">Май</option>
+                                                    <option value="06">Июнь</option>
+                                                    <option value="07">Июль</option>
+                                                    <option value="08">Август</option>
+                                                    <option value="09">Сентябрь</option>
+                                                    <option value="10">Октябрь</option>
+                                                    <option value="11">Ноябрь</option>
+                                                    <option value="12">Декабрь</option>
+                                                </select>
                                             </div>
-                                            <div class="birth-name" id="datename">Дата рождения</div>
-                                        </th>
-                                        <th>Идент. код</th>
-                                        <th>Паспорт</th>
-                                        <th><input type="text" class="form-control" placeholder="Должность 1" disabled></th>
-                                        <th><input type="text" class="form-control" placeholder="Должность 2" disabled></th>
-                                        <th>Почта</th>
-                                        <th><input type="text" class="form-control" placeholder="Где работает" disabled></th>
-                                        <th>
-                                            <div class="row" id="orderpicker">
-                                                <div class="col-sm-12">
-                                                    <select class="input form-control" id="ordervalue">
-                                                        <option value="all">Все</option>
-                                                        <option value="Осн">Осн</option>
-                                                        <option value="Совм">Совм</option>
-                                                        <option value="Б/о">Б/о</option>
-                                                    </select>
-                                                </div>
+                                        </div>
+                                        <div class="birth-name" id="datename">Дата рождения</div>
+                                    </th>
+                                    <th>Идент. код</th>
+                                    <th>Паспорт</th>
+                                    <th><input type="text" class="form-control" placeholder="Должность 1" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Должность 2" disabled></th>
+                                    <th>Почта</th>
+                                    <th><input type="text" class="form-control" placeholder="Где работает" disabled></th>
+                                    <th>
+                                        <div class="row" id="orderpicker">
+                                            <div class="col-sm-12">
+                                                <select class="input form-control" id="ordervalue">
+                                                    <option value="all">Все</option>
+                                                    <option value="Осн">Осн</option>
+                                                    <option value="Совм">Совм</option>
+                                                    <option value="Б/о">Б/о</option>
+                                                </select>
                                             </div>
-                                            <div class="order-name" id="ordername">Тип оформления</div>
-                                        </th>
-                                        <th>
-                                            <div class="row" id="childpicker">
-                                                <div class="col-sm-12">
-                                                    <div class="checkbox">
+                                        </div>
+                                        <div class="order-name" id="ordername">Тип оформления</div>
+                                    </th>
+                                    <th>
+                                        <div class="row" id="childpicker">
+                                            <div class="col-sm-12">
+                                                <div class="checkbox">
                                                     <label>
                                                         <input type="checkbox" id="childcheck"> Есть дети
                                                     </label>
-                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="child-name" id="childname">Дети до 16 лет</div>
-                                        </th><!--Не пустое-->
-                                        <th>Дата зачисления</th>
-                                        <th>Приказ о зачислении</th>
-                                        <th>Дата приказа о зачисл.</th>
-                                        <th>Трудовая книжка</th>
-                                        <th>Примечания</th>
-                                    </tr>
+                                        </div>
+                                        <div class="child-name" id="childname">Дети до 16 лет</div>
+                                    </th><!--Не пустое-->
+                                    <th>Дата зачисления</th>
+                                    <th>Приказ о зачислении</th>
+                                    <th>Дата приказа о зачисл.</th>
+                                    <th>Трудовая книжка</th>
+                                    <th>Примечания</th>
+                                </tr>
                                 </thead>
                                 <tbody>
 
@@ -149,7 +168,7 @@
                                     <tr>
                                         <td>
                                             <p data-placement="top" data-toggle="tooltip" title="Edit" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editEmployee" href="editEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
-                                            <p data-placement="top" data-toggle="tooltip" title="Delete" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs"  href="deleteEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
+                                            <p data-placement="top" data-toggle="tooltip" title="Delete" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="deleteEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
                                             <c:out value="${emp.name}"/>
                                         </td>
                                         <td><c:out value="${emp.phone}"/></td>
@@ -188,7 +207,6 @@
 <script src="/resources/js/sidebarEffects.js"></script>
 <script src="/resources/js/table.js"></script>
 <script type="text/javascript">
-
     $(document).ready(function() {
         $('#datatable').DataTable( {
             "paging":   false,
@@ -199,9 +217,12 @@
             ]
         } );
 
+        $(".triggerDelete").click(function(e) {
+            e.preventDefault();
+            $("#modalDelete .deleteBtn").attr("href", $(this).attr("href"));
+            $('#modalDelete').modal();
+        });
     } );
-
-
 </script>
 </body>
 </html>

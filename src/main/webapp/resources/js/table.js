@@ -40,8 +40,7 @@ $(document).ready(function(){
             secondField = true;
         });
         if(!$('#childcheck').is(':checked')) {
-            $rows= $('table.table tbody tr');
-            $rows.show();
+            $rows= $('table.table tbody tr'); $rows.show();
         }
     });
 
@@ -92,6 +91,7 @@ $(document).ready(function(){
         /* Ignore tab key */
         var code = e.keyCode || e.which;
         if (code == '9') return;
+        if ($("#childcheck").is(":focus")) return;
         /* Useful DOM data and selectors */
         var $input = $(this),
             inputContent = $input.val().toLowerCase(),
@@ -108,7 +108,6 @@ $(document).ready(function(){
 
         /* Clean previous no-result if exist */
         $table.find('tbody .no-result').remove();
-        /* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
         $rows.show();
         $filteredRows.hide();
         /* Prepend no-result row if all rows are filtered */
@@ -117,16 +116,4 @@ $(document).ready(function(){
         }
     });
 
-    $(document).ready(function(){
-
-        $('#menuOrderTypes').click(function(){
-            $.ajax({
-                url: "/getAllOrderTypes",
-                cache: false,
-                success: function(html){
-                    $("#content").html(html);
-                }
-            });
-        });
-    });
 });
