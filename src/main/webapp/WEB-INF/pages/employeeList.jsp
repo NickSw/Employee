@@ -14,16 +14,10 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/icons.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/table.css" />
-    <link rel="stylesheet" type="text/css" href="/resources/css/nautilus-font.css" />
-    <script src="/resources/js/modernizr.custom.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/nautilus-font.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/libs/dataTables.bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/libs/font-awesome.css" />
 </head>
 <body>
 <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -163,7 +157,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 <c:forEach items="${employeeList}" var="emp">
                                     <tr>
                                         <td>
@@ -190,11 +183,9 @@
                                         <td><c:out value="${emp.recofservice}"/></td>
                                         <td><c:out value="${emp.notes}"/></td>
                                     </tr>
-
                                 </c:forEach>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
@@ -203,9 +194,14 @@
     </div><!-- /st-content -->
 </div><!-- /st-pusher -->
 </div><!-- /st-container -->
-<script src="/resources/js/classie.js"></script>
-<script src="/resources/js/sidebarEffects.js"></script>
-<script src="/resources/js/table.js"></script>
+<script type="text/javascript" src="/resources/libs/bootstrap.js"></script>
+<script type="text/javascript" src="/resources/libs/jquery.js"></script>
+<script type="text/javascript" src="/resources/js/table.js"></script>
+<script type="text/javascript" src="/resources/libs/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/resources/libs/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="/resources/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="/resources/js/classie.js"></script>
+<script type="text/javascript" src="/resources/js/sidebarEffects.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#datatable').DataTable( {
