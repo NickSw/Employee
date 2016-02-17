@@ -18,8 +18,8 @@
     <script src="/resources/js/modernizr.custom.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
@@ -77,9 +77,9 @@
                 <!-- Top Navigation -->
                 <div class="codrops-top clearfix">
                     <div id="st-trigger-effects">
-                        <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;"><span class="fa fa-plus"></span>&nbsp;Меню</button>
+                        <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
                         <div class="table-name"><h3>Сотрудники</h3></div>
-                        <button class="btn-menu" style="color: #fff; font-size: 1.2em; float: right;"><span class="fa fa-home"></span>&nbsp;Возврат</button>
+                        <button class="btn-menu" style="color: #fff; font-size: 1.2em; float: right;" data-toggle="tooltip" title="Таблица сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button>
                     </div>
                 </div>
 
@@ -167,8 +167,8 @@
                                 <c:forEach items="${employeeList}" var="emp">
                                     <tr>
                                         <td>
-                                            <p data-placement="top" data-toggle="tooltip" title="Edit" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editEmployee" href="editEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
-                                            <p data-placement="top" data-toggle="tooltip" title="Delete" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="deleteEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
+                                            <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editEmployee" href="editEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
+                                            <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="deleteEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
                                             <c:out value="${emp.name}"/>
                                         </td>
                                         <td><c:out value="${emp.phone}"/></td>
