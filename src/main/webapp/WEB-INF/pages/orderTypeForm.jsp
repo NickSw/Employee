@@ -8,85 +8,45 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Nick Lebedev">
+<link rel="stylesheet" type="text/css" href="/resources/css/table.css" />
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Movements Information</title>
+  <title>Employee Information</title>
   <!-- Bootstrap CSS -->
   <%-- <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"> --%>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <style type="text/css">
-    .myrow-container{
-      margin: 20px;
-    }
-  </style>
+  <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </head>
-<body class=".container-fluid">
-<div class="container myrow-container">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        Информация о типе приказа
-      </h3>
-    </div>
-    <div class="panel-body">
-      <form:form id="orderTypeRegisterForm" cssClass="form-horizontal" modelAttribute="orderType" method="post" action="saveOrderType">
-
-        <div class="form-group">
-          <div class="control-label col-xs-3"> <form:label path="ordertype" >Тип приказа</form:label> </div>
-          <div class="col-xs-6">
-            <form:hidden path="id" value="${orderTypeObject.id}"/>
-            <form:input cssClass="form-control" path="ordertype" value="${orderTypeObject.ordertype}"/>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="control-label col-xs-3"> <form:label path="notes" >Примечание</form:label> </div>
-          <div class="col-xs-6">
-            <form:input cssClass="form-control" path="notes" value="${orderTypeObject.notes}"/>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="row">
-            <div class="col-xs-4">
-            </div>
-            <div class="col-xs-4">
-              <input type="submit" id="saveOrderType" class="btn btn-primary" value="Сохранить" onclick="return submitOrderTypeForm();"/>
-            </div>
-            <div class="col-xs-4">
-            </div>
-          </div>
-        </div>
-
-      </form:form>
-    </div>
-  </div>
+<body>
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title" id="myModalLabel">Информация о типе приказа</h4>
 </div>
+<div class="modal-body">
+  <form:form id="orderTypeRegisterForm" data-toggle="validator" role="form" data-target="#editOrderType" cssClass="form-horizontal" modelAttribute="orderType" method="post" action="saveOrderType">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <div class="form-group">
+      <div class="control-label col-xs-3"> <form:label path="ordertype" >Тип приказа</form:label> </div>
+      <div class="col-xs-6">
+        <form:hidden path="id" value="${orderTypeObject.id}"/>
+        <form:input cssClass="form-control" path="ordertype" value="${orderTypeObject.ordertype}"/>
+      </div>
+    </div>
 
-<script type="text/javascript">
-  function submitOrderTypeForm() {
+    <div class="form-group">
+      <div class="control-label col-xs-3"> <form:label path="notes" >Примечание</form:label> </div>
+      <div class="col-xs-6">
+        <form:input cssClass="form-control" path="notes" value="${orderTypeObject.notes}"/>
+      </div>
+    </div>
 
-    var ordertype = $('#ordertype').val();
-    var notes = $('#notes').val();
-
-    if(ordertype.length ==0) {
-      alert('Please enter Order Type');
-      $('#ordertype').focus();
-      return false;
-    }
-
-    if(notes.length ==0) {
-      alert('Please enter Notes');
-      $('#notes').focus();
-      return false;
-    }
-
-
-  };
-</script>
-
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      <input type="submit" id="saveOrderType" class="btn btn-primary" value="Сохранить"/>
+    </div>
+  </form:form>
+</div>
 </body>
 </html>

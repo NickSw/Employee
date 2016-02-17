@@ -14,23 +14,54 @@
   <link rel="stylesheet" type="text/css" href="/resources/css/icons.css" />
   <link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
   <link rel="stylesheet" type="text/css" href="/resources/css/table.css" />
+  <link rel="stylesheet" type="text/css" href="/resources/css/nautilus-font.css" />
   <script src="/resources/js/modernizr.custom.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
+  <script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
 </head>
 <body>
+<div class="modal fade" id="editOrderType" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    </div>
+  </div>
+</div><!--Modal window edit order type-->
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Удаление тип приказа</h4>
+      </div>
+      <div class="modal-body">
+        Удалить тип приказа?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <a href="" class="btn btn-danger deleteBtn">Удалить</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal window delete confirmation-->
 <div id="st-container" class="st-container">
-   <div class="st-pusher">
+  <div class="st-pusher">
     <!--
         example menus
         these menus will be under the push wrapper
     -->
-     <nav class="st-menu st-effect-8" id="menu-8">
+    <nav class="st-menu st-effect-8" id="menu-8">
       <h2 class="icon icon-stack">Меню</h2>
       <ul>
         <li><a class="icon icon-user" href="#">Начать редактир.</a></li>
-        <li><a class="icon icon-data" href="#">Типы приказов</a></li>
-        <li><a class="icon icon-data" href="#">Движ. по сотрудникам</a></li>
+        <li><a class="icon icon-data" href="/getAllOrderTypes" id="menuOrderTypes">Типы приказов</a></li>
+        <li><a class="icon icon-data" href="/getAllMovements">Движ. по сотрудникам</a></li>
         <li><a class="icon icon-data" href="#">Сохр. архив по сотрудникам</a></li>
         <li><a class="icon icon-data" href="#">Откр. архив по сотрудникам</a></li>
         <li><a class="icon icon-data" href="#">Откр. архив по движ. по сотрудникам</a></li>
@@ -41,57 +72,64 @@
       </ul>
     </nav>
 
-    <div class="st-content" style="height: 100%; overflow: hidden"><!-- this is the wrapper for the content -->
+    <div class="st-content hide-overflow"><!-- this is the wrapper for the content -->
       <div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu -->
         <!-- Top Navigation -->
         <div class="codrops-top clearfix">
-            <div id="st-trigger-effects">
-              <button data-effect="st-effect-8" class="btn-menu" style="color: #fff; font-size: 1.2em;">Меню</button>
-              <button class="btn-menu" style="color: #fff; font-size: 1.2em; float: right">Возврат</button>
-            </div>
+          <div id="st-trigger-effects">
+            <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
+            <div class="table-name"><h3>Типы приказов</h3></div>
+            <div style="position: absolute; right: 0%; top: 0;"><a style="padding: 0" href="/getAllEmployees"><button class="btn-menu" style="color: #fff; font-size: 1.2em; " data-toggle="tooltip" title="Таблица сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
+          </div>
         </div>
 
-
-
-        </div><!-- /main -->
-      <div class="container-fluid" style="height: 100%; margin-top: -0.8%; margin-bottom: 0%">
-        <div class="row" style="height: 95%">
-          <div class="panel panel-primary filterable" style="height: 100%">
+      </div><!-- /main -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="panel panel-primary filterable">
             <div class="panel-heading">
-              <h3 class="panel-title">Сотрудники</h3>
-              <div class="pull-right">
-                <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span>Фильтр</button>
-              </div>
+              <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editOrderType" href="/createOrderType"><span class="fa fa-user-plus"></span> Добавить тип приказа</a>
             </div>
-            <div class="panel-body" id="to-scroll" style="height: 95%">
+            <div class="panel-body to-scroll" id="content">
               <table class="table table-bordered table-hover table-striped">
-              <thead>
-              <tr class="filters">
-                <th><input type="text" class="form-control" placeholder="Тип приказа" disabled></th>
-                <th><input type="text" class="form-control" placeholder="Примечание" disabled></th>
-              </tr>
-              </thead>
-              <tbody>
-              <c:forEach items="${orderTypeList}" var="ord">
-                <tr>
-                  <th><c:out value="${ord.ordertype}"/></th>
-                  <th><c:out value="${ord.notes}"/></th>
+                <thead>
+                <tr class="filters">
+                  <th><input type="text" class="form-control" placeholder="Тип приказа" disabled></th>
+                  <th><input type="text" class="form-control" placeholder="Примечание" disabled></th>
                 </tr>
-              </c:forEach>
-              </tbody>
-            </table>
-
+                </thead>
+                <tbody>
+                <c:forEach items="${orderTypeList}" var="ord">
+                  <tr>
+                    <td>
+                      <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editOrderType" href="/editOrderType?id=<c:out value='${ord.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
+                      <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="/deleteOrderType?id=<c:out value='${ord.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
+                      <c:out value="${ord.ordertype}"/>
+                    </td>
+                    <td><c:out value="${ord.notes}"/></td>
+                  </tr>
+                </c:forEach>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div><!-- /table -->
-      </div><!-- /st-content-inner -->
-    </div><!-- /st-content -->
-  </div><!-- /st-pusher -->
+    </div><!-- /st-content-inner -->
+  </div><!-- /st-content -->
+</div><!-- /st-pusher -->
 </div><!-- /st-container -->
 <script src="/resources/js/classie.js"></script>
 <script src="/resources/js/sidebarEffects.js"></script>
 <script src="/resources/js/table.js"></script>
-
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".triggerDelete").click(function(e) {
+      e.preventDefault();
+      $("#modalDelete .deleteBtn").attr("href", $(this).attr("href"));
+      $('#modalDelete').modal();
+    });
+  } );
+</script>
 </body>
 </html>
