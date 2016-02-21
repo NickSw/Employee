@@ -1,21 +1,16 @@
 package com.server.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
-@Table(name = "Employees")
-public class Employee implements Serializable {
+@Table(name = "emp_archive")
+public class EmployeeArchive implements Serializable {
 
-    private static final long serialVersionUID = -7988799579036225137L;
-	
-	@Id
+    private static final long serialVersionUID = 7402761586922577415L;
+
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
@@ -77,7 +72,7 @@ public class Employee implements Serializable {
     private String notes;
 
 
-    public Employee() {
+    public EmployeeArchive() {
     }
 
     public long getId() {
@@ -247,7 +242,7 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "EmployeeArchive{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

@@ -169,6 +169,7 @@
                                         <td>
                                             <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editEmployee" href="editEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
                                             <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="deleteEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
+                                            <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" href="/archiveEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-floppy-disk"></span></a></p>
                                             <c:out value="${emp.name}"/>
                                         </td>
                                         <td><c:out value="${emp.phone}"/></td>

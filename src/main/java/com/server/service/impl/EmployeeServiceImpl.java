@@ -39,9 +39,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee getEmployee(int id) {
         return employeeDAO.getEmployee(id);
-    }    
+    }
     @Override
+    public void moveToEmployeeArchive(int id) {employeeDAO.moveToEmployeeArchive(id);}
+    /*@Override
     public List<Employee> getAllEmployees(String employeeName) {
     	return employeeDAO.getAllEmployees(employeeName);
-    }
+    }*/
 }

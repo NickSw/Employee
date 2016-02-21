@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.server.dao;
 
 import java.util.List;
@@ -14,5 +11,6 @@ public interface EmployeeDAO {
     public void deleteEmployee(long id);
     public List<Employee> getAllEmployees();
     public Employee getEmployee(long id);
-	public List<Employee> getAllEmployees(String employeeName);
+    public void moveToEmployeeArchive(long id);
+	//public List<Employee> getAllEmployees(String employeeName);
 }

@@ -20,8 +20,9 @@ public class HibernateUtil {
     public <T> T update(final T entity) {
         sessionFactory.getCurrentSession().update(entity);   
         return entity;
+
     }
-    
+
 	public <T> void delete(final T entity) {
 		sessionFactory.getCurrentSession().delete(entity);
 	}
@@ -32,10 +33,17 @@ public class HibernateUtil {
 	}
     
     @SuppressWarnings("unchecked")	
-    public <T> List<T> fetchAll(Class<T> entityClass) {        
-        return sessionFactory.getCurrentSession().createQuery(" FROM "+entityClass.getName()).list();        
+    public <T> List<T> fetchAll(Class<T> entityClass) {
+        return sessionFactory.getCurrentSession().createQuery(" FROM "+entityClass.getName()).list();
     }
-  
+
+
+     public <T> int move(String query, final T entity) {
+         int result = sessionFactory.getCurrentSession().createSQLQuery(query).executeUpdate();
+         sessionFactory.getCurrentSession().delete(entity);
+         return result;
+    }
+
     @SuppressWarnings("rawtypes")
 	public <T> List fetchAll(String query) {        
         return sessionFactory.getCurrentSession().createSQLQuery(query).list();        
