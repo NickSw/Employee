@@ -10,5 +10,4 @@ public interface OrderTypeDAO {
     public void deleteOrderType(long id);
     public List<OrderType> getAllOrderTypes();
     public OrderType getOrderType(long id);
-    public List<OrderType> getAllOrderTypes(String ordertype);
 }

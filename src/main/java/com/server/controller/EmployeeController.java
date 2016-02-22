@@ -69,11 +69,4 @@ public class EmployeeController {
         employeeService.moveToEmployeeArchive(id);
         return new ModelAndView("redirect:getAllEmployeesArchive");
     }
-
-    /*@RequestMapping("searchEmployee")
-    public ModelAndView searchEmployee(@RequestParam("searchName") String searchName) {
-    	logger.info("Searching the Employee. Employee Names: "+searchName);
-    	List<Employee> employeeList = employeeService.getAllEmployees(searchName);
-        return new ModelAndView("employeeList", "employeeList", employeeList);
-    }*/
 }

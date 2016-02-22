@@ -61,11 +61,4 @@ public class OrderTypeController {
         return new ModelAndView("orderTypeList", "orderTypeList", orderTypeList);
     }
 
-    @RequestMapping("searchOrderType")
-    public ModelAndView searchOrderType(@RequestParam("searchName") String searchName) {
-        logger.info("Searching the OrderType. OrderType: "+searchName);
-        List<OrderType> orderTypeList = orderTypeService.getAllOrderTypes(searchName);
-        return new ModelAndView("orderTypeList", "orderTypeList", orderTypeList);
-    }
-
 }

@@ -40,8 +40,4 @@ public class OrderTypeServiceImpl implements OrderTypeService {
     public OrderType getOrderType(long id) {
         return orderTypeDAO.getOrderType(id);
     }
-    @Override
-    public List<OrderType> getAllOrderTypes(String ordertype) {
-        return orderTypeDAO.getAllOrderTypes(ordertype);
-    }
 }

@@ -62,9 +62,8 @@
         <li><a class="icon icon-user" href="#">Начать редактир.</a></li>
         <li><a class="icon icon-data" href="/getAllOrderTypes" id="menuOrderTypes">Типы приказов</a></li>
         <li><a class="icon icon-data" href="/getAllMovements">Движ. по сотрудникам</a></li>
-        <li><a class="icon icon-data" href="#">Сохр. архив по сотрудникам</a></li>
-        <li><a class="icon icon-data" href="#">Откр. архив по сотрудникам</a></li>
-        <li><a class="icon icon-data" href="#">Откр. архив по движ. по сотрудникам</a></li>
+        <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив по сотрудникам</a></li>
+        <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив по движ. по сотрудникам</a></li>
         <li><a class="icon icon-pen" href="#">Перенос данных в MS Excel</a></li>
         <li><a class="icon icon-pen" href="#">Перенос данных из MS Excel</a></li>
         <li><a class="icon icon-study" href="#">Помощь</a></li>
@@ -107,6 +106,7 @@
                     <td>
                       <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editMovement" href="editMovement?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
                       <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="/deleteMovement?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
+                      <p data-placement="top" data-toggle="tooltip" title="Переместить в архив" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" href="/archiveMovement?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-floppy-disk"></span></a></p>
                       <c:out value="${mov.orderdate}"/>
                     </td>
                     <td><c:out value="${mov.ordernum}"/></td>

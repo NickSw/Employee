@@ -37,6 +37,15 @@ public class MovementDAOImpl implements MovementDAO {
     }
 
     @Override
+    public void moveToMovementArchive(long id) {
+        Movement movement = new Movement();
+        movement.setId(id);
+        String query = "INSERT INTO mov_archive SELECT m.* FROM Movements m WHERE m.id =" + id + "";
+        hibernateUtil.move(query, movement);
+    }
+
+
+    @Override
     public List<Movement> getAllMovements() {
         return hibernateUtil.fetchAll(Movement.class);
     }
@@ -46,30 +55,4 @@ public class MovementDAOImpl implements MovementDAO {
         return hibernateUtil.fetchById(id, Movement.class);
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public List<Movement> getAllMovements(String orderNumber) {
-        String query = "SELECT m.* FROM Movements m WHERE m.ordernum like '%" + orderNumber +"%'";
-        List<Object[]> movementObjects = hibernateUtil.fetchAll(query);
-        List<Movement> movements = new ArrayList<Movement>();
-        for(Object[] movementObject: movementObjects){
-            Movement movement = new Movement();
-            int id = (int) movementObject[0];
-            java.sql.Date orderdate = (java.sql.Date) movementObject[1];
-            String ordernum = (String) movementObject[2];
-            String ordertype = (String) movementObject[3];
-            String fio = (String) movementObject[4];
-            String ordertext = (String) movementObject[5];
-
-            movement.setId(id);
-            movement.setOrderdate(orderdate);
-            movement.setOrdernum(ordernum);
-            movement.setOrdertype(ordertype);
-            movement.setFio(fio);
-            movement.setOrdertext(ordertext);
-
-            movements.add(movement);
-        }
-        return movements;
-    }
 }

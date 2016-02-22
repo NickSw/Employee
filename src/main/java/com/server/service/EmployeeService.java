@@ -11,5 +11,4 @@ public interface EmployeeService {
     public List<Employee> getAllEmployees();
     public Employee getEmployee(int id);
     public void moveToEmployeeArchive(int id);
-	//public List<Employee> getAllEmployees(String employeeName);
 }

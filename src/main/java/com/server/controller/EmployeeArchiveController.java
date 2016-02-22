@@ -64,10 +64,4 @@ public class EmployeeArchiveController {
         return new ModelAndView("employeeArchiveList", "employeeArchiveList", employeeArchiveList);
     }
 
-    @RequestMapping("searchEmployeeArchive")
-    public ModelAndView searchEmployeeArchive(@RequestParam("searchName") String searchName) {
-        logger.info("Searching the EmployeeArchive. Employee Names: "+searchName);
-        List<EmployeeArchive> employeeArchiveList = employeeArchiveService.getAllEmployeesArchive(searchName);
-        return new ModelAndView("employeeArchiveList", "employeeArchiveList", employeeArchiveList);
-    }
 }

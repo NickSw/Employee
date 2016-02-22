@@ -11,5 +11,5 @@ public interface MovementDAO {
     public void deleteMovement(long id);
     public List<Movement> getAllMovements();
     public Movement getMovement(long id);
-    public List<Movement> getAllMovements(String orderNumber);
+    public void moveToMovementArchive(long id);
 }

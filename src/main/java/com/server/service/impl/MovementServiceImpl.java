@@ -47,7 +47,5 @@ public class MovementServiceImpl implements MovementService{
     }
 
     @Override
-    public List<Movement> getAllMovements(String orderNumber) {
-        return movementDAO.getAllMovements(orderNumber);
-    }
+    public void moveToMovementArchive(int id) {movementDAO.moveToMovementArchive(id);}
 }

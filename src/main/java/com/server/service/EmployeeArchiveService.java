@@ -10,5 +10,4 @@ public interface EmployeeArchiveService {
     public void deleteEmployeeArchive(int id);
     public List<EmployeeArchive> getAllEmployeesArchive();
     public EmployeeArchive getEmployeeArchive(int id);
-    public List<EmployeeArchive> getAllEmployeesArchive(String employeeNameArchive);
 }

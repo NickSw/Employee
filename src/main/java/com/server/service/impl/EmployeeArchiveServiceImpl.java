@@ -40,8 +40,4 @@ public class EmployeeArchiveServiceImpl implements EmployeeArchiveService {
     public EmployeeArchive getEmployeeArchive(int id) {
         return employeeArchiveDAO.getEmployeeArchive(id);
     }
-    @Override
-    public List<EmployeeArchive> getAllEmployeesArchive(String employeeNameArchive) {
-        return employeeArchiveDAO.getAllEmployeesArchive(employeeNameArchive);
-    }
 }

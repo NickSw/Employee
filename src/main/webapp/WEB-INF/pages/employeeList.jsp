@@ -62,9 +62,8 @@
                 <li><a class="icon icon-user" href="#">Начать редактир.</a></li>
                 <li><a class="icon icon-data" href="/getAllOrderTypes" id="menuOrderTypes">Типы приказов</a></li>
                 <li><a class="icon icon-data" href="/getAllMovements">Движ. по сотрудникам</a></li>
-                <li><a class="icon icon-data" href="#">Сохр. архив по сотрудникам</a></li>
-                <li><a class="icon icon-data" href="#">Откр. архив по сотрудникам</a></li>
-                <li><a class="icon icon-data" href="#">Откр. архив по движ. по сотрудникам</a></li>
+                <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив по сотрудникам</a></li>
+                <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив по движ. по сотрудникам</a></li>
                 <li><a class="icon icon-pen" href="#">Перенос данных в MS Excel</a></li>
                 <li><a class="icon icon-pen" href="#">Перенос данных из MS Excel</a></li>
                 <li><a class="icon icon-study" href="#">Помощь</a></li>

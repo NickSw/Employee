@@ -61,11 +61,10 @@ public class MovementController {
         return new ModelAndView("movementList", "movementList", movementList);
     }
 
-    @RequestMapping("searchMovement")
-    public ModelAndView searchMovement(@RequestParam("searchName") String searchName) {
-        logger.info("Searching the Movement. Movements: "+searchName);
-        List<Movement> movementList = movementService.getAllMovements(searchName);
-        return new ModelAndView("movementList", "movementList", movementList);
+    @RequestMapping("archiveMovement")
+    public ModelAndView archiveMovement(@RequestParam int id) {
+        logger.info("Archiving the Movement. Id : " + id);
+        movementService.moveToMovementArchive(id);
+        return new ModelAndView("redirect:getAllMovementsArchive");
     }
-
 }

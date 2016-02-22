@@ -26,21 +26,21 @@
   <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
 </head>
 <body>
-<div class="modal fade" id="editOrderType" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="editMovementArchive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
     </div>
   </div>
-</div><!--Modal window edit order type-->
+</div><!--Modal window edit movementArchive-->
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Удаление тип приказа</h4>
+        <h4 class="modal-title" id="myModalLabel">Удаление движения</h4>
       </div>
       <div class="modal-body">
-        Удалить тип приказа?
+        Удалить движение?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
@@ -77,8 +77,8 @@
         <div class="codrops-top clearfix">
           <div id="st-trigger-effects">
             <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
-            <div class="table-name"><h3>Типы приказов</h3></div>
-            <div style="position: absolute; right: 0%; top: 0;"><a style="padding: 0" href="/getAllEmployees"><button class="btn-menu" style="color: #fff; font-size: 1.2em; " data-toggle="tooltip" title="Таблица сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
+            <div class="table-name"><h3>Движения сотрудников</h3></div>
+            <div style="position: absolute; right: 0%; top: 0;"><a style="padding: 0" href="/getAllEmployees"><button class="btn-menu" style="color: #fff; font-size: 1.2em; " data-toggle="tooltip" title="Таблица сотрудницов"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
           </div>
         </div>
 
@@ -87,25 +87,31 @@
         <div class="row">
           <div class="panel panel-primary filterable">
             <div class="panel-heading">
-              <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editOrderType" href="/createOrderType"><span class="fa fa-user-plus"></span> Добавить тип приказа</a>
+              <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editMovementArchive" href="/createMovementArchive"><span class="fa fa-user-plus"></span> Добавить движения</a>
             </div>
             <div class="panel-body to-scroll" id="content">
               <table class="table table-bordered table-hover table-striped">
                 <thead>
-                <tr class="filters">
-                  <th><input type="text" class="form-control" placeholder="Тип приказа" disabled></th>
-                  <th><input type="text" class="form-control" placeholder="Примечание" disabled></th>
+                <tr>
+                  <th>Дата приказа</th>
+                  <th>Номер приказа</th>
+                  <th>Тип приказа</th>
+                  <th>ФИО</th>
+                  <th>Текст приказа</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${orderTypeList}" var="ord">
+                <c:forEach items="${movementArchiveList}" var="mov">
                   <tr>
                     <td>
-                      <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editOrderType" href="/editOrderType?id=<c:out value='${ord.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
-                      <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="/deleteOrderType?id=<c:out value='${ord.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
-                      <c:out value="${ord.ordertype}"/>
+                      <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editMovementArchive" href="editMovementArchive?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
+                      <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="/deleteMovementArchive?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
+                      <c:out value="${mov.orderdate}"/>
                     </td>
-                    <td><c:out value="${ord.notes}"/></td>
+                    <td><c:out value="${mov.ordernum}"/></td>
+                    <td><c:out value="${mov.ordertype}"/></td>
+                    <td><c:out value="${mov.fio}"/></td>
+                    <td><c:out value="${mov.ordertext}"/></td>
                   </tr>
                 </c:forEach>
                 </tbody>

@@ -46,25 +46,5 @@ public class OrderTypeDAOImpl implements OrderTypeDAO {
         return hibernateUtil.fetchById(id, OrderType.class);
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public List<OrderType> getAllOrderTypes(String ordertype) {
-        String query = "SELECT m.* FROM OrderTypes m WHERE m.ordertype like '%" + ordertype +"%'";
-        List<Object[]> orderTypeObjects = hibernateUtil.fetchAll(query);
-        List<OrderType> orderTypes = new ArrayList<OrderType>();
-        for(Object[] orderTypeObject: orderTypeObjects){
-            OrderType orderType = new OrderType();
-            int id = (int) orderTypeObject[0];
-            String orderstype = (String) orderTypeObject[1];
-            String notes = (String) orderTypeObject[2];
-
-            orderType.setId(id);
-            orderType.setOrdertype(orderstype);
-            orderType.setNotes(notes);
-
-            orderTypes.add(orderType);
-        }
-        return orderTypes;
-    }
 }
 

@@ -12,5 +12,4 @@ public interface EmployeeDAO {
     public List<Employee> getAllEmployees();
     public Employee getEmployee(long id);
     public void moveToEmployeeArchive(long id);
-	//public List<Employee> getAllEmployees(String employeeName);
 }

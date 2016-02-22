@@ -9,5 +9,5 @@ public interface MovementService {
     public void deleteMovement(int id);
     public List<Movement> getAllMovements();
     public Movement getMovement(int id);
-    public List<Movement> getAllMovements(String orderNumber);
+    public void moveToMovementArchive(int id);
 }
