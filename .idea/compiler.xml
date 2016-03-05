@@ -24,6 +24,13 @@
         <processorPath useClasspath="true" />
         <module name="Spring4Hiberante4Integration" />
       </profile>
+      <profile default="false" name="Annotation profile for EmployeeDB" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="EmployeeDB" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="EmployeeDB" target="1.8" />

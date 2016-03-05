@@ -1,6 +1,10 @@
 package com.server.controller;
+import com.server.entity.Employee;
 import com.server.entity.Movement;
+import com.server.entity.OrderType;
+import com.server.service.EmployeeService;
 import com.server.service.MovementService;
+import com.server.service.OrderTypeService;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -23,6 +29,12 @@ public class MovementController {
     @Autowired
     private MovementService movementService;
 
+    @Autowired
+    private EmployeeService employeeService;
+
+    @Autowired
+    private OrderTypeService orderTypeService;
+
     @RequestMapping("createMovement")
     public ModelAndView createMovement(@ModelAttribute Movement movement) {
         logger.info("Creating Movement. Data: " + movement);
@@ -33,7 +45,13 @@ public class MovementController {
     public ModelAndView editMovement(@RequestParam int id,@ModelAttribute Movement movement){
         logger.info("Update the Movement for the Id" + id);
         movement = movementService.getMovement(id);
-        return new ModelAndView("movementForm","movementObject",movement);
+        List<Employee> employeeList = employeeService.getAllEmployees();
+        List<OrderType> orderTypeList = orderTypeService.getAllOrderTypes();
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("movement", movement);
+        model.put("employeeList", employeeList);
+        model.put("orderTypeList",orderTypeList);
+        return new ModelAndView("movementForm", "model", model);
     }
 
     @RequestMapping("saveMovement")

@@ -64,8 +64,8 @@
                 <li><a class="icon icon-data" href="/getAllMovements">Движ. по сотрудникам</a></li>
                 <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив по сотрудникам</a></li>
                 <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив по движ. по сотрудникам</a></li>
-                <li><a class="icon icon-pen" href="#">Перенос данных в MS Excel</a></li>
-                <li><a class="icon icon-pen" href="#">Перенос данных из MS Excel</a></li>
+                <li><a class="icon icon-pen" href="">Импорт данных из MS Excel</a></li>
+                <li><a class="icon icon-pen" href="/download/xls">Экспорт данных в MS Excel</a></li>
                 <li><a class="icon icon-study" href="#">Помощь</a></li>
                 <li><a class="icon icon-lock" href="#">Закончить редактир.</a></li>
             </ul>

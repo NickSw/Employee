@@ -30,36 +30,44 @@
     <div class="form-group">
       <div class="control-label col-xs-3"> <form:label path="orderdate" >Дата приказа</form:label> </div>
       <div class="col-xs-6">
-        <form:hidden path="id" value="${movementObject.id}"/>
-        <form:input cssClass="form-control" path="orderdate" value="${movementObject.orderdate}"/>
+        <form:hidden path="id" value="${model.movement.id}"/>
+        <form:input cssClass="form-control" path="orderdate" value="${model.movement.orderdate}"/>
       </div>
     </div>
 
     <div class="form-group">
       <div class="control-label col-xs-3"> <form:label path="ordernum" >Номер приказа</form:label> </div>
       <div class="col-xs-6">
-        <form:input cssClass="form-control" path="ordernum" value="${movementObject.ordernum}"/>
+        <form:input cssClass="form-control" path="ordernum" value="${model.movement.ordernum}"/>
       </div>
     </div>
 
     <div class="form-group">
       <div class="control-label col-xs-3"> <form:label path="ordertype" >Тип приказа</form:label> </div>
       <div class="col-xs-6">
-        <form:input cssClass="form-control" path="ordertype" value="${movementObject.ordertype}"/>
+        <form:select class="form-control" path="ordertype" value="${model.movement.ordertype}">
+          <c:forEach items="${model.orderTypeList}" var="ord">
+            <option><c:out value="${ord.ordertype}"/></option>
+          </c:forEach>
+        </form:select>
       </div>
     </div>
 
     <div class="form-group">
       <div class="control-label col-xs-3"> <form:label path="fio" >ФИО</form:label> </div>
       <div class="col-xs-6">
-        <form:input cssClass="form-control" path="fio" value="${movementObject.fio}"/>
+        <form:select class="form-control" path="fio" value="${model.movement.fio}">
+          <c:forEach items="${model.employeeList}" var="emp">
+          <option><c:out value="${emp.name}"/></option>
+          </c:forEach>
+        </form:select>
       </div>
     </div>
 
     <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="ordertext" >Тип приказа</form:label> </div>
+      <div class="control-label col-xs-3"> <form:label path="ordertext" >Текст приказа</form:label> </div>
       <div class="col-xs-6">
-        <form:input cssClass="form-control" path="ordertext" value="${movementObject.ordertext}"/>
+        <form:input cssClass="form-control" path="ordertext" value="${model.movement.ordertext}"/>
       </div>
     </div>
     <div class="modal-footer">
