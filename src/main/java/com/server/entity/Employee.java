@@ -243,8 +243,6 @@ public class Employee implements Serializable {
         this.notes = notes;
     }
 
-
-
     @Override
     public String toString() {
         return "Employee{" +

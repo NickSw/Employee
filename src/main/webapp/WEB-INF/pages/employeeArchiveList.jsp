@@ -7,8 +7,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employee DB</title>
-  <link rel="shortcut icon" href="../favicon.ico">
+  <title>База сотрудников</title>
   <link rel="stylesheet" type="text/css" href="/resources/css/normalize.css" />
   <link rel="stylesheet" type="text/css" href="/resources/css/demo.css" />
   <link rel="stylesheet" type="text/css" href="/resources/css/icons.css" />
@@ -60,12 +59,13 @@
       <h2 class="icon icon-stack">Меню</h2>
       <ul>
         <li><a class="icon icon-user" href="#">Начать редактир.</a></li>
-        <li><a class="icon icon-data" href="/getAllOrderTypes" id="menuOrderTypes">Типы приказов</a></li>
-        <li><a class="icon icon-data" href="/getAllMovements">Движ. по сотрудникам</a></li>
-        <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив по сотрудникам</a></li>
-        <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив по движ. по сотрудникам</a></li>
-        <li><a class="icon icon-pen" href="#">Импорт данных из MS Excel</a></li>
-        <li><a class="icon icon-pen" href="#">Экспорт данных в MS Excel</a></li>
+        <li><a class="icon icon-data" href="/getAllOrderTypes">Типы приказов</a></li>
+        <li><a class="icon icon-data" href="/getAllWorkPlaces">Место работы</a></li>
+        <li><a class="icon icon-data" href="/getAllMovements">Приказы по сотрудникам</a></li>
+        <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив данных сотрудникам</a></li>
+        <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив приказов по сотрудникам</a></li>
+        <li><a class="icon icon-pen" href="/upload">Импорт данных из MS Excel</a></li>
+        <li><a class="icon icon-pen" href="/download/xls">Экспорт данных в MS Excel</a></li>
         <li><a class="icon icon-study" href="#">Помощь</a></li>
         <li><a class="icon icon-lock" href="#">Закончить редактир.</a></li>
       </ul>
@@ -78,7 +78,7 @@
           <div id="st-trigger-effects">
             <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
             <div class="table-name"><h3>Сотрудники</h3></div>
-            <button class="btn-menu" style="color: #fff; font-size: 1.2em; float: right;" data-toggle="tooltip" title="Таблица сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button>
+            <button class="btn-menu" style="color: #fff; font-size: 1.2em; float: right;" data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button>
           </div>
         </div>
 
