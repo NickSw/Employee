@@ -10,4 +10,5 @@ public interface MovementService {
     public List<Movement> getAllMovements();
     public Movement getMovement(int id);
     public void moveToMovementArchive(int id);
+    public void copyMovement(int id);
 }

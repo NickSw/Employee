@@ -29,6 +29,17 @@ public class Movement implements Serializable {
     @Column
     private String ordertext;
 
+    public Movement(){
+    }
+
+    public Movement(Movement another) {
+        this.orderdate = another.getOrderdate();
+        this.ordernum = another.getOrdernum();
+        this.ordertype = another.getOrdertype();
+        this.fio = another.getFio();
+        this.ordertext = another.getOrdertext();
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -52,7 +63,6 @@ public class Movement implements Serializable {
         this.ordernum = ordernum;
     }
     public String getOrdertype() {
-
         return ordertype;
     }
 

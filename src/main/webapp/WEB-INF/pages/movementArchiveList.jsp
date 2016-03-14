@@ -78,7 +78,7 @@
         <div class="codrops-top clearfix">
           <div id="st-trigger-effects">
             <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
-            <div class="table-name"><h3>Движения сотрудников</h3></div>
+            <div class="table-name"><h3>Архив приказов по сотрудникам</h3></div>
             <div style="position: absolute; right: 0%; top: 0;"><a style="padding: 0" href="/getAllEmployees"><button class="btn-menu" style="color: #fff; font-size: 1.2em; " data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
           </div>
         </div>
@@ -134,6 +134,7 @@
       e.preventDefault();
       $("#modalDelete .deleteBtn").attr("href", $(this).attr("href"));
       $('#modalDelete').modal();
+
     });
   } );
 </script>

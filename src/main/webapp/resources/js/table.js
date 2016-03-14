@@ -13,6 +13,8 @@ $(document).ready(function(){
             $('#ordername').css('display','none');
             $('#childpicker').css('display','inline-table');
             $('#childname').css('display','none');
+            $('#workplacepicker').css('display','inline-table');
+            $('#workplacename').css('display','none');
             $filters.first().focus();
         } else {
             $filters.val('').prop('disabled', true);
@@ -24,6 +26,8 @@ $(document).ready(function(){
             $('#ordername').css('display','block');
             $('#childpicker').css('display','none');
             $('#childname').css('display','block');
+            $('#workplacepicker').css('display','none');
+            $('#workplacename').css('display','block');
         }
     });
 
@@ -40,6 +44,24 @@ $(document).ready(function(){
             secondField = true;
         });
         if(!$('#childcheck').is(':checked')) {
+            $rows= $('table.table tbody tr'); $rows.show();
+        }
+    });
+
+    $('#workplacevalue').change(function(){
+        var $input = $(this);
+        $('table tr').each(function(){
+            var order = $(this).find('td').eq(11).text();
+            if(order.length){
+                if(order==$input.val()){
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            }
+        });
+        if($input.val()=="all") {
             $rows= $('table.table tbody tr'); $rows.show();
         }
     });
@@ -72,14 +94,12 @@ $(document).ready(function(){
                 day = dateElements[3],
                 month = dateElements[2],
                 year = dateElements[1];
-
                 if(month==$input.val()) {
                     $(this).show();
                 }
                 else {
                     $(this).hide();
                 }
-
             }
         });
         if($input.val()=="all") {

@@ -1,12 +1,17 @@
 package com.server.controller;
 import com.server.entity.Employee;
+import com.server.entity.WorkPlace;
 import com.server.service.EmployeeService;
 
+import com.server.service.WorkPlaceService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.jboss.logging.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,17 +30,27 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private WorkPlaceService workPlaceService;
+
     @RequestMapping("createEmployee")
     public ModelAndView createEmployee(@ModelAttribute Employee employee) {
-    	logger.info("Creating Employee. Data: "+employee);
-        return new ModelAndView("employeeForm");
+    	logger.info("Creating Employee. Data: " + employee);
+        List<WorkPlace> workPlaceList = workPlaceService.getAllWorkPlaces();
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("workPlaceList", workPlaceList);
+        return new ModelAndView("employeeForm", "model", model);
     }
 
     @RequestMapping("editEmployee")
     public ModelAndView editEmployee(@RequestParam int id, @ModelAttribute Employee employee) {
     	logger.info("Updating the Employee for the Id "+id);
         employee = employeeService.getEmployee(id);
-        return new ModelAndView("employeeForm", "employeeObject", employee);
+        List<WorkPlace> workPlaceList = workPlaceService.getAllWorkPlaces();
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("employee", employee);
+        model.put("workPlaceList", workPlaceList);
+        return new ModelAndView("employeeForm", "model", model);
     }
 
     @RequestMapping("saveEmployee")
@@ -60,7 +75,11 @@ public class EmployeeController {
     public ModelAndView getAllEmployees() {
     	logger.info("Getting the all Employees.");
         List<Employee> employeeList = employeeService.getAllEmployees();
-        return new ModelAndView("employeeList", "employeeList", employeeList);
+        List<WorkPlace> workPlaceList = workPlaceService.getAllWorkPlaces();
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("employeeList", employeeList);
+        model.put("workPlaceList", workPlaceList);
+        return new ModelAndView("employeeList", "model", model);
     }
 
     @RequestMapping("archiveEmployee")
@@ -68,5 +87,12 @@ public class EmployeeController {
         logger.info("Archiving the Employee. Id : " + id);
         employeeService.moveToEmployeeArchive(id);
         return new ModelAndView("redirect:getAllEmployeesArchive");
+    }
+
+    @RequestMapping("getEmployee")
+    public ModelAndView getEmployee(@RequestParam int id, @ModelAttribute Employee employee){
+        logger.info("Getting Employee. Id : " + id);
+        employee = employeeService.getEmployee(id);
+        return new ModelAndView("employeeCard", "employeeObject", employee);
     }
 }

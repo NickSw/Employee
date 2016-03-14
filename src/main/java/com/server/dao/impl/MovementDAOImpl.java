@@ -44,7 +44,6 @@ public class MovementDAOImpl implements MovementDAO {
         hibernateUtil.move(query, movement);
     }
 
-
     @Override
     public List<Movement> getAllMovements() {
         return hibernateUtil.fetchAll(Movement.class);

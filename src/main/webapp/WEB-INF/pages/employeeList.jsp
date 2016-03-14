@@ -25,12 +25,24 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
 </head>
 <body>
+
+
 <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
         </div>
     </div>
 </div><!--Modal window edit employee-->
+
+
+<div class="modal fade" id="getEmployee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        </div>
+    </div>
+</div><!--Modal window get employee-->
+
+
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -123,7 +135,19 @@
                                     <th><input type="text" class="form-control" placeholder="Должность 1" disabled></th>
                                     <th><input type="text" class="form-control" placeholder="Должность 2" disabled></th>
                                     <th>Почта</th>
-                                    <th><input type="text" class="form-control" placeholder="Где работает" disabled></th>
+                                    <th>
+                                        <div class="row" id="workplacepicker">
+                                            <div class="col-sm-12">
+                                                <select class="input form-control" id="workplacevalue">
+                                                    <option value="all">Все</option>
+                                                    <c:forEach items="${model.workPlaceList}" var="wp">
+                                                        <option value="${wp.place}"><c:out value="${wp.place}"/></option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="workplace-name" id="workplacename">Где работает</div>
+                                    </th>
                                     <th>
                                         <div class="row" id="orderpicker">
                                             <div class="col-sm-12">
@@ -157,12 +181,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${employeeList}" var="emp">
+                                <c:forEach items="${model.employeeList}" var="emp">
                                     <tr>
                                         <td>
                                             <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editEmployee" href="/editEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
                                             <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="/deleteEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
                                             <p data-placement="top" data-toggle="tooltip" title="Перенести в архив" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" href="/archiveEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-floppy-disk"></span></a></p>
+                                            <p data-placement="top" data-toggle="tooltip" title="Просмотреть" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Get" data-toggle="modal" data-target="#getEmployee" href="/getEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-user"></span></a></p>
+
                                             <c:out value="${emp.name}"/>
                                         </td>
                                         <td><c:out value="${emp.phone}"/></td>

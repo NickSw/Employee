@@ -82,6 +82,10 @@ html, body {
     display: none;
 }
 
+#workplacepicker{
+    display: none;
+}
+
 .btn-opt {
     display: inline-block;
     padding: 6px 12px !important;

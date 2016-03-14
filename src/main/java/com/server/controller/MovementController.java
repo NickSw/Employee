@@ -38,7 +38,12 @@ public class MovementController {
     @RequestMapping("createMovement")
     public ModelAndView createMovement(@ModelAttribute Movement movement) {
         logger.info("Creating Movement. Data: " + movement);
-        return new ModelAndView("movementForm");
+        List<Employee> employeeList = employeeService.getAllEmployees();
+        List<OrderType> orderTypeList = orderTypeService.getAllOrderTypes();
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("employeeList", employeeList);
+        model.put("orderTypeList",orderTypeList);
+        return new ModelAndView("movementForm", "model", model);
     }
 
     @RequestMapping("editMovement")
@@ -84,5 +89,12 @@ public class MovementController {
         logger.info("Archiving the Movement. Id : " + id);
         movementService.moveToMovementArchive(id);
         return new ModelAndView("redirect:getAllMovementsArchive");
+    }
+
+    @RequestMapping("copyMovement")
+    public ModelAndView copyMovement(@RequestParam int id) {
+        logger.info("Copying the Movement. Id : " + id);
+        movementService.copyMovement(id);
+        return new ModelAndView("redirect:getAllMovements");
     }
 }

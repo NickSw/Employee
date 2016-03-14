@@ -48,4 +48,11 @@ public class MovementServiceImpl implements MovementService{
 
     @Override
     public void moveToMovementArchive(int id) {movementDAO.moveToMovementArchive(id);}
+
+    @Override
+    public void copyMovement(int id){
+        Movement movement = movementDAO.getMovement(id);
+        Movement movementCopy = new Movement(movement);
+        movementDAO.createMovement(movementCopy);
+    }
 }

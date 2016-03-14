@@ -78,7 +78,7 @@
         <div class="codrops-top clearfix">
           <div id="st-trigger-effects">
             <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
-            <div class="table-name"><h3>Движения сотрудников</h3></div>
+            <div class="table-name"><h3>Приказы по сотрудникам</h3></div>
             <div style="position: absolute; right: 0%; top: 0;"><a style="padding: 0" href="/getAllEmployees"><button class="btn-menu" style="color: #fff; font-size: 1.2em; " data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
           </div>
         </div>
@@ -88,7 +88,7 @@
         <div class="row">
           <div class="panel panel-primary filterable">
             <div class="panel-heading">
-              <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editMovement" href="/createMovement"><span class="fa fa-user-plus"></span> Добавить движения</a>
+              <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editMovement" href="/createMovement"><span class="fa fa-user-plus"></span> Добавить приказ</a>
             </div>
             <div class="panel-body to-scroll" id="content">
               <table class="table table-bordered table-hover table-striped">
@@ -105,9 +105,10 @@
                 <c:forEach items="${movementList}" var="mov">
                   <tr>
                     <td>
-                      <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editMovement" href="editMovement?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
+                      <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs triggerEdit" data-title="Edit" data-toggle="modal" data-target="#editMovement" href="/editMovement?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
                       <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="/deleteMovement?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
-                      <p data-placement="top" data-toggle="tooltip" title="Перенести в архив" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" href="/archiveMovement?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-floppy-disk"></span></a></p>
+                      <p data-placement="top" data-toggle="tooltip" title="Перенести в архив" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs triggerArchive" href="/archiveMovement?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-floppy-disk"></span></a></p>
+                      <p data-placement="top" data-toggle="tooltip" title="Скопировать запись" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs triggerCopy" href="/copyMovement?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-copy"></span></a></p>
                       <c:out value="${mov.orderdate}"/>
                     </td>
                     <td><c:out value="${mov.ordernum}"/></td>
@@ -131,12 +132,15 @@
 <script src="/resources/js/table.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
+    $(".triggerCopy").click(function(e){
+
+    });
     $(".triggerDelete").click(function(e) {
       e.preventDefault();
       $("#modalDelete .deleteBtn").attr("href", $(this).attr("href"));
       $('#modalDelete').modal();
     });
-  } );
+  });
 </script>
 </body>
 </html>

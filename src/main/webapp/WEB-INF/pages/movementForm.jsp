@@ -15,6 +15,7 @@
   <!-- Bootstrap CSS -->
   <%-- <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"> --%>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/resources/css/form.css" />
   <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
@@ -28,10 +29,12 @@
   <form:form id="movementRegisterForm" data-toggle="validator" role="form" data-target="#editMovement" cssClass="form-horizontal" modelAttribute="movement" method="post" action="saveMovement">
 
     <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="orderdate" >Дата приказа</form:label> </div>
+      <div class="control-label col-xs-3"> <form:label path="orderdate" >Дата приказа *</form:label> </div>
       <div class="col-xs-6">
         <form:hidden path="id" value="${model.movement.id}"/>
-        <form:input cssClass="form-control" path="orderdate" value="${model.movement.orderdate}"/>
+        <form:input cssClass="form-control" path="orderdate" value="${model.movement.orderdate}"
+                    required="required" pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"/>
+        <span class="help-block">ГГГГ-ММ-ДД</span>
       </div>
     </div>
 
@@ -71,6 +74,7 @@
       </div>
     </div>
     <div class="modal-footer">
+      <div class="footer-text">* - Обязательные поля</div>
       <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
       <input type="submit" id="saveMovement" class="btn btn-primary" value="Сохранить"/>
     </div>

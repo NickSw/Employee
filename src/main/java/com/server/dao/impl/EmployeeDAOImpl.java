@@ -3,6 +3,7 @@ package com.server.dao.impl;
 import com.server.dao.EmployeeDAO;
 import com.server.entity.Employee;
 import com.server.util.HibernateUtil;
+import org.apache.commons.lang.SerializationUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,21 +38,21 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
+    public List<Employee> getAllEmployees() {
+        return hibernateUtil.fetchAll(Employee.class);
+    }
+
+    @Override
+    public Employee getEmployee(long id) {
+        return hibernateUtil.fetchById(id, Employee.class);
+    }
+
+    @Override
     public void moveToEmployeeArchive(long id) {
         Employee employee = new Employee();
         employee.setId(id);
         String query = "INSERT INTO emp_archive SELECT e.* FROM Employees e WHERE e.id =" + id + "";
         hibernateUtil.move(query, employee);
-    }
-
-    @Override
-    public List<Employee> getAllEmployees() {        
-        return hibernateUtil.fetchAll(Employee.class);
-    }
-    
-    @Override
-    public Employee getEmployee(long id) {
-        return hibernateUtil.fetchById(id, Employee.class);
     }
 
 }

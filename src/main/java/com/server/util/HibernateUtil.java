@@ -16,7 +16,7 @@ public class HibernateUtil {
     public <T> Serializable create(final T entity) {
         return sessionFactory.getCurrentSession().save(entity);        
     }
-    
+
     public <T> T update(final T entity) {
         sessionFactory.getCurrentSession().update(entity);   
         return entity;
@@ -37,8 +37,7 @@ public class HibernateUtil {
         return sessionFactory.getCurrentSession().createQuery(" FROM "+entityClass.getName()).list();
     }
 
-
-     public <T> int move(String query, final T entity) {
+    public <T> int move(String query, final T entity) {
          int result = sessionFactory.getCurrentSession().createSQLQuery(query).executeUpdate();
          sessionFactory.getCurrentSession().delete(entity);
          return result;
