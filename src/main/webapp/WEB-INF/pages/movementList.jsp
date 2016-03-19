@@ -5,25 +5,29 @@
 <html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee DB</title>
-  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!--Normalize css-->
   <link rel="stylesheet" type="text/css" href="/resources/css/normalize.css" />
+  <!--Demo css-->
   <link rel="stylesheet" type="text/css" href="/resources/css/demo.css" />
+  <!--Icons css-->
   <link rel="stylesheet" type="text/css" href="/resources/css/icons.css" />
+  <!--Component css-->
   <link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
+  <!--Table css-->
   <link rel="stylesheet" type="text/css" href="/resources/css/table.css" />
+  <!--Nautilus font css-->
   <link rel="stylesheet" type="text/css" href="/resources/css/nautilus-font.css" />
-  <script src="/resources/js/modernizr.custom.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <!--Bootstrap 3.3.6 css-->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <!--Font Awesome 4.5.0 css-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
-  <script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+  <!--Data Tables Bootstrap css-->
   <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
+  <!--Date Picker 1.6.0 Bootstrap css-->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker3.min.css">
+
 </head>
 <body>
 <div class="modal fade" id="editMovement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -31,7 +35,8 @@
     <div class="modal-content">
     </div>
   </div>
-</div><!--Modal window edit movement-->
+</div><!--Модальное окно создания/редактирования-->
+
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -49,13 +54,10 @@
     </div>
   </div>
 </div>
-<!-- Modal window delete confirmation-->
+<!-- Модальное окно подтверждения удаления-->
+
 <div id="st-container" class="st-container">
   <div class="st-pusher">
-    <!--
-        example menus
-        these menus will be under the push wrapper
-    -->
     <nav class="st-menu st-effect-8" id="menu-8">
       <h2 class="icon icon-stack">Меню</h2>
       <ul>
@@ -72,37 +74,73 @@
       </ul>
     </nav>
 
-    <div class="st-content hide-overflow"><!-- this is the wrapper for the content -->
-      <div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu -->
-        <!-- Top Navigation -->
+    <div class="st-content hide-overflow">
+      <div class="st-content-inner">
+        <!-- Верхняя навигация -->
         <div class="codrops-top clearfix">
           <div id="st-trigger-effects">
-            <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
+            <button data-effect="st-effect-8" class="btn-menu" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
             <div class="table-name"><h3>Приказы по сотрудникам</h3></div>
-            <div style="position: absolute; right: 0%; top: 0;"><a style="padding: 0" href="/getAllEmployees"><button class="btn-menu" style="color: #fff; font-size: 1.2em; " data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
+            <div class="btn-home"><a href="/getAllEmployees"><button class="btn-menu" data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
           </div>
         </div>
 
-      </div><!-- /main -->
+      </div>
       <div class="container-fluid">
         <div class="row">
           <div class="panel panel-primary filterable">
             <div class="panel-heading">
               <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editMovement" href="/createMovement"><span class="fa fa-user-plus"></span> Добавить приказ</a>
+              <div class="pull-right">
+                <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span>Фильтр</button>
+              </div>
             </div>
             <div class="panel-body to-scroll" id="content">
               <table class="table table-bordered table-hover table-striped">
                 <thead>
-                <tr>
-                  <th>Дата приказа</th>
+                <tr class="filters">
+                  <th>
+                    <div id="movement-datepicker">
+                    <div class="input-daterange input-group col-xs-12" id="datepicker1">
+                      <input type="text" class="input-sm form-control" name="start"/>
+                      <span class="input-group-addon">по</span>
+                      <input type="text" class="input-sm form-control" name="end"/>
+                    </div>
+                    <div class="btn-movement-datepicker-m">
+                      <button class="btn btn-default btn-sm" id="btn-movement-datepicker-m">Текущий месяц</button>
+                        <div class="btn-movement-datepicker-y">
+                          <button class="btn btn-default btn-sm">Текущий год</button>
+                        </div>
+                        <div class="date-filter">
+                          <button class="btn btn-default btn-sm">Фильтровать</button>
+                          <div class="date-filter-clean">
+                            <button class="btn btn-default btn-sm">Сброс фильтра</button>
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="movement-datename" id="movement-datename">Дата приказа</div>
+                  </th>
                   <th>Номер приказа</th>
-                  <th>Тип приказа</th>
-                  <th>ФИО</th>
+                  <th>
+                    <div class="row" id="ordertypepicker">
+                      <div class="col-sm-12">
+                        <select class="input form-control" id="ordertypevalue">
+                          <option value="all">Все</option>
+                          <c:forEach items="${model.orderTypeList}" var="ord">
+                            <option value="${ord.ordertype}"><c:out value="${ord.ordertype}"/></option>
+                          </c:forEach>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="ordertype-name" id="ordertypename">Тип приказа</div>
+                  </th>
+                  <th><input type="text" class="form-control" placeholder="ФИО" disabled></th>
                   <th>Текст приказа</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${movementList}" var="mov">
+                <c:forEach items="${model.movementList}" var="mov">
                   <tr>
                     <td>
                       <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs triggerEdit" data-title="Edit" data-toggle="modal" data-target="#editMovement" href="/editMovement?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
@@ -127,20 +165,123 @@
   </div><!-- /st-content -->
 </div><!-- /st-pusher -->
 </div><!-- /st-container -->
+
+<!--Jquery 1.11.1-->
+<script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+<!--Moment js w locales-->
+<script language="JavaScript" src="http://momentjs.com/downloads/moment-with-locales.js" type="text/javascript"></script>
+<!--Bootstrap 3.3.6 js-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!--Date Picker 1.6.0 js-->
+<script language="JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<!--Date Picker 1.6.0 locale ru js-->
+<script language="JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/locales/bootstrap-datepicker.ru.min.js" type="text/javascript"></script>
+<!--Data Tables 1.10.4 js-->
+<script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<!--Data Tables bootstrap js-->
+<script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+<!--Modernizr js-->
+<script src="/resources/js/modernizr.custom.js"></script>
+<!--Classie js-->
 <script src="/resources/js/classie.js"></script>
+<!--Sidebar Effects js-->
 <script src="/resources/js/sidebarEffects.js"></script>
-<script src="/resources/js/table.js"></script>
+<!--Movement table js-->
+<script src="/resources/js/movementTable.js"></script>
+
+<!--Page Scripts - TODO:Remove-->
 <script type="text/javascript">
-  $(document).ready(function() {
-    $(".triggerCopy").click(function(e){
+$(document).ready(function() {
+
+  $('#btn-movement-datepicker-m').click(function(){
+    var d = new Date();
+    var day = 1;
+    var year = d.getYear() + 1900;
+    var month = d.getMonth();
+    month++;
+    var lastDayOfMonth = new Date(year, month, day);
+    var lastDay = lastDayOfMonth.getUTCDate();
+    var month_start = new Date(year,month-1,1);
+    var formated_date_ms = moment(month_start).format("YYYY-MM-DD");
+    var month_end = new Date(year,month-1,lastDay);
+    var formated_date_md = moment(month_end).format("YYYY-MM-DD");
+    $('input[name=start]').val(formated_date_ms);
+    $('input[name=end]').val(formated_date_md);
+  });
+
+  $('.btn-movement-datepicker-y button').click(function(){
+    var d = new Date();
+    var year = d.getYear() + 1900;
+    var month = d.getMonth();
+    var year_start = new Date(year,0,1);
+    var formated_date_ys = moment(year_start).format("YYYY-MM-DD");
+    var year_end = new Date(year,11,31);
+    var formated_date_yd = moment(year_end).format("YYYY-MM-DD");
+    $('input[name=start]').val(formated_date_ys);
+    $('input[name=end]').val(formated_date_yd);
+  });
+
+  $('.date-filter-clean button').click(function(){
+    $('input[name=start]').val("");
+    $('input[name=end]').val("");
+    var $rows = $('tbody tr'); $rows.show();
+  });
+
+  $('.date-filter button').click(function(){
+    var from_date = $('input[name=start]').val();
+    var to_date = $('input[name=end]').val();
+    $('table tr').each(function(){
+      var date = $(this).find('td').eq(0).text().trim();
+
+      if(date.length && from_date.length && to_date.length){
+
+          var pattern = /^(\d{4})-(\d{1,2})-(\d{1,2})/
+          dateElements = date.match(pattern),
+          day = dateElements[3],
+          month = dateElements[2],
+          year = dateElements[1];
+          var d = new Date(year,month-1,day);
+
+          var pattern = /^(\d{4})-(\d{1,2})-(\d{1,2})/
+          dateElements = from_date.match(pattern),
+          day = dateElements[3],
+          month = dateElements[2],
+          year = dateElements[1];
+          var fromDate = new Date(year, month - 1, day);
+
+          var pattern = /^(\d{4})-(\d{1,2})-(\d{1,2})/
+          dateElements = to_date.match(pattern),
+          day = dateElements[3],
+          month = dateElements[2],
+          year = dateElements[1];
+          var toDate = new Date(year, month - 1, day);
+
+          if (fromDate.getTime() <= d.getTime() &&
+                  d.getTime() <= toDate.getTime())
+          {
+            $(this).show();
+          }
+          else {
+            $(this).hide();
+          }
+        }
 
     });
-    $(".triggerDelete").click(function(e) {
+    });
+
+
+$('.input-daterange').datepicker({
+  format: "yyyy-mm-dd",
+  language: "ru"
+});
+
+$(".triggerDelete").click(function(e) {
       e.preventDefault();
       $("#modalDelete .deleteBtn").attr("href", $(this).attr("href"));
       $('#modalDelete').modal();
     });
   });
+
 </script>
 </body>
 </html>

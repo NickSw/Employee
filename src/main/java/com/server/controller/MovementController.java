@@ -81,7 +81,11 @@ public class MovementController {
     public ModelAndView getAllMovements() {
         logger.info("Getting the all Movements.");
         List<Movement> movementList = movementService.getAllMovements();
-        return new ModelAndView("movementList", "movementList", movementList);
+        List<OrderType> orderTypeList = orderTypeService.getAllOrderTypes();
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("movementList",movementList);
+        model.put("orderTypeList",orderTypeList);
+        return new ModelAndView("movementList", "model", model);
     }
 
     @RequestMapping("archiveMovement")

@@ -1,3 +1,4 @@
+/*—тили дл€ фильтров, шли с таблицей*/
 .filterable .filters input[disabled] {
     background-color: transparent;
     border: none;
@@ -15,77 +16,10 @@
 .filterable .filters input[disabled]:-ms-input-placeholder {
     color: #333;
 }
-/*.to-scroll{
-    width: 100%;
-    overflow-y: auto;
-}*/
-th {
-    min-width: 300px;
-}
-* {
-    border-radius: 0 !important;
-}
-.panel-heading{
-    background: #388a5a !important;
-    border-color: #388a5a !important;
-}
-.panel{
-    border-color: #388a5a !important;
-    margin-bottom: 0 !important;
-}
 
-.hide-overflow {
-    overflow: hidden;
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-.container-fluid {
-    position: absolute;
-    width: 100%;
-    overflow: auto;
-    bottom: 0px;
-    top: 50px;
-}
-.row {
-    height: 100%;
-}
-.panel-primary {
-    height: 100%;
-}
-.panel-body {
-    position: absolute;
-    width: 100%;
-    overflow: auto;
-    bottom: 0;
-    top: 36px;
-    left: 0;
-}
-.table-name {
-    position: absolute;
-    top: 0px;
-    left: 40%;
-}
-
-#datepicker {
-    display: none;
-}
-
-#orderpicker {
-    display: none;
-}
-
-#childpicker {
-    display: none;
-}
-
-#workplacepicker{
-    display: none;
-}
-
+/*
+*стили кнопок, шли с таблицей
+*/
 .btn-opt {
     display: inline-block;
     padding: 6px 12px !important;
@@ -114,6 +48,7 @@ html, body {
     border-color: #357ebd !important;
     box-shadow:none !important;
 }
+
 .btn-danger {
     color: #fff !important;
     background: #d9534f !important;
@@ -122,11 +57,150 @@ html, body {
     margin-right: 10px;
 }
 
+/* нопка меню*/
+.btn-menu{
+    color: #fff;
+    font-size: 1.2em;
+}
+
+/* нопка домой*/
+.btn-home{
+    position: absolute;
+    right: 0%;
+    top: 0;
+}
+
+.btn-home a{
+    padding: 0;
+}
+
+/* нопки фильтра дл€ приказов по сотрудникам*/
+.btn-movement-datepicker-m{
+    margin-top: 5px;
+}
+.btn-movement-datepicker-y{
+    float: right;
+}
+
+/*отображение иконок действий
+*над полем в первой колонке
+*/
 .btn-disp {
     display: inline-block;
 }
 
+/*ширина €чеек таблицы*/
+th {
+    min-width: 300px;
+}
+
+/*”брать округлые кра€*/
+* {
+    border-radius: 0 !important;
+}
+
+.panel-heading{
+    background: #388a5a !important;
+    border-color: #388a5a !important;
+}
+
+.panel{
+    border-color: #388a5a !important;
+    margin-bottom: 0 !important;
+}
+.panel-primary {
+    height: 100%;
+}
+.panel-body {
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    bottom: 0;
+    top: 36px;
+    left: 0;
+}
+
+.hide-overflow {
+    overflow: hidden;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container-fluid {
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    bottom: 0px;
+    top: 50px;
+}
+.row {
+    height: 100%;
+}
+
+/*название таблицы*/
 .table-name {
+    position: absolute;
+    top: 0px;
+    left: 40%;
     font-family: 'NautilusPompiliusRegular';
     color: rgba(0,0,0,.5);
+}
+
+.date-filter{
+    margin-top: 5px;
+}
+
+.date-filter-clean{
+    float: right;
+}
+
+/*datepicker css
+*ширина календарика
+*/
+.datepicker {
+    width: 15%;
+}
+
+.datepicker table{
+    width: 100%;
+    table-layout: fixed;
+}
+
+/*filters
+*видимость некоторых фильтров
+*(изначально скрыты)
+*/
+
+/*employee filters
+*таблица сотрудников
+*/
+#datepicker {
+    display: none;
+}
+
+#orderpicker {
+    display: none;
+}
+
+#childpicker {
+    display: none;
+}
+
+#workplacepicker{
+    display: none;
+}
+
+/*movement filters
+*таблица приказов по сотрудникам
+*/
+#ordertypepicker{
+    display: none;
+}
+
+#movement-datepicker {
+    display: none;
 }

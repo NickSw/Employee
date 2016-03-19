@@ -5,7 +5,10 @@ $(document).ready(function(){
             $tbody = $panel.find('.table tbody');
         if ($filters.prop('disabled') == true &&
                 $('#datepicker').css('display','none') &&
-                $('#orderpicker').css('display','none')) {
+                $('#orderpicker').css('display','none') &&
+                $('#childpicker').css('display','none') &&
+                $('#workplacepicker').css('display','none')
+        ) {
             $filters.prop('disabled', false);
             $('#datepicker').css('display','inline-table');
             $('#datename').css('display','none');
@@ -111,6 +114,7 @@ $(document).ready(function(){
         /* Ignore tab key */
         var code = e.keyCode || e.which;
         if (code == '9') return;
+        //exclude childcheck
         if ($("#childcheck").is(":focus")) return;
         /* Useful DOM data and selectors */
         var $input = $(this),
