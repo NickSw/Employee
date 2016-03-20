@@ -1,4 +1,4 @@
-package com.server.service.download;
+package com.server.service.impl.employeeExport;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.ss.usermodel.CellStyle;
 
-public class FillManager {
+public class EmployeeFillManager {
 
         public static void fillReport(HSSFSheet worksheet, int startRowIndex, int startColIndex, List<Employee> datasource) {
         // Row offset

@@ -1,8 +1,10 @@
-package com.server.service.download;
+package com.server.service.impl.employeeExport;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import com.server.entity.Employee;
+import com.server.service.EmployeeImportService;
+import com.server.util.Writer;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.hibernate.Query;
@@ -12,15 +14,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 
-@Service("employeesDownloadService")
+@Service("EmployeeImportServiceImpl")
 @Transactional
-public class EmployeesDownloadService {
+public class EmployeeImportServiceImpl implements EmployeeImportService {
 
     @Resource(name="sessionFactory")
     private SessionFactory sessionFactory;
 
     @SuppressWarnings("unchecked")
-    public void downloadXLS(HttpServletResponse response) throws ClassNotFoundException {
+    public void importEmployee(HttpServletResponse response) {
 
         // 1. Create new workbook
         HSSFWorkbook workbook = new HSSFWorkbook();
@@ -34,10 +36,10 @@ public class EmployeesDownloadService {
 
         // 4. Build layout
         // Build title, date, and column headers
-        Layouter.buildReport(worksheet, startRowIndex, startColIndex);
+        EmployeeLayouter.buildReport(worksheet, startRowIndex, startColIndex);
 
         // 5. Fill report
-        FillManager.fillReport(worksheet, startRowIndex, startColIndex, getDatasource());
+        EmployeeFillManager.fillReport(worksheet, startRowIndex, startColIndex, getDatasource());
 
         // 6. Set the response properties
         String fileName = "Baza_Sotrudnikov.xls";

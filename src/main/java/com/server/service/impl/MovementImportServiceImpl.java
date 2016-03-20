@@ -1,8 +1,7 @@
-package com.server.service.upload;
+package com.server.service.impl;
 
 import com.server.entity.Movement;
-import com.server.service.EmployeeService;
-import com.server.service.ImportService;
+import com.server.service.MovementImportService;
 import com.server.service.MovementService;
 import com.server.util.FileBean;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -18,7 +17,7 @@ import java.io.IOException;
 
 @Service
 @Transactional
-public class ImportServiceImpl implements ImportService{
+public class MovementImportServiceImpl implements MovementImportService {
 
        // EmployeeService employeeService;
         @Autowired

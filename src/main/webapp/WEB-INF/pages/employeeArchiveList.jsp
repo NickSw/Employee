@@ -49,6 +49,26 @@
   </div>
 </div>
 <!-- Modal window delete confirmation-->
+
+<div class="modal fade" id="modalClear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabelClear">Очистка архива</h4>
+      </div>
+      <div class="modal-body">
+        Очистить архив сотрудников?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <a href="/clear/employeeArchive" class="btn btn-danger clearBtn">Очистить</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal clear archive confirmation-->
+
 <div id="st-container" class="st-container">
   <div class="st-pusher">
     <!--
@@ -87,7 +107,8 @@
         <div class="row">
           <div class="panel panel-primary filterable">
             <div class="panel-heading">
-              <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editEmployeeArchive" href="/createEmployeeArchive"><span class="fa fa-user-plus"></span> Добавить сотрудника</a>
+              <a class="btn btn-default btn-xs"  data-title="Create" data-toggle="modal" data-target="#editEmployeeArchive" href="/createEmployeeArchive"><span class="fa fa-user-plus"></span> Добавить сотрудника</a>
+              <a class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modalClear" ><span class="fa fa-file-archive-o"></span> Очистить архив</a>
               <div class="pull-right">
                 <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span>Фильтр</button>
               </div>
@@ -207,6 +228,7 @@
 <script src="/resources/js/table.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
+
     $('#datatable').DataTable( {
       "paging":   false,
       "info":     false,
@@ -215,11 +237,25 @@
         { "orderable": false, "targets": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ] }
       ]
     } );
+
+    $('.dataTables_empty').html("Нет данных в таблице");
+
     $(".triggerDelete").click(function(e) {
       e.preventDefault();
       $("#modalDelete .deleteBtn").attr("href", $(this).attr("href"));
       $('#modalDelete').modal();
     });
+
+    /***
+    *Перезагрузить страницу после экспорта и очистки архива
+     * */
+    $('#modalClear .clearBtn').click(function(e) {
+      $('#modalClear').modal('hide');
+    });
+    $('#modalClear').on('hidden.bs.modal', function () {
+      location.reload();
+    });
+
   } );
 </script>
 </body>

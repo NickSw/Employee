@@ -46,4 +46,5 @@ public class EmployeeArchiveDAOImpl implements EmployeeArchiveDAO {
         return hibernateUtil.fetchById(id, EmployeeArchive.class);
     }
 
+
 }

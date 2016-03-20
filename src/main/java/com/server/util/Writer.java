@@ -1,4 +1,4 @@
-package com.server.service.download;
+package com.server.util;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;

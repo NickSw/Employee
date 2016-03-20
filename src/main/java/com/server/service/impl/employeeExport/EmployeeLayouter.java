@@ -1,6 +1,5 @@
-package com.server.service.download;
+package com.server.service.impl.employeeExport;
 
-import java.util.Date;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -11,7 +10,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.FontCharset;
 
-public class Layouter {
+public class EmployeeLayouter {
 
         public static void buildReport(HSSFSheet worksheet, int startRowIndex, int startColIndex) {
             // Set column widths
@@ -21,6 +20,20 @@ public class Layouter {
             worksheet.setColumnWidth(3, 5000);
             worksheet.setColumnWidth(4, 5000);
             worksheet.setColumnWidth(5, 5000);
+            worksheet.setColumnWidth(6, 5000);
+            worksheet.setColumnWidth(7, 5000);
+            worksheet.setColumnWidth(8, 5000);
+            worksheet.setColumnWidth(9, 5000);
+            worksheet.setColumnWidth(10, 5000);
+            worksheet.setColumnWidth(11, 5000);
+            worksheet.setColumnWidth(12, 5000);
+            worksheet.setColumnWidth(13, 5000);
+            worksheet.setColumnWidth(14, 5000);
+            worksheet.setColumnWidth(15, 5000);
+            worksheet.setColumnWidth(16, 5000);
+            worksheet.setColumnWidth(17, 5000);
+            worksheet.setColumnWidth(18, 5000);
+            worksheet.setColumnWidth(19, 5000);
 
             // Build the title and date headers
             buildTitle(worksheet, startRowIndex, startColIndex);

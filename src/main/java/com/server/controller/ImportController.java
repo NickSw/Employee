@@ -1,6 +1,6 @@
 package com.server.controller;
 
-import com.server.service.ImportService;
+import com.server.service.MovementImportService;
 import com.server.util.FileBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class UploadController {
+public class ImportController {
 
     @Autowired
-    private ImportService importService;
+    private MovementImportService movementImportService;
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public String displayForm(@ModelAttribute("fileBean") FileBean fileBean, BindingResult result) {
@@ -22,7 +22,7 @@ public class UploadController {
 
     @RequestMapping(value = "/xls", method = RequestMethod.POST)
     public ModelAndView importXLS(@ModelAttribute("fileBean") FileBean fileBean, BindingResult result) {
-        importService.importFile(fileBean);
+        movementImportService.importFile(fileBean);
         return new ModelAndView("redirect:getAllMovements");
     }
 
