@@ -42,7 +42,6 @@
     </div>
 </div><!--Modal window get employee-->
 
-
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -61,6 +60,34 @@
     </div>
 </div>
 <!-- Modal window delete confirmation-->
+
+<div class="modal fade" id="modalExport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabelExport">Выберите таблицу</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                <select class="input form-control" id="#exportSelect">
+                    <option value="default">Выберите таблицу</option>
+                    <option value="employee">Сотрудники</option>
+                    <option value="ordertype">Типы приказов</option>
+                    <option value="workplace">Место работы</option>
+                    <option value="movement">Приказы по сотрудникам</option>
+                </select>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <a href="" class="btn btn-default exportBtn">Экспорт</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal export choice -->
+
 <div id="st-container" class="st-container">
     <div class="st-pusher">
         <nav class="st-menu st-effect-8" id="menu-8">
@@ -73,7 +100,7 @@
                 <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив данных сотрудникам</a></li>
                 <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив приказов по сотрудникам</a></li>
                 <li><a class="icon icon-pen" href="/upload">Импорт данных из MS Excel</a></li>
-                <li><a class="icon icon-pen" href="/download/xls">Экспорт данных в MS Excel</a></li>
+                <li><a class="icon icon-pen" data-toggle="modal" data-target="#modalExport" href="#">Экспорт данных в MS Excel</a></li>
                 <li><a class="icon icon-study" href="#">Помощь</a></li>
                 <li><a class="icon icon-lock" href="#">Закончить редактир.</a></li>
             </ul>
@@ -240,7 +267,15 @@
             $("#modalDelete .deleteBtn").attr("href", $(this).attr("href"));
             $('#modalDelete').modal();
         });
-    } );
+    });
+
+    $(".modal-body select").change(function () {
+        console.log($('.modal-body select').find(":selected").val());
+        var selectet_val = $('.modal-body select').find(":selected").val();
+        if (selectet_val == "employee"){
+            $("#modalExport .exportBtn").attr("href", "/export/employee");
+        }
+    });
 </script>
 </body>
 </html>
