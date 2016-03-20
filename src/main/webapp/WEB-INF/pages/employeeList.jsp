@@ -100,7 +100,7 @@
                 <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив данных сотрудникам</a></li>
                 <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив приказов по сотрудникам</a></li>
                 <li><a class="icon icon-pen" href="/upload">Импорт данных из MS Excel</a></li>
-                <li><a class="icon icon-pen" data-toggle="modal" data-target="#modalExport" href="#">Экспорт данных в MS Excel</a></li>
+                <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalExport">Экспорт данных в MS Excel</a></li>
                 <li><a class="icon icon-study" href="#">Помощь</a></li>
                 <li><a class="icon icon-lock" href="#">Закончить редактир.</a></li>
             </ul>
@@ -272,8 +272,15 @@
     $(".modal-body select").change(function () {
         console.log($('.modal-body select').find(":selected").val());
         var selectet_val = $('.modal-body select').find(":selected").val();
+
         if (selectet_val == "employee"){
             $("#modalExport .exportBtn").attr("href", "/export/employee");
+        } else if (selectet_val == "movement"){
+            $("#modalExport .exportBtn").attr("href", "/export/movement");
+        } else if (selectet_val == "workplace"){
+            $("#modalExport .exportBtn").attr("href", "/export/workplace");
+        } else if (selectet_val == "ordertype"){
+            $("#modalExport .exportBtn").attr("href", "/export/ordertype");
         }
     });
 </script>

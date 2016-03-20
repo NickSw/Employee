@@ -1,7 +1,7 @@
-package com.server.service.impl.ClearEmployeeArchive;
+package com.server.service.impl.MovementExport;
 
-import com.server.entity.EmployeeArchive;
-import com.server.service.EmployeeArchiveClearService;
+import com.server.entity.Movement;
+import com.server.service.MovementExportService;
 import com.server.util.Writer;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -15,22 +15,21 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-
-@Service("EmployeeArchiveClearServiceImpl")
+@Service("MovementExportServiceImpl")
 @Transactional
-public class EmployeeArchiveClearServiceImpl implements EmployeeArchiveClearService {
+public class MovementExportServiceImpl implements MovementExportService {
 
     @Resource(name="sessionFactory")
     private SessionFactory sessionFactory;
 
     @SuppressWarnings("unchecked")
-    public void clearEmployeeArchive(HttpServletResponse response) {
+    public void exportMovement(HttpServletResponse response) {
 
         // 1. Create new workbook
         HSSFWorkbook workbook = new HSSFWorkbook();
 
         // 2. Create new worksheet
-        HSSFSheet worksheet = workbook.createSheet("Архив сотрудников");
+        HSSFSheet worksheet = workbook.createSheet("Приказы по сотрудникам");
 
         // 3. Define starting indices for rows and columns
         int startRowIndex = 0;
@@ -38,40 +37,29 @@ public class EmployeeArchiveClearServiceImpl implements EmployeeArchiveClearServ
 
         // 4. Build layout
         // Build title, date, and column headers
-        EmployeeArchiveLayouter.buildReport(worksheet, startRowIndex, startColIndex);
+        MovementLayouter.buildReport(worksheet, startRowIndex, startColIndex);
 
         // 5. Fill report
-        EmployeeArchiveFillManager.fillReport(worksheet, startRowIndex, startColIndex, getDatasource());
+        MovementFillManager.fillReport(worksheet, startRowIndex, startColIndex, getDatasource());
 
         // 6. Set the response properties
-        String fileName = "Arhiv_Sotrudnikov.xls";
+        String fileName = "Prikazi_po_sotryd.xls";
         response.setHeader("Content-Disposition", "inline; filename=" + fileName);
         // Make sure to set the correct content type
         response.setContentType("application/vnd.ms-excel");
         //7. Write to the output stream
         Writer.write(response, worksheet);
 
-        deleteAll();
-
-    }
-
-    private void deleteAll(){
-        // Retrieve session
-        Session session = sessionFactory.getCurrentSession();
-        // Create query for retrieving products
-        Query query = session.createQuery("DELETE FROM EmployeeArchive");
-        // Execute query
-        int result = query.executeUpdate();
     }
 
     @SuppressWarnings("unchecked")
-    private List<EmployeeArchive> getDatasource() {
+    private List<Movement> getDatasource() {
         // Retrieve session
         Session session = sessionFactory.getCurrentSession();
         // Create query for retrieving products
-        Query query = session.createQuery("FROM EmployeeArchive");
+        Query query = session.createQuery("FROM Movement");
         // Execute query
-        List<EmployeeArchive> result = query.list();
+        List<Movement> result = query.list();
         // Return the datasource
         return result;
     }
