@@ -32,6 +32,7 @@
     </div>
   </div>
 </div><!--Modal window edit movementArchive-->
+
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -50,6 +51,26 @@
   </div>
 </div>
 <!-- Modal window delete confirmation-->
+
+<div class="modal fade" id="modalClear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabelClear">Очистка архива</h4>
+      </div>
+      <div class="modal-body">
+        Очистить архив сотрудников?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <a href="/clear/movementArchive" class="btn btn-danger clearBtn">Очистить</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal clear archive confirmation-->
+
 <div id="st-container" class="st-container">
   <div class="st-pusher">
     <!--
@@ -79,7 +100,7 @@
           <div id="st-trigger-effects">
             <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
             <div class="table-name"><h3>Архив приказов по сотрудникам</h3></div>
-            <div style="position: absolute; right: 0%; top: 0;"><a style="padding: 0" href="/getAllEmployees"><button class="btn-menu" style="color: #fff; font-size: 1.2em; " data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
+            <div class="btn-home"><a href="/getAllEmployees"><button class="btn-menu" data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
           </div>
         </div>
 
@@ -89,6 +110,7 @@
           <div class="panel panel-primary filterable">
             <div class="panel-heading">
               <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editMovementArchive" href="/createMovementArchive"><span class="fa fa-user-plus"></span> Добавить движения</a>
+              <a class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalClear" ><span class="fa fa-file-archive-o"></span> Очистить архив</a>
             </div>
             <div class="panel-body to-scroll" id="content">
               <table class="table table-bordered table-hover table-striped">
@@ -135,6 +157,16 @@
       $("#modalDelete .deleteBtn").attr("href", $(this).attr("href"));
       $('#modalDelete').modal();
 
+    });
+
+    /***
+     *Перезагрузить страницу после экспорта и очистки архива
+     * */
+    $('#modalClear .clearBtn').click(function(e) {
+      $('#modalClear').modal('hide');
+    });
+    $('#modalClear').on('hidden.bs.modal', function () {
+      location.reload();
     });
   } );
 </script>

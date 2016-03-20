@@ -98,7 +98,7 @@
           <div id="st-trigger-effects">
             <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
             <div class="table-name"><h3>Архив данных сотрудникам</h3></div>
-            <button class="btn-menu" style="color: #fff; font-size: 1.2em; float: right;" data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button>
+            <div class="btn-home"><a href="/getAllEmployees"><button class="btn-menu" data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
           </div>
         </div>
 

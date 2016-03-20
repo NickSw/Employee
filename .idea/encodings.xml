@@ -7,6 +7,9 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/server/service/impl/ClearEmployeeArchive/EmployeeArchiveClearServiceImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/server/service/impl/ClearEmployeeArchive/EmployeeArchiveFillManager.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/server/service/impl/ClearEmployeeArchive/EmployeeArchiveLayouter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/server/service/impl/ClearMovementArchive/MovementArchiveClearServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/server/service/impl/ClearMovementArchive/MovementArchiveFillManager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/server/service/impl/ClearMovementArchive/MovementArchiveLayouter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/server/service/impl/MovementImportServiceImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/server/service/impl/employeeExport/EmployeeImportServiceImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/server/service/impl/employeeExport/EmployeeLayouter.java" charset="UTF-8" />
