@@ -4,35 +4,38 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
+
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>База сотрудников</title>
+    <title>Employee DB</title>
+
+    <!--Normalize css-->
     <link rel="stylesheet" type="text/css" href="/resources/css/normalize.css" />
+    <!--Demo css-->
     <link rel="stylesheet" type="text/css" href="/resources/css/demo.css" />
+    <!--Icons css-->
     <link rel="stylesheet" type="text/css" href="/resources/css/icons.css" />
+    <!--Component css-->
     <link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
+    <!--Table css-->
     <link rel="stylesheet" type="text/css" href="/resources/css/table.css" />
+    <!--Nautilus font css-->
     <link rel="stylesheet" type="text/css" href="/resources/css/nautilus-font.css" />
-    <script src="/resources/js/modernizr.custom.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!--Bootstrap 3.3.6 css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <!--Font Awesome 4.5.0 css-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+    <!--Data Tables Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
+
 </head>
 <body>
-
 
 <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
         </div>
     </div>
-</div><!--Modal window edit employee-->
+</div><!--Модальное окно создания/редактирования-->
 
 
 <div class="modal fade" id="getEmployee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -40,7 +43,7 @@
         <div class="modal-content">
         </div>
     </div>
-</div><!--Modal window get employee-->
+</div><!--Модальное окно карточки сотрудника-->
 
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -59,7 +62,7 @@
         </div>
     </div>
 </div>
-<!-- Modal window delete confirmation-->
+<!--Модальное окно подтверждения удаления-->
 
 <div class="modal fade" id="modalExport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -86,7 +89,7 @@
         </div>
     </div>
 </div>
-<!-- Modal export choice -->
+<!--Модальное окно выбора экспортируемой таблицы-->
 
 <div id="st-container" class="st-container">
     <div class="st-pusher">
@@ -106,17 +109,17 @@
             </ul>
         </nav>
 
-        <div class="st-content hide-overflow"><!-- this is the wrapper for the content -->
-            <div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu -->
-                <!-- Top Navigation -->
+        <div class="st-content hide-overflow">
+            <div class="st-content-inner">
+                <!-- Верхняя навигация -->
                 <div class="codrops-top clearfix">
                     <div id="st-trigger-effects">
-                        <button data-effect="st-effect-8" class="btn-menu"  style="color: #fff; font-size: 1.2em;" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
+                        <button data-effect="st-effect-8" class="btn-menu" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
                         <div class="table-name"><h3>Сотрудники</h3></div>
                     </div>
                 </div>
 
-            </div><!-- /main -->
+            </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="panel panel-primary filterable">
@@ -249,11 +252,34 @@
     </div><!-- /st-content -->
 </div><!-- /st-pusher -->
 </div><!-- /st-container -->
+
+<!--Jquery 1.11.1-->
+<script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+<!--Bootstrap 3.3.6 js-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!--Data Tables 1.10.4 js-->
+<script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<!--Data Tables bootstrap js-->
+<script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+<!--Modernizr js-->
+<script src="/resources/js/modernizr.custom.js"></script>
+<!--Classie js-->
 <script src="/resources/js/classie.js"></script>
+<!--Sidebar Effects js-->
 <script src="/resources/js/sidebarEffects.js"></script>
+<!--Employee table js-->
 <script src="/resources/js/table.js"></script>
+<!--Triggers(delete)-->
+<script src="/resources/js/triggers.js"></script>
+<!--Dropdown Export table js-->
+<script src="/resources/js/dropdownExport.js"></script>
+
+<!--Other Scripts-->
 <script type="text/javascript">
     $(document).ready(function() {
+        /**
+         * Сортировка таблицы
+         */
         $('#datatable').DataTable( {
             "paging":   false,
             "info":     false,
@@ -261,27 +287,12 @@
             "columnDefs": [
                 { "orderable": false, "targets": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ] }
             ]
-        } );
-        $(".triggerDelete").click(function(e) {
-            e.preventDefault();
-            $("#modalDelete .deleteBtn").attr("href", $(this).attr("href"));
-            $('#modalDelete').modal();
         });
-    });
 
-    $(".modal-body select").change(function () {
-        console.log($('.modal-body select').find(":selected").val());
-        var selectet_val = $('.modal-body select').find(":selected").val();
-
-        if (selectet_val == "employee"){
-            $("#modalExport .exportBtn").attr("href", "/export/employee");
-        } else if (selectet_val == "movement"){
-            $("#modalExport .exportBtn").attr("href", "/export/movement");
-        } else if (selectet_val == "workplace"){
-            $("#modalExport .exportBtn").attr("href", "/export/workplace");
-        } else if (selectet_val == "ordertype"){
-            $("#modalExport .exportBtn").attr("href", "/export/ordertype");
-        }
+        /**
+        * Замена англ текста в DataTables
+        * */
+        $('.dataTables_empty').html("Нет данных в таблице");
     });
 </script>
 </body>

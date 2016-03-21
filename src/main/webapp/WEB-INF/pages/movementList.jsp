@@ -30,6 +30,7 @@
 
 </head>
 <body>
+
 <div class="modal fade" id="editMovement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -53,8 +54,33 @@
       </div>
     </div>
   </div>
-</div>
-<!-- Модальное окно подтверждения удаления-->
+</div><!--Модальное окно подтверждения удаления-->
+
+<div class="modal fade" id="modalExport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabelExport">Выберите таблицу</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <select class="input form-control" id="#exportSelect">
+            <option value="default">Выберите таблицу</option>
+            <option value="employee">Сотрудники</option>
+            <option value="ordertype">Типы приказов</option>
+            <option value="workplace">Место работы</option>
+            <option value="movement">Приказы по сотрудникам</option>
+          </select>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <a href="" class="btn btn-default exportBtn">Экспорт</a>
+      </div>
+    </div>
+  </div>
+</div><!--Модальное окно выбора экспортируемой таблицы-->
 
 <div id="st-container" class="st-container">
   <div class="st-pusher">
@@ -68,7 +94,7 @@
         <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив данных сотрудникам</a></li>
         <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив приказов по сотрудникам</a></li>
         <li><a class="icon icon-pen" href="/upload">Импорт данных из MS Excel</a></li>
-        <li><a class="icon icon-pen" href="/download/xls">Экспорт данных в MS Excel</a></li>
+        <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalExport">Экспорт данных в MS Excel</a></li>
         <li><a class="icon icon-study" href="#">Помощь</a></li>
         <li><a class="icon icon-lock" href="#">Закончить редактир.</a></li>
       </ul>
@@ -188,99 +214,10 @@
 <script src="/resources/js/sidebarEffects.js"></script>
 <!--Movement table js-->
 <script src="/resources/js/movementTable.js"></script>
+<!--Triggers(delete)-->
+<script src="/resources/js/triggers.js"></script>
+<!--Dropdown Export table js-->
+<script src="/resources/js/dropdownExport.js"></script>
 
-<!--Page Scripts - TODO:Remove-->
-<script type="text/javascript">
-$(document).ready(function() {
-
-  $('#btn-movement-datepicker-m').click(function(){
-    var d = new Date();
-    var day = 1;
-    var year = d.getYear() + 1900;
-    var month = d.getMonth();
-    month++;
-    var lastDayOfMonth = new Date(year, month, day);
-    var lastDay = lastDayOfMonth.getUTCDate();
-    var month_start = new Date(year,month-1,1);
-    var formated_date_ms = moment(month_start).format("YYYY-MM-DD");
-    var month_end = new Date(year,month-1,lastDay);
-    var formated_date_md = moment(month_end).format("YYYY-MM-DD");
-    $('input[name=start]').val(formated_date_ms);
-    $('input[name=end]').val(formated_date_md);
-  });
-
-  $('.btn-movement-datepicker-y button').click(function(){
-    var d = new Date();
-    var year = d.getYear() + 1900;
-    var month = d.getMonth();
-    var year_start = new Date(year,0,1);
-    var formated_date_ys = moment(year_start).format("YYYY-MM-DD");
-    var year_end = new Date(year,11,31);
-    var formated_date_yd = moment(year_end).format("YYYY-MM-DD");
-    $('input[name=start]').val(formated_date_ys);
-    $('input[name=end]').val(formated_date_yd);
-  });
-
-  $('.date-filter-clean button').click(function(){
-    $('input[name=start]').val("");
-    $('input[name=end]').val("");
-    var $rows = $('tbody tr'); $rows.show();
-  });
-
-  $('.date-filter button').click(function(){
-    var from_date = $('input[name=start]').val();
-    var to_date = $('input[name=end]').val();
-    $('table tr').each(function(){
-      var date = $(this).find('td').eq(0).text().trim();
-
-      if(date.length && from_date.length && to_date.length){
-
-          var pattern = /^(\d{4})-(\d{1,2})-(\d{1,2})/
-          dateElements = date.match(pattern),
-          day = dateElements[3],
-          month = dateElements[2],
-          year = dateElements[1];
-          var d = new Date(year,month-1,day);
-
-          var pattern = /^(\d{4})-(\d{1,2})-(\d{1,2})/
-          dateElements = from_date.match(pattern),
-          day = dateElements[3],
-          month = dateElements[2],
-          year = dateElements[1];
-          var fromDate = new Date(year, month - 1, day);
-
-          var pattern = /^(\d{4})-(\d{1,2})-(\d{1,2})/
-          dateElements = to_date.match(pattern),
-          day = dateElements[3],
-          month = dateElements[2],
-          year = dateElements[1];
-          var toDate = new Date(year, month - 1, day);
-
-          if (fromDate.getTime() <= d.getTime() &&
-                  d.getTime() <= toDate.getTime())
-          {
-            $(this).show();
-          }
-          else {
-            $(this).hide();
-          }
-        }
-
-    });
-    });
-
-$('.input-daterange').datepicker({
-  format: "yyyy-mm-dd",
-  language: "ru"
-});
-
-$(".triggerDelete").click(function(e) {
-      e.preventDefault();
-      $("#modalDelete .deleteBtn").attr("href", $(this).attr("href"));
-      $('#modalDelete').modal();
-    });
-  });
-
-</script>
 </body>
 </html>
