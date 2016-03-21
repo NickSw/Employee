@@ -156,6 +156,8 @@
 <script src="/resources/js/sidebarEffects.js"></script>
 <!--Triggers(delete)-->
 <script src="/resources/js/triggers.js"></script>
+<!--Dropdown Export table js-->
+<script src="/resources/js/dropdownExport.js"></script>
 
 </body>
 </html>
