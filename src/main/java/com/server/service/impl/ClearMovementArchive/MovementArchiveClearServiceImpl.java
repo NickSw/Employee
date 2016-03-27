@@ -15,6 +15,8 @@ import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -46,7 +48,10 @@ public class MovementArchiveClearServiceImpl implements MovementArchiveClearServ
         MovementArchiveFillManager.fillReport(worksheet, startRowIndex, startColIndex, getDatasource());
 
         // 6. Set the response properties
-        String fileName = "Arhiv_Prikazov.xls";
+        SimpleDateFormat formattedDate = new SimpleDateFormat("yyyy-MM-dd");
+        Date now = new Date();
+        String strDate = formattedDate.format(now);
+        String fileName = strDate + "_Arhiv_Prikazov.xls";
         response.setHeader("Content-Disposition", "inline; filename=" + fileName);
         // Make sure to set the correct content type
         response.setContentType("application/vnd.ms-excel");

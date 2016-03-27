@@ -19,12 +19,11 @@ import java.io.IOException;
 @Transactional
 public class MovementImportServiceImpl implements MovementImportService {
 
-       // EmployeeService employeeService;
         @Autowired
         MovementService movementService;
 
         @Override
-        public void importFile(FileBean fileBean){
+        public void importMovement(FileBean fileBean){
                 try {
                         ByteArrayInputStream bis = new ByteArrayInputStream(fileBean.getFileData().getBytes());
                         HSSFWorkbook wb = new HSSFWorkbook(bis);
@@ -32,7 +31,6 @@ public class MovementImportServiceImpl implements MovementImportService {
                         HSSFRow row;
 
                         for (int i = 0; i <= sheet.getLastRowNum(); i++) {
-                                //Employee employee = new Employee();
                                 row = sheet.getRow(i);
                                 Movement movement = new Movement();
                                 /****converting util date to sql date****/
@@ -45,10 +43,6 @@ public class MovementImportServiceImpl implements MovementImportService {
                                 movement.setFio(String.valueOf(row.getCell(3).getRichStringCellValue()));
                                 movement.setOrdertext(String.valueOf(row.getCell(4).getRichStringCellValue()));
                                 movementService.createMovement(movement);
-                /*employee.setName(String.valueOf(row.getCell(0).getRichStringCellValue()));
-                employee.setAddress(String.valueOf(row.getCell(1).getRichStringCellValue()));
-                employee.setBirthday((java.sql.Date)row.getCell(2).getDateCellValue());
-                employeeService.createEmployee(employee); // call to spring service layer*/
                         }
                 } catch (FileNotFoundException ec) {
                         ec.printStackTrace();

@@ -5,9 +5,11 @@ import com.server.entity.OrderType;
 import com.server.service.EmployeeService;
 import com.server.service.MovementService;
 import com.server.service.OrderTypeService;
+import com.server.util.FileBean;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,7 +80,7 @@ public class MovementController {
     }
 
     @RequestMapping(value = {"getAllMovements", "/"})
-    public ModelAndView getAllMovements() {
+    public ModelAndView getAllMovements(@ModelAttribute("fileBean") FileBean fileBean, BindingResult result) {
         logger.info("Getting the all Movements.");
         List<Movement> movementList = movementService.getAllMovements();
         List<OrderType> orderTypeList = orderTypeService.getAllOrderTypes();

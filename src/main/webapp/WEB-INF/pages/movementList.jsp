@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -82,6 +83,39 @@
   </div>
 </div><!--Модальное окно выбора экспортируемой таблицы-->
 
+<div class="modal fade" id="modalImport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabelImport">Выберите таблицу</h4>
+      </div>
+      <div class="modal-body form-horizontal">
+        <form:form modelAttribute="fileBean" cssclass="importForm" method="post" action="" enctype="multipart/form-data">
+          <div class="form-group">
+            <div class="col-xs-6">
+              <select class="form-control" id="#importSelect">
+                <option value="default">Выберите таблицу</option>
+                <option value="employee">Сотрудники</option>
+                <option value="ordertype">Типы приказов</option>
+                <option value="workplace">Место работы</option>
+                <option value="movement">Приказы по сотрудникам</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-6"><form:input path="fileData" id="browseImport" type="file" value="Выберите файл" data-filename-placement="inside"/></div>
+          </div>
+        </form:form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <a class="btn btn-default modalSubmit">Импорт</a>
+      </div>
+    </div>
+  </div>
+</div><!--Модальное окно выбора импортируемой таблицы-->
+
 <div id="st-container" class="st-container">
   <div class="st-pusher">
     <nav class="st-menu st-effect-8" id="menu-8">
@@ -93,7 +127,7 @@
         <li><a class="icon icon-data" href="/getAllMovements">Приказы по сотрудникам</a></li>
         <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив данных сотрудникам</a></li>
         <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив приказов по сотрудникам</a></li>
-        <li><a class="icon icon-pen" href="/upload">Импорт данных из MS Excel</a></li>
+        <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalImport">Импорт данных из MS Excel</a></li>
         <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalExport">Экспорт данных в MS Excel</a></li>
         <li><a class="icon icon-study" href="#">Помощь</a></li>
         <li><a class="icon icon-lock" href="#">Закончить редактир.</a></li>
@@ -218,6 +252,11 @@
 <script src="/resources/js/triggers.js"></script>
 <!--Dropdown Export table js-->
 <script src="/resources/js/dropdownExport.js"></script>
+<!--Import table js-->
+<script src="/resources/js/importTable.js"></script>
 
 </body>
+<script>
+
+</script>
 </html>

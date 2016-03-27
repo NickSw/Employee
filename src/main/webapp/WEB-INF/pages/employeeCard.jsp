@@ -36,6 +36,48 @@
     </div>
 
     <div class="form-group">
+      <div class="control-label col-xs-3"> <form:label path="mail" >Почта</form:label> </div>
+      <div class="control-label col-xs-3">
+        <form:label path="mail" ><c:out value="${employeeObject.mail}"/></form:label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label col-xs-3"> <form:label path="position1" >Должность 1</form:label> </div>
+      <div class="control-label col-xs-3">
+        <form:label path="position1" ><c:out value="${employeeObject.position1}"/></form:label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label col-xs-3"> <form:label path="position2" >Должность 2</form:label> </div>
+      <div class="control-label col-xs-3">
+        <form:label path="position2" ><c:out value="${employeeObject.position2}"/></form:label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label col-xs-3"> <form:label path="workplace" >Где работает</form:label> </div>
+      <div class="control-label col-xs-3">
+        <form:label path="workplace" ><c:out value="${employeeObject.workplace}"/></form:label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label col-xs-3"> <form:label path="birthday" >Дата Рождения</form:label> </div>
+      <div class="control-label col-xs-3">
+        <form:label path="birthday" ><c:out value="${employeeObject.birthday}"/></form:label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label col-xs-3"> <form:label path="children" >Дети до 16 лет</form:label> </div>
+      <div class="control-label col-xs-3">
+        <form:label path="children" ><c:out value="${employeeObject.children}"/></form:label>
+      </div>
+    </div>
+
+    <div class="form-group">
       <div class="control-label col-xs-3"> <form:label path="address" >Адрес</form:label> </div>
       <div class="control-label col-xs-3">
         <form:label path="address" ><c:out value="${employeeObject.address}"/></form:label>
@@ -57,13 +99,6 @@
     </div>
 
     <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="birthday" >Дата Рождения</form:label> </div>
-      <div class="control-label col-xs-3">
-        <form:label path="birthday" ><c:out value="${employeeObject.birthday}"/></form:label>
-      </div>
-    </div>
-
-    <div class="form-group">
       <div class="control-label col-xs-3"> <form:label path="code" >Идент. код</form:label> </div>
       <div class="control-label col-xs-3">
         <form:label path="code" ><c:out value="${employeeObject.code}"/></form:label>
@@ -78,44 +113,9 @@
     </div>
 
     <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="position1" >Должность 1</form:label> </div>
-      <div class="control-label col-xs-3">
-        <form:label path="position1" ><c:out value="${employeeObject.position1}"/></form:label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="position2" >Должность 2</form:label> </div>
-      <div class="control-label col-xs-3">
-        <form:label path="position2" ><c:out value="${employeeObject.position2}"/></form:label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="mail" >Почта</form:label> </div>
-      <div class="control-label col-xs-3">
-        <form:label path="mail" ><c:out value="${employeeObject.mail}"/></form:label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="workplace" >Где работает</form:label> </div>
-      <div class="control-label col-xs-3">
-        <form:label path="workplace" ><c:out value="${employeeObject.workplace}"/></form:label>
-      </div>
-    </div>
-
-    <div class="form-group">
       <div class="control-label col-xs-3"> <form:label path="decortype" >Тип оформления</form:label> </div>
       <div class="control-label col-xs-3">
         <form:label path="decortype" ><c:out value="${employeeObject.decortype}"/></form:label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="children" >Дети до 16 лет</form:label> </div>
-      <div class="control-label col-xs-3">
-        <form:label path="children" ><c:out value="${employeeObject.children}"/></form:label>
       </div>
     </div>
 

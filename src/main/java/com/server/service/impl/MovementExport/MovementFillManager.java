@@ -6,6 +6,7 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
 
 import java.util.List;
 
@@ -20,6 +21,12 @@ public class MovementFillManager {
         bodyCellStyle.setAlignment(CellStyle.ALIGN_CENTER);
         bodyCellStyle.setWrapText(true);
 
+        HSSFCellStyle dateCellStyle = worksheet.getWorkbook().createCellStyle();
+        CreationHelper createHelper = worksheet.getWorkbook().getCreationHelper();
+        dateCellStyle.setDataFormat(
+                createHelper.createDataFormat().getFormat("yyyy-mm-dd"));
+        dateCellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+
         // Create body
         for (int i=startRowIndex; i+startRowIndex-2< datasource.size()+2; i++) {
             // Create a new row
@@ -27,7 +34,7 @@ public class MovementFillManager {
 
             HSSFCell cell1 = row.createCell(startColIndex+0);
             cell1.setCellValue(datasource.get(i-2).getOrderdate());
-            cell1.setCellStyle(bodyCellStyle);
+            cell1.setCellStyle(dateCellStyle);
 
             HSSFCell cell2 = row.createCell(startColIndex+1);
             cell2.setCellValue(datasource.get(i-2).getOrdernum());

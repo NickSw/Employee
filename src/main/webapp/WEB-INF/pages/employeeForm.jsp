@@ -38,6 +38,55 @@
         </div>
 
         <div class="form-group">
+            <div class="control-label col-xs-3"> <form:label path="mail" >Почта</form:label> </div>
+            <div class="col-xs-6">
+                <form:input cssClass="form-control" path="mail" value="${model.employee.mail}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-xs-3"> <form:label path="position1" >Должность 1</form:label> </div>
+            <div class="col-xs-6">
+                <form:input cssClass="form-control" path="position1" value="${model.employee.position1}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-xs-3"> <form:label path="position2" >Должность 2</form:label> </div>
+            <div class="col-xs-6">
+                <form:input cssClass="form-control" path="position2" value="${model.employee.position2}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-xs-3"> <form:label path="workplace" >Где работает</form:label> </div>
+            <div class="col-xs-6">
+                <form:select class="form-control" path="workplace" value="${model.employee.workplace}">
+                    <c:forEach items="${model.workPlaceList}" var="wp">
+                        <option><c:out value="${wp.place}"/></option>
+                    </c:forEach>
+                </form:select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-xs-3"> <form:label path="birthday" >Дата Рождения *</form:label> </div>
+            <div class="col-xs-6">
+                <form:input cssClass="form-control" path="birthday" value="${model.employee.birthday}"
+                            required="required" pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"
+                            data-error="Введите дату в формате ГГГ-ММ-ДД"/>
+                <span class="help-block">ГГГГ-ММ-ДД</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-xs-3"> <form:label path="children" >Дети до 16 лет</form:label> </div>
+            <div class="col-xs-6">
+                <form:input cssClass="form-control" path="children" value="${model.employee.children}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="control-label col-xs-3"> <form:label path="address" >Адрес</form:label> </div>
             <div class="col-xs-6">
                 <form:input cssClass="form-control" path="address" value="${model.employee.address}"/>
@@ -59,16 +108,6 @@
         </div>
 
         <div class="form-group">
-            <div class="control-label col-xs-3"> <form:label path="birthday" >Дата Рождения *</form:label> </div>
-            <div class="col-xs-6">
-                <form:input cssClass="form-control" path="birthday" value="${model.employee.birthday}"
-                            required="required" pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"
-                            data-error="Введите дату в формате ГГГ-ММ-ДД"/>
-                <span class="help-block">ГГГГ-ММ-ДД</span>
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="control-label col-xs-3"> <form:label path="code" >Идент. код *</form:label> </div>
             <div class="col-xs-6">
                 <form:input cssClass="form-control" path="code" value="${model.employee.code}" required="required"/>
@@ -83,48 +122,9 @@
         </div>
 
         <div class="form-group">
-            <div class="control-label col-xs-3"> <form:label path="position1" >Должность 1</form:label> </div>
-            <div class="col-xs-6">
-                <form:input cssClass="form-control" path="position1" value="${model.employee.position1}"/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="control-label col-xs-3"> <form:label path="position2" >Должность 2</form:label> </div>
-            <div class="col-xs-6">
-                <form:input cssClass="form-control" path="position2" value="${model.employee.position2}"/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="control-label col-xs-3"> <form:label path="mail" >Почта</form:label> </div>
-            <div class="col-xs-6">
-                <form:input cssClass="form-control" path="mail" value="${model.employee.mail}"/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="control-label col-xs-3"> <form:label path="workplace" >Где работает</form:label> </div>
-            <div class="col-xs-6">
-                <form:select class="form-control" path="workplace" value="${model.employee.workplace}">
-                    <c:forEach items="${model.workPlaceList}" var="wp">
-                        <option><c:out value="${wp.place}"/></option>
-                    </c:forEach>
-                </form:select>
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="control-label col-xs-3"> <form:label path="decortype" >Тип оформления</form:label> </div>
             <div class="col-xs-6">
                 <form:input cssClass="form-control" path="decortype" value="${model.employee.decortype}"/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="control-label col-xs-3"> <form:label path="children" >Дети до 16 лет</form:label> </div>
-            <div class="col-xs-6">
-                <form:input cssClass="form-control" path="children" value="${model.employee.children}"/>
             </div>
         </div>
 

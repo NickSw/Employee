@@ -1,15 +1,21 @@
 package com.server.controller;
 import com.server.entity.EmployeeArchive;
+import com.server.entity.WorkPlace;
 import com.server.service.EmployeeArchiveService;
 
+import com.server.service.WorkPlaceService;
+import com.server.util.FileBean;
 import org.jboss.logging.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,29 +32,8 @@ public class EmployeeArchiveController {
     @Autowired
     private EmployeeArchiveService employeeArchiveService;
 
-    @RequestMapping("createEmployeeArchive")
-    public ModelAndView createEmployeeArchive(@ModelAttribute EmployeeArchive employeeArchive) {
-        logger.info("Creating EmployeeArchive. Data: " + employeeArchive);
-        return new ModelAndView("employeeArchiveForm");
-    }
-
-    @RequestMapping("editEmployeeArchive")
-    public ModelAndView editEmployeeArchive(@RequestParam int id, @ModelAttribute EmployeeArchive employeeArchive) {
-        logger.info("Updating the EmployeeArchive for the Id " + id);
-        employeeArchive = employeeArchiveService.getEmployeeArchive(id);
-        return new ModelAndView("employeeArchiveForm", "employeeArchiveObject", employeeArchive);
-    }
-
-    @RequestMapping("saveEmployeeArchive")
-    public ModelAndView saveEmployeeArchive(@ModelAttribute EmployeeArchive employeeArchive) {
-        logger.info("Saving the EmployeeArchive. Data : " + employeeArchive);
-        if(employeeArchive.getId() == 0){ // if employee id is 0 then creating the employee other updating the employee
-            employeeArchiveService.createEmployeeArchive(employeeArchive);
-        } else {
-            employeeArchiveService.updateEmployeeArchive(employeeArchive);
-        }
-        return new ModelAndView("redirect:getAllEmployeesArchive");
-    }
+    @Autowired
+    private WorkPlaceService workPlaceService;
 
     @RequestMapping("deleteEmployeeArchive")
     public ModelAndView deleteEmployeeArchive(@RequestParam int id) {
@@ -58,10 +43,14 @@ public class EmployeeArchiveController {
     }
 
     @RequestMapping(value = {"getAllEmployeesArchive", "/"})
-    public ModelAndView getAllEmployeesArchive() {
+    public ModelAndView getAllEmployeesArchive(@ModelAttribute("fileBean") FileBean fileBean, BindingResult result) {
         logger.info("Getting the all EmployeesArchive.");
         List<EmployeeArchive> employeeArchiveList = employeeArchiveService.getAllEmployeesArchive();
-        return new ModelAndView("employeeArchiveList", "employeeArchiveList", employeeArchiveList);
+        List<WorkPlace> workPlaceList = workPlaceService.getAllWorkPlaces();
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("employeeArchiveList", employeeArchiveList);
+        model.put("workPlaceList", workPlaceList);
+        return new ModelAndView("employeeArchiveList", "model", model);
     }
 
 }

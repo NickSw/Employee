@@ -4,9 +4,11 @@ import com.server.entity.WorkPlace;
 import com.server.service.EmployeeService;
 
 import com.server.service.WorkPlaceService;
+import com.server.util.FileBean;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.jboss.logging.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
@@ -72,7 +74,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = {"getAllEmployees", "/"})
-    public ModelAndView getAllEmployees() {
+    public ModelAndView getAllEmployees(@ModelAttribute("fileBean") FileBean fileBean, BindingResult result) {
     	logger.info("Getting the all Employees.");
         List<Employee> employeeList = employeeService.getAllEmployees();
         List<WorkPlace> workPlaceList = workPlaceService.getAllWorkPlaces();

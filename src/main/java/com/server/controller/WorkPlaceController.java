@@ -2,8 +2,10 @@ package com.server.controller;
 import com.server.entity.WorkPlace;
 import com.server.service.WorkPlaceService;
 
+import com.server.util.FileBean;
 import org.jboss.logging.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -58,7 +60,7 @@ public class WorkPlaceController {
     }
 
     @RequestMapping(value = {"getAllWorkPlaces", "/"})
-    public ModelAndView getAllWorkPlaces() {
+    public ModelAndView getAllWorkPlaces(@ModelAttribute("fileBean") FileBean fileBean, BindingResult result) {
         logger.info("Getting the all WorkPlaces.");
         List<WorkPlace> workPlaceList = workPlaceService.getAllWorkPlaces();
         return new ModelAndView("workPlaceList", "workPlaceList", workPlaceList);

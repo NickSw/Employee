@@ -34,45 +34,10 @@ $(document).ready(function(){
         }
     });
 
-    $('#childcheck').on('click', function(){
-        var secondField = false;
-        $('table tr').each(function(){
-            var child = $(this).find('td').eq(13).text();
-                if (child.length==0 && secondField){
-                    $(this).hide();
-                }
-                else {
-                    $(this).show();
-                }
-            secondField = true;
-        });
-        if(!$('#childcheck').is(':checked')) {
-            $rows= $('table.table tbody tr'); $rows.show();
-        }
-    });
-
     $('#workplacevalue').change(function(){
         var $input = $(this);
         $('table tr').each(function(){
-            var order = $(this).find('td').eq(11).text();
-            if(order.length){
-                if(order==$input.val()){
-                    $(this).show();
-                }
-                else {
-                    $(this).hide();
-                }
-            }
-        });
-        if($input.val()=="all") {
-            $rows= $('table.table tbody tr'); $rows.show();
-        }
-    });
-
-    $('#ordervalue').change(function(){
-        var $input = $(this);
-        $('table tr').each(function(){
-            var order = $(this).find('td').eq(12).text();
+            var order = $(this).find('td').eq(5).text();
             if(order.length){
                 if(order==$input.val()){
                     $(this).show();
@@ -90,13 +55,13 @@ $(document).ready(function(){
     $("#datevalue").change(function(){
         var $input = $(this);
         $('table tr').each(function(){
-        var date = $(this).find('td').eq(5).text();
+            var date = $(this).find('td').eq(6).text();
             if(date.length){
                 var pattern = /^(\d{4})-(\d{1,2})-(\d{1,2})/
                 dateElements = date.match(pattern),
-                day = dateElements[3],
-                month = dateElements[2],
-                year = dateElements[1];
+                    day = dateElements[3],
+                    month = dateElements[2],
+                    year = dateElements[1];
                 if(month==$input.val()) {
                     $(this).show();
                 }
@@ -109,6 +74,42 @@ $(document).ready(function(){
             $rows= $('table.table tbody tr'); $rows.show();
         }
     });
+
+    $('#childcheck').on('click', function(){
+        var secondField = false;
+        $('table tr').each(function(){
+            var child = $(this).find('td').eq(7).text();
+                if (child.length==0 && secondField){
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            secondField = true;
+        });
+        if(!$('#childcheck').is(':checked')) {
+            $rows= $('table.table tbody tr'); $rows.show();
+        }
+    });
+
+    $('#ordervalue').change(function(){
+        var $input = $(this);
+        $('table tr').each(function(){
+            var order = $(this).find('td').eq(13).text();
+            if(order.length){
+                if(order==$input.val()){
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            }
+        });
+        if($input.val()=="all") {
+            $rows= $('table.table tbody tr'); $rows.show();
+        }
+    });
+
 
     $('.filterable .filters input').keyup(function(e){
         /* Ignore tab key */

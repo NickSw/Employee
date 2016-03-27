@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -91,6 +92,39 @@
 </div>
 <!--Модальное окно выбора экспортируемой таблицы-->
 
+<div class="modal fade" id="modalImport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabelImport">Выберите таблицу</h4>
+            </div>
+            <div class="modal-body form-horizontal">
+                <form:form modelAttribute="fileBean" cssclass="importForm" method="post" action="" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <select class="form-control" id="#importSelect">
+                                <option value="default">Выберите таблицу</option>
+                                <option value="employee">Сотрудники</option>
+                                <option value="ordertype">Типы приказов</option>
+                                <option value="workplace">Место работы</option>
+                                <option value="movement">Приказы по сотрудникам</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6"><form:input path="fileData" id="browseImport" type="file" value="Выберите файл" data-filename-placement="inside"/></div>
+                    </div>
+                </form:form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <a class="btn btn-default modalSubmit">Импорт</a>
+            </div>
+        </div>
+    </div>
+</div><!--Модальное окно выбора импортируемой таблицы-->
+
 <div id="st-container" class="st-container">
     <div class="st-pusher">
         <nav class="st-menu st-effect-8" id="menu-8">
@@ -102,7 +136,7 @@
                 <li><a class="icon icon-data" href="/getAllMovements">Приказы по сотрудникам</a></li>
                 <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив данных сотрудникам</a></li>
                 <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив приказов по сотрудникам</a></li>
-                <li><a class="icon icon-pen" href="/upload">Импорт данных из MS Excel</a></li>
+                <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalImport">Импорт данных из MS Excel</a></li>
                 <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalExport">Экспорт данных в MS Excel</a></li>
                 <li><a class="icon icon-study" href="#">Помощь</a></li>
                 <li><a class="icon icon-lock" href="#">Закончить редактир.</a></li>
@@ -135,9 +169,22 @@
                                 <tr class="filters">
                                     <th><input type="text" class="form-control" placeholder="ФИО" disabled></th>
                                     <th>Телефон</th>
-                                    <th>Адрес</th>
-                                    <th>ВУЗ</th>
-                                    <th>Специальность</th>
+                                    <th>Почта</th>
+                                    <th><input type="text" class="form-control" placeholder="Должность 1" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Должность 2" disabled></th>
+                                    <th>
+                                        <div class="row" id="workplacepicker">
+                                            <div class="col-sm-12">
+                                                <select class="input form-control" id="workplacevalue">
+                                                    <option value="all">Все</option>
+                                                    <c:forEach items="${model.workPlaceList}" var="wp">
+                                                        <option value="${wp.place}"><c:out value="${wp.place}"/></option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="workplace-name" id="workplacename">Где работает</div>
+                                    </th>
                                     <th>
                                         <div class="row" id="datepicker">
                                             <div class="col-sm-12">
@@ -160,24 +207,23 @@
                                         </div>
                                         <div class="birth-name" id="datename">Дата рождения</div>
                                     </th>
-                                    <th>Идент. код</th>
-                                    <th>Паспорт</th>
-                                    <th><input type="text" class="form-control" placeholder="Должность 1" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="Должность 2" disabled></th>
-                                    <th>Почта</th>
                                     <th>
-                                        <div class="row" id="workplacepicker">
+                                        <div class="row" id="childpicker">
                                             <div class="col-sm-12">
-                                                <select class="input form-control" id="workplacevalue">
-                                                    <option value="all">Все</option>
-                                                    <c:forEach items="${model.workPlaceList}" var="wp">
-                                                        <option value="${wp.place}"><c:out value="${wp.place}"/></option>
-                                                    </c:forEach>
-                                                </select>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id="childcheck"> Есть дети
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="workplace-name" id="workplacename">Где работает</div>
+                                        <div class="child-name" id="childname">Дети до 16 лет</div>
                                     </th>
+                                    <th>Адрес</th>
+                                    <th>ВУЗ</th>
+                                    <th>Специальность</th>
+                                    <th>Идент. код</th>
+                                    <th>Паспорт</th>
                                     <th>
                                         <div class="row" id="orderpicker">
                                             <div class="col-sm-12">
@@ -191,18 +237,6 @@
                                         </div>
                                         <div class="order-name" id="ordername">Тип оформления</div>
                                     </th>
-                                    <th>
-                                        <div class="row" id="childpicker">
-                                            <div class="col-sm-12">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id="childcheck"> Есть дети
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="child-name" id="childname">Дети до 16 лет</div>
-                                    </th><!--Не пустое-->
                                     <th>Дата зачисления</th>
                                     <th>Приказ о зачислении</th>
                                     <th>Дата приказа о зачисл.</th>
@@ -218,22 +252,21 @@
                                             <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="/deleteEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
                                             <p data-placement="top" data-toggle="tooltip" title="Перенести в архив" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" href="/archiveEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-floppy-disk"></span></a></p>
                                             <p data-placement="top" data-toggle="tooltip" title="Просмотреть" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Get" data-toggle="modal" data-target="#getEmployee" href="/getEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-user"></span></a></p>
-
                                             <c:out value="${emp.name}"/>
                                         </td>
                                         <td><c:out value="${emp.phone}"/></td>
+                                        <td><c:out value="${emp.mail}"/></td>
+                                        <td><c:out value="${emp.position1}"/></td>
+                                        <td><c:out value="${emp.position2}"/></td>
+                                        <td><c:out value="${emp.workplace}"/></td>
+                                        <td><c:out value="${emp.birthday}"/></td>
+                                        <td><c:out value="${emp.children}"/></td>
                                         <td><c:out value="${emp.address}"/></td>
                                         <td><c:out value="${emp.study}"/></td>
                                         <td><c:out value="${emp.speciality}"/></td>
-                                        <td><c:out value="${emp.birthday}"/></td>
                                         <td><c:out value="${emp.code}"/></td>
                                         <td><c:out value="${emp.passport}"/></td>
-                                        <td><c:out value="${emp.position1}"/></td>
-                                        <td><c:out value="${emp.position2}"/></td>
-                                        <td><c:out value="${emp.mail}"/></td>
-                                        <td><c:out value="${emp.workplace}"/></td>
                                         <td><c:out value="${emp.decortype}"/></td>
-                                        <td><c:out value="${emp.children}"/></td>
                                         <td><c:out value="${emp.enrolldate}"/></td>
                                         <td><c:out value="${emp.enrollorder}"/></td>
                                         <td><c:out value="${emp.enrollorderdate}"/></td>
@@ -273,6 +306,8 @@
 <script src="/resources/js/triggers.js"></script>
 <!--Dropdown Export table js-->
 <script src="/resources/js/dropdownExport.js"></script>
+<!--Import table js-->
+<script src="/resources/js/importTable.js"></script>
 
 <!--Other Scripts-->
 <script type="text/javascript">

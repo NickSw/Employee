@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -44,7 +46,10 @@ public class EmployeeArchiveClearServiceImpl implements EmployeeArchiveClearServ
         EmployeeArchiveFillManager.fillReport(worksheet, startRowIndex, startColIndex, getDatasource());
 
         // 6. Set the response properties
-        String fileName = "Arhiv_Sotrudnikov.xls";
+        SimpleDateFormat formattedDate = new SimpleDateFormat("yyyy-MM-dd");
+        Date now = new Date();
+        String strDate = formattedDate.format(now);
+        String fileName = strDate + "_Arhiv_Sotrudnikov.xls" ;
         response.setHeader("Content-Disposition", "inline; filename=" + fileName);
         // Make sure to set the correct content type
         response.setContentType("application/vnd.ms-excel");

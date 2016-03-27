@@ -2,7 +2,7 @@
  * Выпадающий список экспорта -> переход по ссылке
  * */
 $(".modal-body select").change(function () {
-    console.log($('.modal-body select').find(":selected").val());
+    //console.log($('.modal-body select').find(":selected").val());
     var selectet_val = $('.modal-body select').find(":selected").val();
 
     if (selectet_val == "employee"){

@@ -34,7 +34,6 @@ public class EmployeeArchiveLayouter {
         worksheet.setColumnWidth(16, 5000);
         worksheet.setColumnWidth(17, 5000);
         worksheet.setColumnWidth(18, 5000);
-        worksheet.setColumnWidth(19, 5000);
 
         // Build the title and date headers
         buildTitle(worksheet, startRowIndex, startColIndex);
@@ -99,51 +98,51 @@ public class EmployeeArchiveLayouter {
         cell2.setCellStyle(headerCellStyle);
 
         HSSFCell cell3 = rowHeader.createCell(startColIndex+2);
-        cell3.setCellValue("Адресс");
+        cell3.setCellValue("Почта");
         cell3.setCellStyle(headerCellStyle);
 
         HSSFCell cell4 = rowHeader.createCell(startColIndex+3);
-        cell4.setCellValue("ВУЗ");
+        cell4.setCellValue("Должность 1");
         cell4.setCellStyle(headerCellStyle);
 
         HSSFCell cell5 = rowHeader.createCell(startColIndex+4);
-        cell5.setCellValue("Специальность");
+        cell5.setCellValue("Должность 2");
         cell5.setCellStyle(headerCellStyle);
 
         HSSFCell cell6 = rowHeader.createCell(startColIndex+5);
-        cell6.setCellValue("Дата Рождения");
+        cell6.setCellValue("Где Работает");
         cell6.setCellStyle(headerCellStyle);
 
         HSSFCell cell7 = rowHeader.createCell(startColIndex+6);
-        cell7.setCellValue("Идент. код");
+        cell7.setCellValue("Дата Рождения");
         cell7.setCellStyle(headerCellStyle);
 
         HSSFCell cell8 = rowHeader.createCell(startColIndex+7);
-        cell8.setCellValue("Паспорт");
+        cell8.setCellValue("Дети до 16 лет");
         cell8.setCellStyle(headerCellStyle);
 
         HSSFCell cell9 = rowHeader.createCell(startColIndex+8);
-        cell9.setCellValue("Должность 1");
+        cell9.setCellValue("Адрес");
         cell9.setCellStyle(headerCellStyle);
 
         HSSFCell cell10 = rowHeader.createCell(startColIndex+9);
-        cell10.setCellValue("Должность 2");
+        cell10.setCellValue("ВУЗ");
         cell10.setCellStyle(headerCellStyle);
 
         HSSFCell cell11 = rowHeader.createCell(startColIndex+10);
-        cell11.setCellValue("Почта");
+        cell11.setCellValue("Специальность");
         cell11.setCellStyle(headerCellStyle);
 
         HSSFCell cell12 = rowHeader.createCell(startColIndex+11);
-        cell12.setCellValue("Где Работает");
+        cell12.setCellValue("Идент. код");
         cell12.setCellStyle(headerCellStyle);
 
         HSSFCell cell13 = rowHeader.createCell(startColIndex+12);
-        cell13.setCellValue("Тип Оформления");
+        cell13.setCellValue("Паспорт");
         cell13.setCellStyle(headerCellStyle);
 
         HSSFCell cell14 = rowHeader.createCell(startColIndex+13);
-        cell14.setCellValue("Дети до 16 лет");
+        cell14.setCellValue("Тип Оформления");
         cell14.setCellStyle(headerCellStyle);
 
         HSSFCell cell15 = rowHeader.createCell(startColIndex+14);
