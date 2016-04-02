@@ -42,6 +42,8 @@
         <input type="password" class="form-control" id="inputPassword" name='password' placeholder="Пароль">
       </div>
     </div>
+    <input style="display: none;" class="sub" name="submit" type="submit"
+           value="submit"/>
     <input type="hidden" name="${_csrf.parameterName}"
            value="${_csrf.token}" />
   </form>
@@ -57,10 +59,17 @@
 <!--Bootstrap 3.3.6 js-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+<!--TODO:Refactor script-->
 <script>
   function formSubmit() {
     document.getElementById("loginForm").submit();
   }
+  $(function () {
+    $('body').on('click', '.modalSubmit', function (e) {
+      $('.modal-body form .sub').click();
+      $('#myModal').modal('hide');
+    });
+  });
 </script>
 </body>
 </html>
