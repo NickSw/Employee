@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
+@RequestMapping("/")
 public class HelloController {
 
     @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)

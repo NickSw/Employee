@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@page session="true"%>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -30,6 +31,19 @@
 
 </head>
 <body>
+
+<c:url value="/j_spring_security_logout" var="logoutUrl" />
+<form action="${logoutUrl}" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}" />
+</form><!--Скрытая форма выхода из сессии-->
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        </div>
+    </div>
+</div><!--Модальное окно логина-->
 
 <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -130,7 +144,11 @@
         <nav class="st-menu st-effect-8" id="menu-8">
             <h2 class="icon icon-stack">Меню</h2>
             <ul>
-                <li><a class="icon icon-user" href="#">Начать редактир.</a></li>
+                <c:if test="${pageContext.request.userPrincipal.name == null}">
+                <li>
+                    <a class="icon icon-user" href="/login"  data-toggle="modal" data-target="#login">Начать редактир.</a>
+                </li>
+                </c:if>
                 <li><a class="icon icon-data" href="/getAllOrderTypes">Типы приказов</a></li>
                 <li><a class="icon icon-data" href="/getAllWorkPlaces">Место работы</a></li>
                 <li><a class="icon icon-data" href="/getAllMovements">Приказы по сотрудникам</a></li>
@@ -139,7 +157,11 @@
                 <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalImport">Импорт данных из MS Excel</a></li>
                 <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalExport">Экспорт данных в MS Excel</a></li>
                 <li><a class="icon icon-study" href="#">Помощь</a></li>
-                <li><a class="icon icon-lock" href="#">Закончить редактир.</a></li>
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                <li>
+                    <a class="icon icon-lock" href="javascript:formSubmit()">Закончить редактир.</a>
+                </li>
+                </c:if>
             </ul>
         </nav>
 
@@ -149,7 +171,14 @@
                 <div class="codrops-top clearfix">
                     <div id="st-trigger-effects">
                         <button data-effect="st-effect-8" class="btn-menu" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
-                        <div class="table-name"><h3>Сотрудники</h3></div>
+                        <div class="table-name">
+                            <h3>
+                                Сотрудники
+                                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                                    (Редактирование)
+                                </c:if>
+                            </h3>
+                        </div>
                     </div>
                 </div>
 
@@ -329,6 +358,11 @@
         * */
         $('.dataTables_empty').html("Нет данных в таблице");
     });
+
+    /**Отправка формы выхода из сессии по нажатию кнопки из меню*/
+    function formSubmit() {
+        document.getElementById("logoutForm").submit();
+    }
 </script>
 </body>
 </html>
