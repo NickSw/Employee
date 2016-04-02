@@ -31,7 +31,6 @@
 		<property name="maxUploadSize" value="10000000"/>
 	</bean>
 
-
 	<!-- DataSource -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">

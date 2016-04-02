@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 @Table(name = "Employees")
@@ -76,6 +77,35 @@ public class Employee implements Serializable {
     @Column
     private String notes;
 
+    private String birthdayString;
+
+    private String enrolldateString;
+
+    private String enrollorderdateString;
+
+    public String getBirthdayString() {
+        return birthdayString;
+    }
+
+    public void setBirthdayString(String birthdayString) {
+        this.birthdayString = birthdayString;
+    }
+
+    public String getEnrolldateString() {
+        return enrolldateString;
+    }
+
+    public void setEnrolldateString(String enrolldateString) {
+        this.enrolldateString = enrolldateString;
+    }
+
+    public String getEnrollorderdateString() {
+        return enrollorderdateString;
+    }
+
+    public void setEnrollorderdateString(String enrollorderdateString) {
+        this.enrollorderdateString = enrollorderdateString;
+    }
 
     public Employee() {
     }

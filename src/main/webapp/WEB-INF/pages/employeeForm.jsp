@@ -70,11 +70,10 @@
         </div>
 
         <div class="form-group">
-            <div class="control-label col-xs-3"> <form:label path="birthday" >Дата Рождения *</form:label> </div>
+            <div class="control-label col-xs-3"> <form:label path="birthdayString" >Дата Рождения</form:label> </div>
             <div class="col-xs-6">
-                <form:input cssClass="form-control" path="birthday" value="${model.employee.birthday}"
-                            required="required" pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"
-                            data-error="Введите дату в формате ГГГ-ММ-ДД"/>
+                <form:input cssClass="form-control" path="birthdayString" value="${model.employee.birthday}"
+                            pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"/>
                 <span class="help-block">ГГГГ-ММ-ДД</span>
             </div>
         </div>
@@ -108,9 +107,9 @@
         </div>
 
         <div class="form-group">
-            <div class="control-label col-xs-3"> <form:label path="code" >Идент. код *</form:label> </div>
+            <div class="control-label col-xs-3"> <form:label path="code" >Идент. код</form:label> </div>
             <div class="col-xs-6">
-                <form:input cssClass="form-control" path="code" value="${model.employee.code}" required="required"/>
+                <form:input cssClass="form-control" path="code" value="${model.employee.code}"/>
             </div>
         </div>
 
@@ -129,10 +128,10 @@
         </div>
 
         <div class="form-group">
-            <div class="control-label col-xs-3"> <form:label path="enrolldate" >Дата зачисления *</form:label> </div>
+            <div class="control-label col-xs-3"> <form:label path="enrolldate" >Дата зачисления</form:label> </div>
             <div class="col-xs-6">
-                <form:input cssClass="form-control" path="enrolldate" value="${model.employee.enrolldate}"
-                            required="required" pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"/>
+                <form:input cssClass="form-control" path="enrolldateString" value="${model.employee.enrolldate}"
+                            pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"/>
                 <span class="help-block">ГГГГ-ММ-ДД</span>
             </div>
         </div>
@@ -145,10 +144,10 @@
         </div>
 
         <div class="form-group">
-            <div class="control-label col-xs-3"> <form:label path="enrollorderdate" >Дата приказа о зачисл. *</form:label> </div>
+            <div class="control-label col-xs-3"> <form:label path="enrollorderdate" >Дата приказа о зачисл.</form:label> </div>
             <div class="col-xs-6">
-                <form:input cssClass="form-control" path="enrollorderdate" value="${model.employee.enrollorderdate}"
-                            required="required" pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"/>
+                <form:input cssClass="form-control" path="enrollorderdateString" value="${model.employee.enrollorderdate}"
+                            pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$"/>
                 <span class="help-block">ГГГГ-ММ-ДД</span>
             </div>
         </div>

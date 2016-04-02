@@ -57,7 +57,11 @@ public class EmployeeController {
 
     @RequestMapping("saveEmployee")
     public ModelAndView saveEmployee(@ModelAttribute Employee employee) {
-    	logger.info("Saving the Employee. Data : "+employee);
+    	logger.info("Saving the Employee. Data : " + employee);
+        //allow blank date
+        if (employee.getBirthdayString() == "") employee.setBirthday(null);
+        if (employee.getEnrolldateString() =="") employee.setEnrolldate(null);
+        if (employee.getEnrollorderdateString() == "") employee.setEnrolldateString(null);
         if(employee.getId() == 0){ // if employee id is 0 then creating the employee other updating the employee
             employeeService.createEmployee(employee);
         } else {

@@ -4,9 +4,12 @@ import com.server.entity.MovementArchive;
 import com.server.entity.OrderType;
 import com.server.service.MovementArchiveService;
 import com.server.service.OrderTypeService;
+import com.server.util.FileBean;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,7 +41,7 @@ public class MovementArchiveController {
     }
 
     @RequestMapping(value = {"getAllMovementsArchive", "/"})
-    public ModelAndView getAllMovementsArchive() {
+    public ModelAndView getAllMovementsArchive(@ModelAttribute("fileBean") FileBean fileBean, BindingResult result) {
         logger.info("Getting the all MovementsArchive.");
         List<MovementArchive> movementArchiveList = movementArchiveService.getAllMovementsArchive();
         List<OrderType> orderTypeList = orderTypeService.getAllOrderTypes();
