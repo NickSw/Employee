@@ -187,7 +187,9 @@
                 <div class="row">
                     <div class="panel panel-primary filterable">
                         <div class="panel-heading">
-                            <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editEmployee" href="/createEmployee"><span class="fa fa-user-plus"></span> Добавить сотрудника</a>
+                            <c:if test="${pageContext.request.userPrincipal.name != null}">
+                                <a class="btn btn-default btn-xs" data-title="Create" data-toggle="modal" data-target="#editEmployee" href="/createEmployee"><span class="fa fa-user-plus"></span> Добавить сотрудника</a>
+                            </c:if>
                             <div class="pull-right">
                                 <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span>Фильтр</button>
                             </div>
@@ -277,9 +279,11 @@
                                 <c:forEach items="${model.employeeList}" var="emp">
                                     <tr>
                                         <td>
+                                            <c:if test="${pageContext.request.userPrincipal.name != null}">
                                             <p data-placement="top" data-toggle="tooltip" title="Изменить" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editEmployee" href="/editEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-pencil"></span></a></p>
                                             <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="/deleteEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
                                             <p data-placement="top" data-toggle="tooltip" title="Перенести в архив" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" href="/archiveEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-floppy-disk"></span></a></p>
+                                            </c:if>
                                             <p data-placement="top" data-toggle="tooltip" title="Просмотреть" class="btn-disp"><a class="btn btn-opt btn-primary btn-xs" data-title="Get" data-toggle="modal" data-target="#getEmployee" href="/getEmployee?id=<c:out value='${emp.id}'/>"><span class="glyphicon glyphicon-user"></span></a></p>
                                             <c:out value="${emp.name}"/>
                                         </td>

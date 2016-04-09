@@ -21,15 +21,11 @@
 </div>
 <div class="modal-body">
 
-  <c:if test="${not empty error}">
-    <div class="error">${error}</div>
-  </c:if>
-  <c:if test="${not empty msg}">
-    <div class="msg">${msg}</div>
-  </c:if>
-
   <form class="form-horizontal" name='loginForm'
         action="<c:url value='/j_spring_security_check' />" method='POST'>
+    <div class="form-group has-error" id="result">
+      <label for="inputEmail" class="col-sm-6 control-label">${error}</label>
+    </div>
     <div class="form-group">
       <label for="inputEmail" class="col-sm-2 control-label">Пользователь</label>
       <div class="col-sm-10">
@@ -50,7 +46,7 @@
 
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+  <a type="button" class="btn btn-default" data-dismiss="modal" href="/getAllEmployees">Назад</a>
   <a class="btn btn-default modalSubmit" href="javascript:formSubmit()">Вход</a>
 </div>
 
@@ -71,5 +67,22 @@
     });
   });
 </script>
+<!--  Ajax script
+<script type="text/javascript">
+  function crunchifyAjax() {
+    $.ajax({
+      url : 'ajaxtest.html',
+      success : function(data) {
+        $('#result').html(data);
+      }
+    });
+  }
+</script>
+
+<script type="text/javascript">
+  var intervalId = 0;
+  intervalId = setInterval(crunchifyAjax, 3000);
+</script>
+-->
 </body>
 </html>

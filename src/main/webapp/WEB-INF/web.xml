@@ -1,36 +1,41 @@
 <web-app version="2.4"
     xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
     http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-    <display-name>Spring4 MVC Hibernate4 Application</display-name>
-    
-    <welcome-file-list>
-        <welcome-file>/getAllEmployees</welcome-file>
-    </welcome-file-list>
 
-    <!-- Spring MVC -->
-    <servlet>
-        <servlet-name>mvc-dispatcher</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>mvc-dispatcher</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
+    <!-- Описание корневого контейнера, разделяемого всеми сервлетами и фильтрами -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/mvc-dispatcher-servlet.xml
+            /WEB-INF/security.xml
+        </param-value>
+    </context-param>
 
+    <!-- Создаёт контейнер Spring, разделяемый всеми сервлетами и фильтрами -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            /WEB-INF/spring-security.xml
-        </param-value>
-    </context-param>
+    <!-- Базовый сервлет, обрабатывает все запросы к приложению -->
+    <servlet>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!--  <init-param>
+          <param-name>contextConfigLocation</param-name>
+          <param-value>
+              /WEB-INF/spring/mvc-dispatcher-servlet.xml
+          </param-value>
+      </init-param>-->
+      <load-on-startup>1</load-on-startup>
+  </servlet>
 
-    <!--encoding filter-->
+  <servlet-mapping>
+      <servlet-name>mvc-dispatcher</servlet-name>
+      <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <!-- Фильтр для перекодировки в utf8 -->
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -49,7 +54,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- Spring Security -->
+    <!-- Spring Security цепочка -->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>

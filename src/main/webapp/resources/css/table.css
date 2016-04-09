@@ -102,6 +102,9 @@ th {
 .panel-heading{
     background: #388a5a !important;
     border-color: #388a5a !important;
+    position: relative;
+    z-index: 1;
+    min-height: 5%;
 }
 
 .panel{
@@ -116,7 +119,7 @@ th {
     width: 100%;
     overflow: auto;
     bottom: 0;
-    top: 36px;
+    top: 45px;
     left: 0;
 }
 
