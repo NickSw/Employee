@@ -19,15 +19,18 @@ import java.util.Set;
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private static final Logger logger = Logger.getLogger(UserDetailsServiceImpl.class);
 
     @Autowired
     private AdminDAO adminDAO;
 
+    /**
+     * username передается в этот метод из скрипта js
+     * username - admin
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Admin admin = adminDAO.find(username);
+        Admin admin = adminDAO.getCredentials();
 
         // указываем роли для этого пользователя
         Set<GrantedAuthority> roles = new HashSet();

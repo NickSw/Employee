@@ -45,6 +45,13 @@
     </div>
 </div><!--Модальное окно логина-->
 
+<div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        </div>
+    </div>
+</div><!--Модальное окно замены пароля-->
+
 <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -361,12 +368,19 @@
         * Замена англ текста в DataTables
         * */
         $('.dataTables_empty').html("Нет данных в таблице");
+
     });
 
     /**Отправка формы выхода из сессии по нажатию кнопки из меню*/
     function formSubmit() {
         document.getElementById("logoutForm").submit();
     }
+
+    $('body').on('click', '.changePassword', function (e) {
+        $('#close').click();
+        $('#changePassword').modal ({remote : '/changePassword'});
+    });
+
 </script>
 </body>
 </html>

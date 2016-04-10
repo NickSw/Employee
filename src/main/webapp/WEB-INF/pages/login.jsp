@@ -11,9 +11,13 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
   <!--Table css-->
   <link rel="stylesheet" type="text/css" href="/resources/css/table.css"/>
+  <!--Login css-->
+  <link rel="stylesheet" type="text/css" href="/resources/css/login.css"/>
 
 </head>
 <body>
+
+
 
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -26,7 +30,7 @@
     <div class="form-group has-error" id="result">
       <label for="inputEmail" class="col-sm-6 control-label">${error}</label>
     </div>
-    <div class="form-group">
+    <div class="form-group username">
       <label for="inputEmail" class="col-sm-2 control-label">Пользователь</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="inputEmail" name='username' placeholder="Имя Пользователя">
@@ -38,7 +42,7 @@
         <input type="password" class="form-control" id="inputPassword" name='password' placeholder="Пароль">
       </div>
     </div>
-    <input style="display: none;" class="sub" name="submit" type="submit"
+    <input class="sub" name="submit" type="submit"
            value="submit"/>
     <input type="hidden" name="${_csrf.parameterName}"
            value="${_csrf.token}" />
@@ -46,7 +50,8 @@
 
 </div>
 <div class="modal-footer">
-  <a type="button" class="btn btn-default" data-dismiss="modal" href="/getAllEmployees">Назад</a>
+  <a class="changePassword" style="float: left;"  href="#">Замена пароля</a>
+  <button id="close" type="button" class="btn btn-default" data-dismiss="modal" href="/getAllEmployees">Назад</button>
   <a class="btn btn-default modalSubmit" href="javascript:formSubmit()">Вход</a>
 </div>
 
@@ -60,12 +65,14 @@
   function formSubmit() {
     document.getElementById("loginForm").submit();
   }
+
   $(function () {
     $('body').on('click', '.modalSubmit', function (e) {
+      $('#inputEmail').val("admin");
       $('.modal-body form .sub').click();
-      $('#myModal').modal('hide');
     });
   });
+
 </script>
 <!--  Ajax script
 <script type="text/javascript">
