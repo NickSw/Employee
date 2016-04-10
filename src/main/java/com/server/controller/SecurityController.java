@@ -18,12 +18,16 @@ public class SecurityController {
     AdminService adminService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
+    public ModelAndView loginForm(@RequestParam(value = "error", required = false) String error) {
         ModelAndView model = new ModelAndView();
         if (error != null) {
             model.addObject("error", "Неверное имя пользователя или пароль!");
         }
+        Admin admin = adminService.getCredentials();
+        model.addObject(admin);
+
         model.setViewName("login");
+        //return new ModelAndView("login", "adminObject", admin);
         return model;
     }
 

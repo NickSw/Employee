@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page session="true"%>
 <html>
 <head>
@@ -17,7 +18,9 @@
 </head>
 <body>
 
-
+<form:form role="form" modelAttribute="admin" method="post" action="saveNewPassword">
+  <form:hidden path="name" cssClass="pass" value="${admin.password}"/>
+</form:form>
 
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -25,10 +28,12 @@
 </div>
 <div class="modal-body">
 
-  <form class="form-horizontal" name='loginForm'
+  <form class="form-horizontal" name='loginForm' id="loginForm"
         action="<c:url value='/j_spring_security_check' />" method='POST'>
+
     <div class="form-group has-error" id="result">
-      <label for="inputEmail" class="col-sm-6 control-label">${error}</label>
+      <label for="inputEmail" class="col-sm-6 control-label"></label>
+
     </div>
     <div class="form-group username">
       <label for="inputEmail" class="col-sm-2 control-label">Пользователь</label>
@@ -44,15 +49,15 @@
     </div>
     <input class="sub" name="submit" type="submit"
            value="submit"/>
-    <input type="hidden" name="${_csrf.parameterName}"
-           value="${_csrf.token}" />
+    <!--<input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}" /> -->
   </form>
 
 </div>
 <div class="modal-footer">
   <a class="changePassword" style="float: left;"  href="#">Замена пароля</a>
   <button id="close" type="button" class="btn btn-default" data-dismiss="modal" href="/getAllEmployees">Назад</button>
-  <a class="btn btn-default modalSubmit" href="javascript:formSubmit()">Вход</a>
+  <a class="btn btn-default modalSubmit1">Вход</a>
 </div>
 
 <!--Jquery 1.11.1-->
@@ -62,16 +67,27 @@
 
 <!--TODO:Refactor script-->
 <script>
-  function formSubmit() {
-    document.getElementById("loginForm").submit();
-  }
+
 
   $(function () {
-    $('body').on('click', '.modalSubmit', function (e) {
+    $('body').on('click', '.modalSubmit1', function (e) {
       $('#inputEmail').val("admin");
-      $('.modal-body form .sub').click();
+      var passfromDb = $('.pass').val();
+      $('.pass').val("");
+      var passField = $('#inputPassword').val();
+      if (passfromDb != passField){
+        e.preventDefault();
+        $('#result label').html("Неверный пароль");
+      }
+      if (passfromDb == passField){
+        $('.modal-body form .sub').click();
+        //function formSubmit() {
+        document.getElementById("loginForm").submit();
+        //}
+      }
     });
   });
+
 
 </script>
 <!--  Ajax script

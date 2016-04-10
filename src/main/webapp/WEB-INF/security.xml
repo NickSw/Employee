@@ -14,8 +14,8 @@
                 username-parameter="username"
                 password-parameter="password" />
         <logout logout-success-url="/getAllEmployees"  />
-        <!-- включить csrf защиту -->
-        <csrf/>
+        <!-- включить csrf защиту
+        <csrf/>-->
     </http>
 
     <beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
@@ -31,7 +31,9 @@
     </beans:bean>
 
     <authentication-manager>
-        <authentication-provider user-service-ref="userDetailsService"/>
+        <authentication-provider user-service-ref="userDetailsService">
+        <!--<password-encoder hash="bcrypt" />-->
+        </authentication-provider>
     </authentication-manager>
 
 </beans:beans>
