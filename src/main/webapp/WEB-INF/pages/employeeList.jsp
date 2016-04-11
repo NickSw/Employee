@@ -34,8 +34,6 @@
 
 <c:url value="/j_spring_security_logout" var="logoutUrl" />
 <form action="${logoutUrl}" method="post" id="logoutForm">
-    <input type="hidden" name="${_csrf.parameterName}"
-           value="${_csrf.token}" />
 </form><!--Скрытая форма выхода из сессии-->
 
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -177,7 +175,7 @@
                 <!-- Верхняя навигация -->
                 <div class="codrops-top clearfix">
                     <div id="st-trigger-effects">
-                        <button data-effect="st-effect-8" class="btn-menu" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
+                        <button data-effect="st-effect-8" class="btn-menu" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus"></span>&nbsp;Меню</button>
                         <div class="table-name">
                             <h3>
                                 Сотрудники
@@ -348,6 +346,8 @@
 <script src="/resources/js/dropdownExport.js"></script>
 <!--Import table js-->
 <script src="/resources/js/importTable.js"></script>
+<!--Page security js-->
+<script src="/resources/js/security.js"></script>
 
 <!--Other Scripts-->
 <script type="text/javascript">
@@ -370,17 +370,6 @@
         $('.dataTables_empty').html("Нет данных в таблице");
 
     });
-
-    /**Отправка формы выхода из сессии по нажатию кнопки из меню*/
-    function formSubmit() {
-        document.getElementById("logoutForm").submit();
-    }
-
-    $('body').on('click', '.changePassword', function (e) {
-        $('#close').click();
-        $('#changePassword').modal ({remote : '/changePassword'});
-    });
-
 </script>
 </body>
 </html>

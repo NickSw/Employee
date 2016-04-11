@@ -18,47 +18,24 @@ public class SecurityController {
     AdminService adminService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView loginForm(@RequestParam(value = "error", required = false) String error) {
+    public ModelAndView loginForm() {
         ModelAndView model = new ModelAndView();
-        if (error != null) {
-            model.addObject("error", "Неверное имя пользователя или пароль!");
-        }
         Admin admin = adminService.getCredentials();
         model.addObject(admin);
-
         model.setViewName("login");
-        //return new ModelAndView("login", "adminObject", admin);
         return model;
     }
 
-    //сначала дадим вьюху на эдит как в воркплейсе
     @RequestMapping("changePassword")
     public ModelAndView changePassword(@ModelAttribute Admin admin) {
         admin = adminService.getCredentials();
         return new ModelAndView("changePasswordForm", "adminObject", admin);
     }
 
-    //потом через сущность поменяю пароль
-     @RequestMapping("saveNewPassword")
+    @RequestMapping("saveNewPassword")
     public ModelAndView saveWorkPlace(@ModelAttribute Admin admin) {
         adminService.updateCredentials(admin);
         return new ModelAndView("redirect:getAllEmployees");
     }
-
-
-    /*
-    @RequestMapping("/changePassword")
-    public void changePassword(String password) {
-        adminService.changePassword(password);
-    }
-   /* @RequestMapping(value = "/ajaxtest", method = RequestMethod.GET)
-    public @ResponseBody
-    String getTime() {
-        Random rand = new Random();
-        float r = rand.nextFloat() * 100;
-        String result = "<br>Next Random # is <b>" + r + "</b>. Generated on <b>" + new Date().toString() + "</b>";
-        System.out.println("Debug Message from CrunchifySpringAjaxJQuery Controller.." + new Date().toString());
-        return result;
-    }*/
 
 }

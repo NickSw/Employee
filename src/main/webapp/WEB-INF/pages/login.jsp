@@ -49,8 +49,7 @@
     </div>
     <input class="sub" name="submit" type="submit"
            value="submit"/>
-    <!--<input type="hidden" name="${_csrf.parameterName}"
-           value="${_csrf.token}" /> -->
+
   </form>
 
 </div>
@@ -83,29 +82,11 @@
         $('.modal-body form .sub').click();
         //function formSubmit() {
         document.getElementById("loginForm").submit();
-        //}
       }
     });
   });
 
 
 </script>
-<!--  Ajax script
-<script type="text/javascript">
-  function crunchifyAjax() {
-    $.ajax({
-      url : 'ajaxtest.html',
-      success : function(data) {
-        $('#result').html(data);
-      }
-    });
-  }
-</script>
-
-<script type="text/javascript">
-  var intervalId = 0;
-  intervalId = setInterval(crunchifyAjax, 3000);
-</script>
--->
 </body>
 </html>
