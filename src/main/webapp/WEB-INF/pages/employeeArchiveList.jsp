@@ -158,7 +158,7 @@
           <div id="st-trigger-effects">
             <button data-effect="st-effect-8" class="btn-menu" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
             <div class="table-name"><h3>Архив данных сотрудникам</h3></div>
-            <div class="btn-home"><a href="/getAllEmployees"><button class="btn-menu" data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;Возврат</button></a></div>
+            <div class="btn-home"><a href="/getAllEmployees"><button class="btn-menu" data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;База сотрудников</button></a></div>
           </div>
         </div>
 
@@ -167,7 +167,7 @@
         <div class="row">
           <div class="panel panel-primary filterable">
             <div class="panel-heading">
-              <a class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modalClear" ><span class="fa fa-file-archive-o"></span> Очистить архив</a>
+              <a class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modalClear" ><span class="fa fa-file-archive-o"></span>Очистка и экспорт архива</a>
               <div class="pull-right">
                 <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span>Фильтр</button>
               </div>
