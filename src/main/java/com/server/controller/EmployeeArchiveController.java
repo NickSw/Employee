@@ -19,6 +19,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Контроллер для талблицы Архив сотрудников
+ * Местоды:
+ * Извлечение всех архивных сотрудников из таблицы и помещение на страницу
+ * Удаление архивного сотрудника
+ */
 @Controller
 @RequestMapping("/")
 public class EmployeeArchiveController {
@@ -35,17 +41,19 @@ public class EmployeeArchiveController {
     @Autowired
     private WorkPlaceService workPlaceService;
 
-    @RequestMapping("deleteEmployeeArchive")
-    public ModelAndView deleteEmployeeArchive(@RequestParam int id) {
-        logger.info("Deleting the EmployeeArchive. Id : " + id);
-        employeeArchiveService.deleteEmployeeArchive(id);
-        return new ModelAndView("redirect:getAllEmployeesArchive");
-    }
-
+    /**
+     * Извлечение всех архивных сотрудников из таблицы
+     * Извлечение мест работы для фильтра
+     * @param fileBean
+     * @param result
+     * @return
+     */
     @RequestMapping(value = {"getAllEmployeesArchive", "/"})
     public ModelAndView getAllEmployeesArchive(@ModelAttribute("fileBean") FileBean fileBean, BindingResult result) {
         logger.info("Getting the all EmployeesArchive.");
+        /**Извлечение архивных сотрудников*/
         List<EmployeeArchive> employeeArchiveList = employeeArchiveService.getAllEmployeesArchive();
+        /**Извлечение всех мест работы для фильтра*/
         List<WorkPlace> workPlaceList = workPlaceService.getAllWorkPlaces();
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("employeeArchiveList", employeeArchiveList);
@@ -53,4 +61,15 @@ public class EmployeeArchiveController {
         return new ModelAndView("employeeArchiveList", "model", model);
     }
 
+    /**
+     * Удаление архивного сотрудника из таблицы
+     * @param id
+     * @return
+     */
+    @RequestMapping("deleteEmployeeArchive")
+    public ModelAndView deleteEmployeeArchive(@RequestParam int id) {
+        logger.info("Deleting the EmployeeArchive. Id : " + id);
+        employeeArchiveService.deleteEmployeeArchive(id);
+        return new ModelAndView("redirect:getAllEmployeesArchive");
+    }
 }

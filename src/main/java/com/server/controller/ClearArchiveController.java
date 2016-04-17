@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Контроллер для экспорта и очистки таблиц Архивов сотрудников и приказов.
+ * Методы:
+ * Экспорт и очистка таблицы архив сотрудников
+ * Экспорт и очистка таблицы архив приказов по сотрудникам
+ */
 @Controller
 @RequestMapping("/clear")
 public class ClearArchiveController {
@@ -19,23 +25,31 @@ public class ClearArchiveController {
     @Autowired
     MovementArchiveClearService movementArchiveClearService;
 
-
     /**
-     * Downloads the report as an Excel format.
-     * <p>
-     * Make sure this method doesn't return any model. Otherwise, you'll get
-     * an "IllegalStateException: getOutputStream() has already been called for this response"
+     * Метод для экспорта и очистки таблицы архив сотрудников
+     * Этот метод не должен возвращать Model. Иначе, будет искочение
+     * "IllegalStateException: getOutputStream() has already been called for this response"
+     * @param response
+     * @param model
+     * @throws ClassNotFoundException
      */
-
     @RequestMapping(value = "/employeeArchive", method = RequestMethod.GET)
     public void clearEmployeeArchive(HttpServletResponse response, Model model) throws ClassNotFoundException {
-        // Delegate to downloadService. Make sure to pass an instance of HttpServletResponse
+        /** Делегирование сервису clearEmployeeArchive. Make sure to pass an instance of HttpServletResponse*/
         employeeArchiveClearService.clearEmployeeArchive(response);
     }
 
+    /**
+     * Метод для экспорта и очистки таблицы архив приказов
+     * Этот метод не должен возвращать Model. Иначе, будет искочение
+     * "IllegalStateException: getOutputStream() has already been called for this response"
+     * @param response
+     * @param model
+     * @throws ClassNotFoundException
+     */
     @RequestMapping(value = "/movementArchive", method = RequestMethod.GET)
     public void clearMovementArchive(HttpServletResponse response, Model model) throws ClassNotFoundException {
-        // Delegate to downloadService. Make sure to pass an instance of HttpServletResponse
+        /** Делегирование сервису clearMovementArchive. Make sure to pass an instance of HttpServletResponse*/
         movementArchiveClearService.clearMovementArchive(response);
     }
 

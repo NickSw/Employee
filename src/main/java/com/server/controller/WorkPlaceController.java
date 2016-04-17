@@ -15,6 +15,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Контроллер для таблицы мест работы
+ * Методы:
+ * Извлечение всех мест работы из таблицы и помещение на страницу
+ * Создание места работы
+ * Редактирование места работы
+ * Удаление места работы
+ * Сохранение места работы
+ */
 @Controller
 @RequestMapping("/")
 public class WorkPlaceController {
@@ -28,12 +37,36 @@ public class WorkPlaceController {
     @Autowired
     private WorkPlaceService workPlaceService;
 
+    /**
+     * Извлечение всех мест работы из таблицы
+     * @param fileBean
+     * @param result
+     * @return
+     */
+    @RequestMapping(value = {"getAllWorkPlaces", "/"})
+    public ModelAndView getAllWorkPlaces(@ModelAttribute("fileBean") FileBean fileBean, BindingResult result) {
+        logger.info("Getting the all WorkPlaces.");
+        List<WorkPlace> workPlaceList = workPlaceService.getAllWorkPlaces();
+        return new ModelAndView("workPlaceList", "workPlaceList", workPlaceList);
+    }
+
+    /**
+     * Создание места работы
+     * @param workPlace
+     * @return
+     */
     @RequestMapping("createWorkPlace")
     public ModelAndView createWorkPlace(@ModelAttribute WorkPlace workPlace) {
         logger.info("Creating WorkPlace. Data: " + workPlace);
         return new ModelAndView("workPlaceForm");
     }
 
+    /**
+     * Редактирование места работы
+     * @param id
+     * @param workPlace
+     * @return
+     */
     @RequestMapping("editWorkPlace")
     public ModelAndView editWorkPlace(@RequestParam int id, @ModelAttribute WorkPlace workPlace) {
         logger.info("Updating the WorkPlace for the Id " + id);
@@ -41,10 +74,19 @@ public class WorkPlaceController {
         return new ModelAndView("workPlaceForm", "workPlaceObject", workPlace);
     }
 
+    /**
+     * Сохранение места работы
+     * @param workPlace
+     * @return
+     */
     @RequestMapping("saveWorkPlace")
     public ModelAndView saveWorkPlace(@ModelAttribute WorkPlace workPlace) {
         logger.info("Saving the WorkPlace. Data : " + workPlace);
-        if(workPlace.getId() == 0){ // if WorkPlace id is 0 then creating the employee other updating the WorkPlace
+        /**
+         * Проверка редактировали места работы или создавали новое
+         * Если workPlace id 0, тогда создаем сотрудника, если нет, то обновляем существующего
+         */
+        if(workPlace.getId() == 0){
             workPlaceService.createWorkPlace(workPlace);
         } else {
             workPlaceService.updateWorkPlace(workPlace);
@@ -52,6 +94,11 @@ public class WorkPlaceController {
         return new ModelAndView("redirect:getAllWorkPlaces");
     }
 
+    /**
+     * Удаление места работы
+     * @param id
+     * @return
+     */
     @RequestMapping("deleteWorkPlace")
     public ModelAndView deleteWorkPlace(@RequestParam int id) {
         logger.info("Deleting the WorkPlace. Id : " + id);
@@ -59,11 +106,5 @@ public class WorkPlaceController {
         return new ModelAndView("redirect:getAllWorkPlaces");
     }
 
-    @RequestMapping(value = {"getAllWorkPlaces", "/"})
-    public ModelAndView getAllWorkPlaces(@ModelAttribute("fileBean") FileBean fileBean, BindingResult result) {
-        logger.info("Getting the all WorkPlaces.");
-        List<WorkPlace> workPlaceList = workPlaceService.getAllWorkPlaces();
-        return new ModelAndView("workPlaceList", "workPlaceList", workPlaceList);
-    }
 
 }

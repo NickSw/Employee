@@ -1,0 +1,61 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.full-bg-img {
+    background: url("http://mdbootstrap.com/images/regular/city/img%20(23).jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 40%;
+    width: 100%;
+}
+
+.top-nav-collapse {
+    background-color: #405C84;
+}
+
+.top-nav-collapse .nav li a {
+    color: #fff;
+}
+
+.pt-color {
+    background-color: #405C84 !important;
+}
+
+.st-color {
+    background-color: #0E274D !important;
+}
+
+.btn-ptc {
+    background-color: #405C84 !important;
+}
+
+.btn-ptc:hover {
+    background-color: #5174a6 !important;
+}
+
+.btn-ptc:focus {
+    background-color: #5174a6 !important;
+}
+
+.btn-stc {
+    background-color: #0E274D !important;
+}
+
+.btn-stc:hover {
+    background-color: #163d78 !important;
+}
+
+.btn-stc:focus {
+    background-color: #163d78 !important;
+}
+
+.btn-floating,
+.carousel-indicators li {
+    background-color: #0E274D !important;
+}
