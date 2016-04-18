@@ -32,7 +32,7 @@ public class AdminDAOImpl implements AdminDAO{
     private SessionFactory sessionFactory;
 
     /**
-     * Достать из базы запись администратора
+     * Извлечь из базы запись администратора
      * TODO: ограничить записи в базе до одной
      * TODO: разобраться с warning и ошибками
      * TODO: использовать hibernateUtil

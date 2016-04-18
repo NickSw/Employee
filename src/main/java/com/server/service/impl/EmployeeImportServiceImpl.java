@@ -16,7 +16,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * Реализация сервиса импорта сотрудника
+ * Импорт сотрудников
+ * Реализация сервиса EmployeeImportService
+ *
+ * Добавление нового сотрудника при помощи сервисного слоя сотрудника
  */
 @Service
 @Transactional
@@ -26,7 +29,7 @@ public class EmployeeImportServiceImpl implements EmployeeImportService{
     EmployeeService employeeService;
 
     /**
-     * Функция импорта сотрудника из файла
+     * Функция импорта сотрудника из excel файла
      * @param fileBean
      */
     @Override
