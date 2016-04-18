@@ -22,28 +22,13 @@ public class MovementArchiveServiceImpl implements MovementArchiveService{
     private MovementArchiveDAO movementArchiveDAO;
 
     @Override
-    public long createMovementArchive(MovementArchive movementArchive) {
-        return movementArchiveDAO.createMovementArchive(movementArchive);
-    }
-
-    @Override
-    public MovementArchive updateMovementArchive(MovementArchive movementArchive) {
-        return movementArchiveDAO.updateMovementArchive(movementArchive);
-    }
-
-    @Override
-    public void deleteMovementArchive(int id) {
-        movementArchiveDAO.deleteMovementArchive(id);
-    }
-
-    @Override
     public List<MovementArchive> getAllMovementsArchive() {
         return movementArchiveDAO.getAllMovementsArchive();
     }
 
     @Override
-    public MovementArchive getMovementArchive(int id) {
-        return movementArchiveDAO.getMovementArchive(id);
+    public void deleteMovementArchive(int id) {
+        movementArchiveDAO.deleteMovementArchive(id);
     }
 
 }

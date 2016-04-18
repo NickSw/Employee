@@ -9,6 +9,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Реализация интерфейса EmployeeArchiveDAO
+ * Методы:
+ * Извлечь всех архивных сотрудников из архива сотрудников
+ * Удалить архивного сотрудника из архива сотрудников
+ *
+ * Осуществляется при помощи вспомогательного класса HibernateUtil
+ */
 @Repository
 public class EmployeeArchiveDAOImpl implements EmployeeArchiveDAO {
 
@@ -19,32 +27,24 @@ public class EmployeeArchiveDAOImpl implements EmployeeArchiveDAO {
     @Autowired
     private HibernateUtil hibernateUtil;
 
+    /**
+     * Извлечь всех архивных сотрудников из таблицы
+     * @return
+     */
     @Override
-    public long createEmployeeArchive(EmployeeArchive employeeArchive) {
-        return (Long) hibernateUtil.create(employeeArchive);
+    public List<EmployeeArchive> getAllEmployeesArchive() {
+        return hibernateUtil.fetchAll(EmployeeArchive.class);
     }
 
-    @Override
-    public EmployeeArchive updateEmployeeArchive(EmployeeArchive employeeArchive) {
-        return hibernateUtil.update(employeeArchive);
-    }
-
+    /**
+     * Удалить архивного сотрудника
+     * @param id
+     */
     @Override
     public void deleteEmployeeArchive(long id) {
         EmployeeArchive employeeArchive = new EmployeeArchive();
         employeeArchive.setId(id);
         hibernateUtil.delete(employeeArchive);
     }
-
-    @Override
-    public List<EmployeeArchive> getAllEmployeesArchive() {
-        return hibernateUtil.fetchAll(EmployeeArchive.class);
-    }
-
-    @Override
-    public EmployeeArchive getEmployeeArchive(long id) {
-        return hibernateUtil.fetchById(id, EmployeeArchive.class);
-    }
-
 
 }

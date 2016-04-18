@@ -9,6 +9,17 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Реализация интерфейса WorkPlaceDAO
+ * Методы:
+ * Извлечь всех мест работы из таблицы
+ * Извлечь место работы из таблицы по id
+ * Создать место работы
+ * Изменить место работы
+ * Удалить место работы
+ *
+ * Осуществляется при помощи вспомогательного класса HibernateUtil
+ */
 @Repository
 public class WorkPlaceDAOImpl implements WorkPlaceDAO {
 
@@ -19,16 +30,49 @@ public class WorkPlaceDAOImpl implements WorkPlaceDAO {
     @Autowired
     private HibernateUtil hibernateUtil;
 
+    /**
+     * Извлечь все места работы из таблицы
+     * @return
+     */
+    @Override
+    public List<WorkPlace> getAllWorkPlaces() {
+        return hibernateUtil.fetchAll(WorkPlace.class);
+    }
+
+    /**
+     * Извлечь место работы по id
+     * @param id
+     * @return
+     */
+    @Override
+    public WorkPlace getWorkPlace(long id) {
+        return hibernateUtil.fetchById(id, WorkPlace.class);
+    }
+
+    /**
+     * Создать место работы
+     * @param workPlace
+     * @return
+     */
     @Override
     public long createWorkPlace(WorkPlace workPlace) {
         return (Long) hibernateUtil.create(workPlace);
     }
 
+    /**
+     * Обновить место работы
+     * @param workPlace
+     * @return
+     */
     @Override
     public WorkPlace updateWorkPlace(WorkPlace workPlace) {
         return hibernateUtil.update(workPlace);
     }
 
+    /**
+     * Удалить место работы
+     * @param id
+     */
     @Override
     public void deleteWorkPlace(long id) {
         WorkPlace workPlace = new WorkPlace();
@@ -36,14 +80,6 @@ public class WorkPlaceDAOImpl implements WorkPlaceDAO {
         hibernateUtil.delete(workPlace);
     }
 
-    @Override
-    public List<WorkPlace> getAllWorkPlaces() {
-        return hibernateUtil.fetchAll(WorkPlace.class);
-    }
 
-    @Override
-    public WorkPlace getWorkPlace(long id) {
-        return hibernateUtil.fetchById(id, WorkPlace.class);
-    }
 
 }

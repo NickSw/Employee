@@ -21,23 +21,13 @@ public class EmployeeArchiveServiceImpl implements EmployeeArchiveService {
     private EmployeeArchiveDAO employeeArchiveDAO;
 
     @Override
-    public long createEmployeeArchive(EmployeeArchive employeeArchive) {
-        return employeeArchiveDAO.createEmployeeArchive(employeeArchive);
+    public List<EmployeeArchive> getAllEmployeesArchive() {
+        return employeeArchiveDAO.getAllEmployeesArchive();
     }
-    @Override
-    public EmployeeArchive updateEmployeeArchive(EmployeeArchive employeeArchive) {
-        return employeeArchiveDAO.updateEmployeeArchive(employeeArchive);
-    }
+
     @Override
     public void deleteEmployeeArchive(int id) {
         employeeArchiveDAO.deleteEmployeeArchive(id);
     }
-    @Override
-    public List<EmployeeArchive> getAllEmployeesArchive() {
-        return employeeArchiveDAO.getAllEmployeesArchive();
-    }
-    @Override
-    public EmployeeArchive getEmployeeArchive(int id) {
-        return employeeArchiveDAO.getEmployeeArchive(id);
-    }
+
 }

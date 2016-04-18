@@ -8,6 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Реализация интерфейса MovementArchiveDAO
+ * Методы:
+ * Извлечь всех архивных приказов по сотрудникам из архива приказов по сотрудникам
+ * Удалить архивный приказ по сотруднику из архива приказов по сотрудникам
+ *
+ * Осуществляется при помощи вспомогательного класса HibernateUtil
+ */
 @Repository
 public class MovementArchiveDAOImpl implements MovementArchiveDAO {
 
@@ -18,31 +26,24 @@ public class MovementArchiveDAOImpl implements MovementArchiveDAO {
     @Autowired
     private HibernateUtil hibernateUtil;
 
-    @Override
-    public long createMovementArchive(MovementArchive movementArchive) {
-        return (Long) hibernateUtil.create(movementArchive);
-    }
-
-    @Override
-    public MovementArchive updateMovementArchive(MovementArchive movementArchive) {
-        return hibernateUtil.update(movementArchive);
-    }
-
-    @Override
-    public void deleteMovementArchive(long id) {
-        MovementArchive movementArchive = new MovementArchive();
-        movementArchive.setId(id);
-        hibernateUtil.delete(movementArchive);
-    }
-
+    /**
+     * Извлечение всех архивных приказов из таблицы
+     * @return
+     */
     @Override
     public List<MovementArchive> getAllMovementsArchive() {
         return hibernateUtil.fetchAll(MovementArchive.class);
     }
 
+     /**
+     * Удаление архивного приказа по сотруднику
+     * @param id
+     */
     @Override
-    public MovementArchive getMovementArchive(long id) {
-        return hibernateUtil.fetchById(id, MovementArchive.class);
+    public void deleteMovementArchive(long id) {
+        MovementArchive movementArchive = new MovementArchive();
+        movementArchive.setId(id);
+        hibernateUtil.delete(movementArchive);
     }
 
 }

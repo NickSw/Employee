@@ -10,6 +10,14 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Реализация интерфейса AdminDAO
+ * Методы:
+ * Извлечь из таблицы admin запись логина и пароля администратора
+ * Обновить данные администратора
+ *
+ * Осуществляется при помощи вспомогательного класса HibernateUtil
+ */
 @Repository
 public class AdminDAOImpl implements AdminDAO{
 
@@ -23,11 +31,20 @@ public class AdminDAOImpl implements AdminDAO{
     @Autowired
     private SessionFactory sessionFactory;
 
+    /**
+     * Достать из базы запись администратора
+     * TODO: ограничить записи в базе до одной
+     * TODO: разобраться с warning и ошибками
+     * TODO: использовать hibernateUtil
+     * @return
+     */
     @Override
     @SuppressWarnings("unchecked")
     public Admin getCredentials(){
+        /**Достать все записи из базы*/
         List<Admin> admin = new ArrayList<Admin>();
         admin = sessionFactory.getCurrentSession().createQuery("FROM Admin").list();
+        /**Берем первую запись*/
         if (admin.size() > 0) {
             return admin.get(0);
         } else {
@@ -35,6 +52,11 @@ public class AdminDAOImpl implements AdminDAO{
         }
     }
 
+    /**
+     * Обновить запись администратора в базе
+     * @param admin
+     * @return
+     */
     @Override
     public Admin updateCredentials(Admin admin) {
         return hibernateUtil.update(admin);
