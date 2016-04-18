@@ -72,6 +72,10 @@ public class Employee implements Serializable {
     @Column
     private String notes;
 
+    /**
+     * Поля сущности, которые не колонками в таблицы
+     * Исп. для проверки пустых дат полей в форме
+     */
     @Transient
     private String birthdayString;
 

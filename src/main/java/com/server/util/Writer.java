@@ -4,14 +4,18 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 
+/**
+ * Вспомогательный класс для экспорта файла
+ * Пишет все в файл
+ */
 public class Writer {
     public static void write(HttpServletResponse response, HSSFSheet worksheet) {
         try {
-            // Retrieve the output stream
+            /**Получаем output stream с HttpServletResponse*/
             ServletOutputStream outputStream = response.getOutputStream();
-            // Write to the output stream
+            /**Пишет в потом*/
             worksheet.getWorkbook().write(outputStream);
-            // Flush the stream
+            /**Закрывает поток*/
             outputStream.flush();
         } catch (Exception e) {
             e.printStackTrace();
