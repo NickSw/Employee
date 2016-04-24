@@ -72,7 +72,6 @@
     $('body').on('click', '.modalSubmit1', function (e) {
       $('#inputEmail').val("admin");
       var passfromDb = $('.pass').val();
-      $('.pass').val("");
       var passField = $('#inputPassword').val();
       if (passfromDb != passField){
         e.preventDefault();
@@ -80,7 +79,6 @@
       }
       if (passfromDb == passField){
         $('.modal-body form .sub').click();
-        //function formSubmit() {
         document.getElementById("loginForm").submit();
       }
     });

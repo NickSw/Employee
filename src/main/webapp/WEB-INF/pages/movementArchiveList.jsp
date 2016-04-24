@@ -2,8 +2,9 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@page session="true"%>
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="ru" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <title>Employee DB</title>
@@ -29,6 +30,25 @@
 
 </head>
 <body>
+
+<c:url value="/j_spring_security_logout" var="logoutUrl" />
+<form action="${logoutUrl}" method="post" id="logoutForm">
+</form><!--Скрытая форма выхода из сессии-->
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    </div>
+  </div>
+</div><!--Модальное окно логина-->
+
+<div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    </div>
+  </div>
+</div><!--Модальное окно замены пароля-->
+
 <div class="modal fade" id="editMovementArchive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -138,16 +158,29 @@
     <nav class="st-menu st-effect-8" id="menu-8">
       <h2 class="icon icon-stack">Меню</h2>
       <ul>
-        <li><a class="icon icon-user" href="#">Начать редактир.</a></li>
+        <c:if test="${pageContext.request.userPrincipal.name == null}">
+          <li>
+            <a class="icon icon-user" href="/login"  data-toggle="modal" data-target="#login">Начать редактир.</a>
+          </li>
+        </c:if>
         <li><a class="icon icon-data" href="/getAllOrderTypes">Типы приказов</a></li>
         <li><a class="icon icon-data" href="/getAllWorkPlaces">Место работы</a></li>
         <li><a class="icon icon-data" href="/getAllMovements">Приказы по сотрудникам</a></li>
         <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив данных сотрудникам</a></li>
         <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив приказов по сотрудникам</a></li>
-        <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalImport">Импорт данных из MS Excel</a></li>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+          <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalImport">Импорт данных из MS Excel</a></li>
+        </c:if>
         <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalExport">Экспорт данных в MS Excel</a></li>
-        <li><a class="icon icon-study" href="#">Помощь</a></li>
-        <li><a class="icon icon-lock" href="#">Закончить редактир.</a></li>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+          <li><a class="icon icon-pen changePassword" href="#">Замена и восст. пароля</a></li>
+        </c:if>
+        <li><a class="icon icon-study" href="/help">Помощь</a></li>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+          <li>
+            <a class="icon icon-lock" href="javascript:formSubmit()">Закончить редактир.</a>
+          </li>
+        </c:if>
       </ul>
     </nav>
 
@@ -157,7 +190,14 @@
         <div class="codrops-top clearfix">
           <div id="st-trigger-effects">
             <button data-effect="st-effect-8" class="btn-menu" data-toggle="tooltip" title="Открыть меню"><span class="fa fa-plus" ></span>&nbsp;Меню</button>
-            <div class="table-name"><h3>Архив приказов по сотрудникам</h3></div>
+            <div class="table-name">
+              <h3>
+                Архив приказов по сотрудникам
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                  (Редактирование)
+                </c:if>
+              </h3>
+            </div>
             <div class="btn-home"><a href="/getAllEmployees"><button class="btn-menu" data-toggle="tooltip" title="На главную таблицу сотрудников"><span class="fa fa-home"></span>&nbsp;База сотруников</button></a></div>
           </div>
         </div>
@@ -167,7 +207,9 @@
         <div class="row">
           <div class="panel panel-primary filterable">
             <div class="panel-heading">
-              <a class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modalClear" ><span class="fa fa-file-archive-o"></span>Очистка и экспорт архива</a>
+              <c:if test="${pageContext.request.userPrincipal.name != null}">
+                <a class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modalClear" ><span class="fa fa-file-archive-o"></span>Очистка и экспорт архива</a>
+              </c:if>
               <div class="pull-right">
                 <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span>Фильтр</button>
               </div>
@@ -220,7 +262,9 @@
                 <c:forEach items="${model.movementArchiveList}" var="mov">
                   <tr>
                     <td>
+                      <c:if test="${pageContext.request.userPrincipal.name != null}">
                       <p data-placement="top" data-toggle="tooltip" title="Удалить" class="btn-disp"><a class="btn btn-opt btn-danger btn-xs triggerDelete"  href="/deleteMovementArchive?id=<c:out value='${mov.id}'/>"><span class="glyphicon glyphicon-trash"></span></a></p>
+                      </c:if>
                       <c:out value="${mov.orderdate}"/>
                     </td>
                     <td><c:out value="${mov.ordernum}"/></td>
@@ -266,6 +310,8 @@
 <script src="/resources/js/importTable.js"></script>
 <!--Archive Utils js-->
 <script src="/resources/js/archiveUtil.js"></script>
+<!--Page security js-->
+<script src="/resources/js/security.js"></script>
 
 </body>
 </html>

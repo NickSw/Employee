@@ -15,7 +15,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-
+/**
+ * Экспорт таблицы типов приказов
+ * Методы:
+ * Экспорт типов приказов
+ * Извлечение всех типов приказов
+ */
 @Service("OrderTypeExportServiceImpl")
 @Transactional
 public class OrderTypeExportServiceImpl implements OrderTypeExportService {

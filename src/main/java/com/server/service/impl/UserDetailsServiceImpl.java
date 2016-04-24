@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * Класс для Spring Security
  * Проверка введенных данных Spring Security
- *
+ *      TODO: должен использовать сервисный слой
  * Используется слой DAO для администратора
  */
 @Service("userDetailsService")

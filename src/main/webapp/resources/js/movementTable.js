@@ -1,8 +1,12 @@
 $(document).ready(function(){
+    //bug fix: second time click on filters button
+    $('.filters input').val('').prop('disabled', true);
+
     $('.filterable .btn-filter').click(function(){
         var $panel = $(this).parents('.filterable'),
             $filters = $panel.find('.filters input'),
             $tbody = $panel.find('.table tbody');
+
         if ($filters.prop('disabled') == true &&
             $('#ordertypepicker').css('display','none') &&
             $('#movement-datepicker').css('display','none')
@@ -12,7 +16,6 @@ $(document).ready(function(){
             $('#ordertypename').css('display','none');
             $('#movement-datepicker').css('display','inline-table');
             $('#movement-datename').css('display','none');
-            //$filters.first().focus();
         } else {
             $filters.val('').prop('disabled', true);
             $tbody.find('.no-result').remove();

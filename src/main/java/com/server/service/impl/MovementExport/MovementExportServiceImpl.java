@@ -15,6 +15,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * Экспорт таблицы приказов по сотрудникам
+ * Методы:
+ * Экспорт приказов по сотрудникам
+ * Извлечение всех приказов по сотрудникам сотрудников
+ */
 @Service("MovementExportServiceImpl")
 @Transactional
 public class MovementExportServiceImpl implements MovementExportService {
@@ -22,36 +28,45 @@ public class MovementExportServiceImpl implements MovementExportService {
     @Resource(name="sessionFactory")
     private SessionFactory sessionFactory;
 
+    /**
+     * Экспорт таблицы приказов по сотрудникам
+     * @param response
+     */
     @SuppressWarnings("unchecked")
     public void exportMovement(HttpServletResponse response) {
 
-        // 1. Create new workbook
+        /**1. Создать новый workbook*/
         HSSFWorkbook workbook = new HSSFWorkbook();
 
-        // 2. Create new worksheet
+        /**2. Создать новый лист*/
         HSSFSheet worksheet = workbook.createSheet("Приказы по сотрудникам");
 
-        // 3. Define starting indices for rows and columns
+        /**3. Определить начальные индексы для строк и колонок*/
         int startRowIndex = 0;
         int startColIndex = 0;
 
-        // 4. Build layout
-        // Build title, date, and column headers
+        /**4. Постоение макета
+         * Название, название колонок*/
         MovementLayouter.buildReport(worksheet, startRowIndex, startColIndex);
 
-        // 5. Fill report
+        /**5. Заполнение документа*/
         MovementFillManager.fillReport(worksheet, startRowIndex, startColIndex, getDatasource());
 
-        // 6. Set the response properties
+        /**6. Set the response properties*/
         String fileName = "Prikazi_po_sotryd.xls";
         response.setHeader("Content-Disposition", "inline; filename=" + fileName);
         // Make sure to set the correct content type
         response.setContentType("application/vnd.ms-excel");
-        //7. Write to the output stream
+        /**7. Write to the output stream*/
         Writer.write(response, worksheet);
 
     }
 
+    /**
+     * Извлечение всех приказов по сотрудникам
+     * TODO: через hibernateUtil
+     * @return
+     */
     @SuppressWarnings("unchecked")
     private List<Movement> getDatasource() {
         // Retrieve session

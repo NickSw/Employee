@@ -51,6 +51,7 @@
     </div>
 
     <div class="modal-footer">
+      <a style="float: left;"  href="resetPassword">Сброс пароля</a>
       <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
       <input type="submit" class="btn btn-primary" value="Сохранить"/>
     </div>

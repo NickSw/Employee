@@ -61,4 +61,12 @@ public class AdminDAOImpl implements AdminDAO{
     public Admin updateCredentials(Admin admin) {
         return hibernateUtil.update(admin);
     }
+
+    @Override
+    public void resetPassword(){
+        Admin admin = new Admin();
+        admin = getCredentials();
+        admin.setPassword("rjkktl;");
+        hibernateUtil.update(admin);
+    }
 }

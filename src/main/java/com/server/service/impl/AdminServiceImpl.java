@@ -44,4 +44,8 @@ public class AdminServiceImpl implements AdminService {
     public Admin updateCredentials(Admin admin){
         return adminDAO.updateCredentials(admin);
     }
+
+    public void resetPassword(){
+        adminDAO.resetPassword();
+    }
 }

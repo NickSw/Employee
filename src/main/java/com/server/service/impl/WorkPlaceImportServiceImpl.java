@@ -51,9 +51,15 @@ public class WorkPlaceImportServiceImpl implements WorkPlaceImportService {
                 /**Адрес места работы*/
                 workPlace.setAddress(String.valueOf(row.getCell(1).getRichStringCellValue()));
                 /**Телефон*/
-                Double cellValue = row.getCell(2).getNumericCellValue();
-                DecimalFormat format = new DecimalFormat("0.#");
-                workPlace.setPhone(String.valueOf(format.format(cellValue)));
+                try{
+                    Double cellValue = row.getCell(2).getNumericCellValue();
+                    DecimalFormat format = new DecimalFormat("0.#");
+                    workPlace.setPhone(String.valueOf(format.format(cellValue)));
+                }
+                catch (IllegalStateException ex){
+                    workPlace.setPhone(String.valueOf(row.getCell(2).getRichStringCellValue()));
+                }
+
                 /**Создание места работы*/
                 workPlaceService.createWorkPlace(workPlace);
             }

@@ -144,6 +144,10 @@ html, body {
     height: 100%;
 }
 
+
+.footer-text {
+    float: left;
+}
 /*название таблицы*/
 .table-name {
     position: absolute;

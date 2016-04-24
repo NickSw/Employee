@@ -10,7 +10,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
 
 /**
- * Класс менеджер заполнения документа
+ * Класс менеджер заполнения excel таблицы сотрудников
  */
 public class EmployeeFillManager {
 
@@ -136,6 +136,7 @@ public class EmployeeFillManager {
                 cell15.setCellStyle(bodyCellStyle);
             }
 
+            /**Приказ о зачисл.*/
             HSSFCell cell16 = row.createCell(startColIndex+15);
             cell16.setCellValue(datasource.get(i-2).getEnrollorder());
             cell16.setCellStyle(bodyCellStyle);

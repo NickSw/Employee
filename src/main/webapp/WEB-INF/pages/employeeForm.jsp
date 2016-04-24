@@ -62,8 +62,11 @@
             <div class="control-label col-xs-3"> <form:label path="workplace" >Где работает</form:label> </div>
             <div class="col-xs-6">
                 <form:select class="form-control" path="workplace" value="${model.employee.workplace}">
+                        <option><c:out value="${model.employee.workplace}"/></option>
                     <c:forEach items="${model.workPlaceList}" var="wp">
-                        <option><c:out value="${wp.place}"/></option>
+                        <c:if test="${model.employee.workplace != wp.place}">
+                            <option><c:out value="${wp.place}"/></option>
+                        </c:if>
                     </c:forEach>
                 </form:select>
             </div>
@@ -109,7 +112,8 @@
         <div class="form-group">
             <div class="control-label col-xs-3"> <form:label path="code" >Идент. код</form:label> </div>
             <div class="col-xs-6">
-                <form:input cssClass="form-control" path="code" value="${model.employee.code}"/>
+                <form:input cssClass="form-control" path="code" value="${model.employee.code}" pattern="\d+"/>
+                <span class="help-block">Только числа</span>
             </div>
         </div>
 

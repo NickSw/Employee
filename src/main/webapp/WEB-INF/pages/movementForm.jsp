@@ -33,29 +33,35 @@
     </div>
 
     <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="ordernum" >Номер приказа</form:label> </div>
+      <div class="control-label col-xs-3"> <form:label path="ordernum" >Номер приказа *</form:label> </div>
       <div class="col-xs-6">
-        <form:input cssClass="form-control" path="ordernum" value="${model.movement.ordernum}"/>
+        <form:input cssClass="form-control" path="ordernum" value="${model.movement.ordernum}" required="required"/>
       </div>
     </div>
 
     <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="ordertype" >Тип приказа</form:label> </div>
+      <div class="control-label col-xs-3"> <form:label path="ordertype" >Тип приказа *</form:label> </div>
       <div class="col-xs-6">
-        <form:select class="form-control" path="ordertype" value="${model.movement.ordertype}">
+        <form:select class="form-control" path="ordertype" value="${model.movement.ordertype}" required="required">
+            <option><c:out value="${model.movement.ordertype}"/></option>
           <c:forEach items="${model.orderTypeList}" var="ord">
-            <option><c:out value="${ord.ordertype}"/></option>
+            <c:if test="${model.movement.ordertype != ord.ordertype}">
+              <option><c:out value="${ord.ordertype}"/></option>
+            </c:if>
           </c:forEach>
         </form:select>
       </div>
     </div>
 
     <div class="form-group">
-      <div class="control-label col-xs-3"> <form:label path="fio" >ФИО</form:label> </div>
+      <div class="control-label col-xs-3"> <form:label path="fio" >ФИО *</form:label> </div>
       <div class="col-xs-6">
-        <form:select class="form-control" path="fio" value="${model.movement.fio}">
+        <form:select class="form-control" path="fio" value="${model.movement.fio}" required="required">
+            <option><c:out value="${model.movement.fio}"/></option>
           <c:forEach items="${model.employeeList}" var="emp">
-          <option><c:out value="${emp.name}"/></option>
+            <c:if test="${model.movement.fio != emp.name}">
+              <option><c:out value="${emp.name}"/></option>
+            </c:if>
           </c:forEach>
         </form:select>
       </div>

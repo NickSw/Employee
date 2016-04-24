@@ -57,9 +57,14 @@ public class SecurityController {
      * @return
      */
     @RequestMapping("saveNewPassword")
-    public ModelAndView saveWorkPlace(@ModelAttribute Admin admin) {
+    public ModelAndView saveNewPassword(@ModelAttribute Admin admin) {
         adminService.updateCredentials(admin);
         return new ModelAndView("redirect:getAllEmployees");
     }
 
+    @RequestMapping("resetPassword")
+    public ModelAndView resetPassword() {
+        adminService.resetPassword();
+        return new ModelAndView("redirect:getAllEmployees");
+    }
 }

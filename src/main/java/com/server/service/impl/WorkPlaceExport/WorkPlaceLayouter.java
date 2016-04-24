@@ -45,7 +45,7 @@ public class WorkPlaceLayouter {
         cellTitle.setCellStyle(cellStyleTitle);
 
         // Create merged region for the report title
-        worksheet.addMergedRegion(new CellRangeAddress(0,0,0,5));
+        worksheet.addMergedRegion(new CellRangeAddress(0,0,0,2));
 /*
         // Create date header
         HSSFRow dateTitle = worksheet.createRow((short) startRowIndex +1);

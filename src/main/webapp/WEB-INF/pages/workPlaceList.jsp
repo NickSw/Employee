@@ -146,9 +146,14 @@
         <li><a class="icon icon-data" href="/getAllMovements">Приказы по сотрудникам</a></li>
         <li><a class="icon icon-data" href="/getAllEmployeesArchive">Откр. архив данных сотрудникам</a></li>
         <li><a class="icon icon-data" href="/getAllMovementsArchive">Откр. архив приказов по сотрудникам</a></li>
-        <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalImport">Импорт данных из MS Excel</a></li>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+          <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalImport">Импорт данных из MS Excel</a></li>
+        </c:if>
         <li><a class="icon icon-pen" href="#" data-toggle="modal" data-target="#modalExport">Экспорт данных в MS Excel</a></li>
-        <li><a class="icon icon-study" href="#">Помощь</a></li>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+          <li><a class="icon icon-pen changePassword" href="#">Замена и восст. пароля</a></li>
+        </c:if>
+        <li><a class="icon icon-study" href="/help">Помощь</a></li>
         <c:if test="${pageContext.request.userPrincipal.name != null}">
           <li>
             <a class="icon icon-lock" href="javascript:formSubmit()">Закончить редактир.</a>

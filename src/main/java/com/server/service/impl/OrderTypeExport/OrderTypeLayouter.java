@@ -43,7 +43,7 @@ public class OrderTypeLayouter {
         cellTitle.setCellStyle(cellStyleTitle);
 
         // Create merged region for the report title
-        worksheet.addMergedRegion(new CellRangeAddress(0,0,0,2));
+        worksheet.addMergedRegion(new CellRangeAddress(0,0,0,1));
 /*
         // Create date header
         HSSFRow dateTitle = worksheet.createRow((short) startRowIndex +1);
