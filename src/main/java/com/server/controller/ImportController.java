@@ -90,6 +90,6 @@ public class ImportController {
      */
     @ExceptionHandler(NullPointerException.class)
     public ModelAndView handleCustomException(NullPointerException ex) {
-        return new ModelAndView("redirect:help#error");
+        return new ModelAndView("redirect:help#import");
     }
 }

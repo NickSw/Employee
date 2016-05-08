@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Предоставление формы логина
  * Изменение пароля
  * Сохранение новго пароля
+ * Сброс пароля
  */
 @Controller
 @RequestMapping("/")
@@ -62,6 +63,10 @@ public class SecurityController {
         return new ModelAndView("redirect:getAllEmployees");
     }
 
+    /**
+     * Сброс пароля
+     * @return
+     */
     @RequestMapping("resetPassword")
     public ModelAndView resetPassword() {
         adminService.resetPassword();

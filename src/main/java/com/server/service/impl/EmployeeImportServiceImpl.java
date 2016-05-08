@@ -54,7 +54,7 @@ public class EmployeeImportServiceImpl implements EmployeeImportService{
                 java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
                 /**Исключаю null строки*/
-                //try {
+                try {
                     /**ФИО*/
                     employee.setName(String.valueOf(row.getCell(0).getRichStringCellValue()));
                     /**Телефон*/
@@ -129,10 +129,10 @@ public class EmployeeImportServiceImpl implements EmployeeImportService{
                     employee.setRecofservice(String.valueOf(row.getCell(17).getRichStringCellValue()));
                     /**Примечание*/
                     employee.setNotes(String.valueOf(row.getCell(18).getRichStringCellValue()));
-                /*}
+                }
                 catch (NullPointerException ex){
                     return;
-                }*/
+                }
                 /**Добавления сотрудника*/
                 employeeService.createEmployee(employee);
             }

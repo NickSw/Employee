@@ -90,7 +90,6 @@ public class MovementServiceImpl implements MovementService{
 
     /**
      * Дублирование приказа
-     * TODO: реализация в слое DAO
      * @param id
      */
     @Override
